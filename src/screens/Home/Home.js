@@ -201,7 +201,7 @@ function Home() {
                       "• Zones functionality for Restaurants and Riders",
                     ]}
                     web={true}
-                    link={"https://multivendor-admin.ninjascode.com/"}
+                    link={"https://multivendor-admin.enatega.com/"}
                     isMobile={false}
                   />
                 </Grid>
