@@ -6,8 +6,8 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -20,10 +20,16 @@ function Footer() {
   const classes = useStyles();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
+  const location = useLocation();
 
   const redirectHandler = (link) => {
     window.open(link, "_blank");
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
 
   return (
     <Grid container alignItems="center">
