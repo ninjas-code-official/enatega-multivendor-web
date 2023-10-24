@@ -50,6 +50,7 @@ function PaymentCard({
   loading,
   calculateTotal,
 }) {
+  console.log(validateOrder)
   const theme = useTheme();
   const classes = useStyles();
   const { cart } = useContext(UserContext);
