@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme, mobile) => ({
   chat: {
     position: "fixed",
     right: "20px",
-    bottom: "15px",
+    bottom: "130px",
     background: theme.palette.common.black,
     padding: theme.spacing(2, 3),
     borderRadius: 10,
@@ -167,10 +167,10 @@ const useStyles = makeStyles((theme, mobile) => ({
     // border: "none",
     // borderBottom: "1px solid theme.palette.secondary.light",
     borderColor: theme.palette.grey[300],
-    borderWidth: '1px',
-    borderStyle: 'groove',
+    borderWidth: "1px",
+    borderStyle: "groove",
     outline: "none",
-    padding: '0.6%'
+    padding: "0.6%",
   },
   submitContainer: {
     width: "100%",
