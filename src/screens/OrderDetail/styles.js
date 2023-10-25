@@ -164,9 +164,13 @@ const useStyles = makeStyles((theme, mobile) => ({
     height: "100%",
     color: theme.palette.common.black,
     width: mobile ? "100%" : "40%",
-    border: "none",
-    borderBottom: "1px solid theme.palette.secondary.light",
+    // border: "none",
+    // borderBottom: "1px solid theme.palette.secondary.light",
+    borderColor: theme.palette.grey[300],
+    borderWidth: '1px',
+    borderStyle: 'groove',
     outline: "none",
+    padding: '0.6%'
   },
   submitContainer: {
     width: "100%",
