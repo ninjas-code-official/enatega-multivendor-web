@@ -28,7 +28,7 @@ const useStyle = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     marginRight: theme.spacing(2),
   },
-  upperContainer: {
+  upsideContainer: {
     position: "fixed",
     maxHeight: "100%", // Set the maximum height to the viewport height
     minWidth: "670px",

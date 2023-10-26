@@ -123,7 +123,7 @@ function Subheader() {
       style={{
         top: spacingTop,
       }}
-      className={classes.upperContainer}
+      className={classes.upsideContainer}
     >
       <Box
         style={{
