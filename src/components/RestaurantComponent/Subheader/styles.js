@@ -28,6 +28,18 @@ const useStyle = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     marginRight: theme.spacing(2),
   },
+  upperContainer: {
+    position: "fixed",
+    maxHeight: "100%", // Set the maximum height to the viewport height
+    minWidth: "670px",
+    zIndex: 1300,
+    top: "63px",
+    [theme.breakpoints.down("sm")]: {
+      minWidth: "300px",
+      width: "95%",
+      top: "63px",
+    },
+  },
   mainContainer: {
     position: "fixed",
     minWidth: "670px",
