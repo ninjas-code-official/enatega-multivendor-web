@@ -465,7 +465,7 @@ function Checkout() {
       });
       return false;
     }
-    if (!location._id) {
+    if (!location) {
       showMessage({
         alive: true,
         type: "Warning",
