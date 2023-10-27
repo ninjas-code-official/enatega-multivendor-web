@@ -82,6 +82,9 @@ function Checkout() {
   const [addressModal, setAddressModal] = useState(false);
   const [orderOptionModal, setOrderOptionModal] = useState(false);
   const fetchRef = useRef(false);
+
+  const [loadingLocation, setLoadingLocation] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState(null);
   const {
     profile,
     clearCart,
@@ -92,15 +95,14 @@ function Checkout() {
     removeQuantity,
   } = useContext(UserContext);
 
-
   const { location, setLocation } = useLocationContext();
-  const { getCurrentLocation } = useLocation();
+  // const { getCurrentLocation } = useLocation();
   const theme = useTheme();
   const [minimumOrder, setMinimumOrder] = useState("");
   const [selectedTip, setSelectedTip] = useState();
   const [paymentMethod, setPaymentMethod] = useState(PAYMENT);
   const [taxValue, setTaxValue] = useState();
-  const [selectedAddress, setSelectedAddress] = useState();
+
   const [coupon, setCoupon] = useState({});
   const [selectedDate, handleDateChange] = useState(new Date());
   const [isPickUp, setIsPickUp] = useState(false);
@@ -347,9 +349,9 @@ function Checkout() {
         variation: food.variation._id,
         addons: food.addons
           ? food.addons.map(({ _id, options }) => ({
-            _id,
-            options: options.map(({ _id }) => _id),
-          }))
+              _id,
+              options: options.map(({ _id }) => _id),
+            }))
           : [],
         specialInstructions: food.specialInstructions,
       };
@@ -396,12 +398,51 @@ function Checkout() {
       });
     }
   }
+  // const locationCallback = (error, data) => {
+  //   console.log(data);
+  //   if (error) {
+  //     return;
+  //   }
+  //   setLocation(data);
+  // };
+
   const locationCallback = (error, data) => {
-    console.log(data);
+    setLoadingLocation(false); // Stop loading
     if (error) {
+      console.error(error);
       return;
     }
-    setLocation(data);
+
+    // Create an object for the selected address using the current location data
+    const selectedAddress = {
+      label: "Your Location",
+      deliveryAddress: data.label,
+      details: data.details,
+      latitude: data.coords.latitude,
+      longitude: data.coords.longitude,
+    };
+
+    // Update the selected address in state
+    setSelectedAddress(selectedAddress);
+    setAddressModal((prev) => !prev);
+  };
+
+  const getCurrentLocation = () => {
+    setLoadingLocation(true); // Start loading (optional)
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          locationCallback(null, position);
+        },
+        (error) => {
+          locationCallback(error, null);
+        }
+      );
+    } else {
+      // Geolocation is not supported by the browser
+      locationCallback(new Error("Geolocation is not supported."), null);
+    }
   };
 
   function validateOrder() {
@@ -424,7 +465,7 @@ function Checkout() {
       });
       return false;
     }
-    if (!location._id) {
+    if (!location) {
       showMessage({
         alive: true,
         type: "Warning",
@@ -692,16 +733,13 @@ function Checkout() {
                           display="flex"
                           justifyContent="space-between"
                           alignItems="center"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            console.log("clicked");
+                            getCurrentLocation();
+                          }}
                         >
-                          <Box
-                            display="flex"
-                            alignItems="center"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              getCurrentLocation(locationCallback);
-                              toggleAdressModal();
-                            }}
-                          >
+                          <Box display="flex" alignItems="center">
                             <NearMeIcon
                               width={100}
                               height={100}
@@ -717,6 +755,9 @@ function Checkout() {
                               Use current location
                             </Typography>
                           </Box>
+                          {loadingLocation && (
+                            <CircularProgress color={"warning"} />
+                          )}
                         </Box>
                       </Paper>
                     </Grid>
@@ -767,5 +808,3 @@ function Checkout() {
 }
 
 export default Checkout;
-
-

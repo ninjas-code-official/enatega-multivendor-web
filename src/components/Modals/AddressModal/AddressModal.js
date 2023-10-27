@@ -22,8 +22,10 @@ import useStyle from "./styles";
 import MarkerImage from "../../../assets/images/marker.png";
 import ClearIcon from "@mui/icons-material/Clear";
 import PlacesAutocomplete from "react-places-autocomplete";
+import { GOOGLE_MAPS_KEY } from "../../../config/constants";
 
-function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress }) {
+function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, settingRegionDetail }) {
+  console.log(settingRegionDetail)
   const classes = useStyle();
   const [region, setRegion] = useState(null);
   const [mainError, setMainError] = useState({});
@@ -32,11 +34,32 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress }) {
   const { latLngToGeoString } = useLocation();
   const [loading, setLoading] = useState();
   const handleLocationSelection = (selectedLocation) => {
+    const apiKey = GOOGLE_MAPS_KEY;
+    
     setLocationName(selectedLocation);
+    const encodedLocation = encodeURIComponent(selectedLocation);
+  
+    const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedLocation}&key=${apiKey}`;
+    fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === 'OK' && data.results.length > 0) {
+        const location = data.results[0].geometry.location;
+        const latitude = location.lat;
+        const longitude = location.lng;
+        setRegion({
+          lat: latitude,
+          lng: longitude,
+        });
+      } else {
+        console.error('Location not found');
+      }
+    })
   };
 
   useEffect(() => {
     if (regionDetail) {
+      console.log(regionDetail)
       setRegion({
         lat: regionDetail.lat,
         lng: regionDetail.lng,

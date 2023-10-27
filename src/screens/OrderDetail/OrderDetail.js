@@ -302,6 +302,7 @@ function OrderDetail() {
                 rating={rating}
                 changeRating={onFinishRating}
                 starDimension={mobile ? "20px" : "50px"}
+                starRatedColor={theme.palette.primary.main}
               />
             </div>
           </div>
@@ -317,7 +318,7 @@ function OrderDetail() {
             <div className={classes.submit}>
               {loadingMutation && <ThreeDots />}
               {!loadingMutation && (
-                <button onClick={onSubmit} className={classes.submitButton}>
+                <button onClick={onSubmit} className={classes.submitButton} disabled={rating < 2 || description.length < 1}>
                   Submit
                 </button>
               )}

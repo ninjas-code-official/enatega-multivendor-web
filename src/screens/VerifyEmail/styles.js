@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
     height: "50px",
     opacity: 1,
     backgroundColor: theme.palette.primary.black,
-    transition: 'opacity 0.3s',
+    transition: "opacity 0.3s",
     "&:hover": {
       opacity: 0.8,
-    backgroundColor: theme.palette.primary.black
+      backgroundColor: theme.palette.primary.main,
     },
     width: "70%",
     borderRadius: 10,

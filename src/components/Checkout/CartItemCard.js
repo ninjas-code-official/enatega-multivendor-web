@@ -57,6 +57,7 @@ function CartItemsCard({
   const { cart } = useContext(UserContext);
   const configuration = useContext(ConfigurationContext);
   const [voucherModal, setVoucherModal] = useState(false);
+  const [isCouponApplied, setIsCouponApplied] = useState(false);
 
   const { data: dataTip } = useQuery(TIPPING, {
     fetchPolicy: "network-only",
@@ -87,10 +88,12 @@ function CartItemsCard({
         couponRef.current = coupon;
         setCoupon(coupon);
         setCouponError("");
+        setIsCouponApplied(true);
         setFlashMessage({
           type: "success",
           message: "Coupon applied.",
         });
+        setVoucherModal((prev) => !prev);
       } else {
         setCouponError("Coupon not found!");
         setFlashMessage({
@@ -144,7 +147,6 @@ function CartItemsCard({
                     removeQuantity(foodItem.key);
                   }
                 }}
-                
               />
               <Divider
                 orientation="horizontal"
@@ -310,11 +312,14 @@ function CartItemsCard({
                 color="primary"
                 className={clsx(classes.smallText)}
               >
-                Discount
+                {isCouponApplied
+                  ? `Coupon is applied: ${couponText}`
+                  : "Discount"}
               </Typography>
               <Typography
                 variant="caption"
                 color="primary"
+                bold
                 className={clsx(classes.smallText)}
               >
                 {`-${configuration.currencySymbol} ${parseFloat(

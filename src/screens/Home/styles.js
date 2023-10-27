@@ -214,8 +214,8 @@ const useStyles = makeStyles((theme) => ({
   },
   bannerContainer: {
     position: "absolute",
-    right: "2%",
-    top: "2.5%",
+    left: "52%",
+    top: "5%",
     zIndex: 1000,
     [theme.breakpoints.down("md")]: {
       position: "relative",
