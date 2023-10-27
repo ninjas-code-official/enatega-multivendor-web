@@ -56,7 +56,7 @@ function VerifyEmail() {
     return () => {
       window.removeEventListener("popstate", handleBackNavigation);
     };
-  }, []);
+  });
   const [otpFrom, setOtpFrom] = useState(
     Math.floor(100000 + Math.random() * 900000).toString()
   );

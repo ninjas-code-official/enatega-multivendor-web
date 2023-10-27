@@ -41,6 +41,7 @@ function Registration() {
   const [fNameError, setFNameError] = useState("");
   const [lNameError, setLNameError] = useState("");
   const [phone, setPhone] = useState("");
+  
   const [phoneError, setPhoneError] = useState(null);
   const [PhoneEixst] = useMutation(PHONE, {
     onCompleted,
@@ -59,7 +60,7 @@ function Registration() {
     return () => {
       window.removeEventListener("popstate", handleBackNavigation);
     };
-  }, []);
+  });
   function onCompleted({ phoneExist }) {
     if (phoneExist?._id !== null) {
       setError("Phone number already assocaited with some other user");
