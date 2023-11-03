@@ -19,12 +19,15 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { gql, useMutation } from "@apollo/client";
 import { phoneExist } from "../../apollo/server";
+import { useEffect } from "react";
+
 
 const PHONE = gql`
   ${phoneExist}
 `;
 
 function Registration() {
+
   const theme = useTheme();
   const classes = useStyles();
   const [error, setError] = useState("");
@@ -38,12 +41,26 @@ function Registration() {
   const [fNameError, setFNameError] = useState("");
   const [lNameError, setLNameError] = useState("");
   const [phone, setPhone] = useState("");
+  
   const [phoneError, setPhoneError] = useState(null);
   const [PhoneEixst] = useMutation(PHONE, {
     onCompleted,
     onError,
   });
+  const handleBackNavigation = () => {
+    // Use history.push to navigate to the desired route
+    navigate("/new-login");
+  };
 
+  useEffect(() => {
+    // Add an event listener for the popstate event
+    window.addEventListener("popstate", handleBackNavigation);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("popstate", handleBackNavigation);
+    };
+  });
   function onCompleted({ phoneExist }) {
     if (phoneExist?._id !== null) {
       setError("Phone number already assocaited with some other user");
@@ -90,7 +107,7 @@ function Registration() {
     const lastNameValue = formRef.current["lastName"].value;
     const userPass = formRef.current["userPass"].value;
     const passRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/;
-  
+
     if (!isValidEmailAddress(emailValue)) {
       setEmailError("Invalid Email");
       validate = false;
@@ -124,7 +141,7 @@ function Registration() {
       setError("Something is missing");
     }
   };
-  
+
 
   const toggleSnackbar = useCallback(() => {
     setError("");
