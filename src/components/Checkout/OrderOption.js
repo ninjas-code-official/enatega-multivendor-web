@@ -240,7 +240,9 @@ function CalendarComponent({
       </Box>
       <Box style={{ marginTop: 20, marginBottom: 10 }}>
         <Calendar
-          onChange={(e) => setDate(new Date(e).getDate())}
+          onChange={(e) => {
+            setDate(new Date(e).getDate())
+          }}
           value={selectedDate}
           tileClassName={classes.tile}
           className={classes.cal}
@@ -309,12 +311,10 @@ function TimeComponent({
     if (timeType === "PM") {
       h = parseInt(h) + 12;
     }
-    
-    const d = new Date();
-    d.setDate(date.getDate());
-    d.setHours(h);
-    d.setMinutes(m);
-    handleDateChange(d);
+    const newDate = new Date(date);
+    newDate.setHours(h);
+    newDate.setMinutes(m);
+    handleDateChange(newDate);
   };
   return (
     <Dialog
@@ -444,7 +444,10 @@ function TimeComponent({
           disableElevation
           color="primary"
           className={classes.btn}
-          onClick={() => handleDate(hours, minutes)}
+          onClick={() => {
+            handleDate(hours, minutes);
+            toggleTimeModal();
+          }}
         >
           <Typography
             variant="caption"

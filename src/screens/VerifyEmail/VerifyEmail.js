@@ -43,6 +43,20 @@ function VerifyEmail() {
   const [otpError, setOtpError] = useState(false);
   const [seconds, setSeconds] = useState(30);
   const [otp, setOtp] = useState("");
+  const handleBackNavigation = () => {
+    // Use history.push to navigate to the desired route
+    navigate("/registration");
+  };
+
+  useEffect(() => {
+    // Add an event listener for the popstate event
+    window.addEventListener("popstate", handleBackNavigation);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("popstate", handleBackNavigation);
+    };
+  });
   const [otpFrom, setOtpFrom] = useState(
     Math.floor(100000 + Math.random() * 900000).toString()
   );
