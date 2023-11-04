@@ -8,6 +8,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import React, { useCallback, useContext, useEffect, useState } from "react";
@@ -291,6 +292,10 @@ function OrderDetail() {
       <Footer />
 
       <Modal isOpen={isOpen} onRequestClose={closeModal}>
+        <CloseIcon
+          className={classes.closeButton}
+          onClick={closeModal}
+        />
         <div className={classes.modalContainer}>
           <div className={classes.title}>
             <h2>Write a Review</h2>

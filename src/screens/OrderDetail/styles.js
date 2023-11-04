@@ -192,6 +192,12 @@ const useStyles = makeStyles((theme, mobile) => ({
   backdrop: {
     backgroundColor: theme.palette.common.black,
   },
+  closeButton: {
+    position: 'absolute',
+    top: 30, // Adjust the top value as needed
+    right: 10, // Adjust the right value as needed
+    cursor: 'pointer',
+  },
 }));
 
 export default useStyles;
