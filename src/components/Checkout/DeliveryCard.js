@@ -172,6 +172,10 @@ function DeliveryCard({
                         <Paper
                           onClick={() => {                       
                             setSelectedAddress(item)
+                              setMainError({
+                                type: "success",
+                                message: "Address Selected",
+                              })
                               close && close()
                             
                           }}
