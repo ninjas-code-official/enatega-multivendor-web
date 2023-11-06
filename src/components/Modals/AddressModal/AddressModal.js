@@ -24,7 +24,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import PlacesAutocomplete from "react-places-autocomplete";
 import { GOOGLE_MAPS_KEY } from "../../../config/constants";
 
-function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, settingRegionDetail }) {
+function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, settingRegionDetail, setShowDetail }) {
   console.log(settingRegionDetail)
   const classes = useStyle();
   const [region, setRegion] = useState(null);
@@ -140,7 +140,10 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
         <Box display="flex" justifyContent="flex-end">
           <IconButton
             size="medium"
-            onClick={toggleModal}
+            onClick={() => {
+              toggleModal()
+              setShowDetail()
+            }}
             className={classes.closeContainer}
           >
             <CloseIcon color="primary" />

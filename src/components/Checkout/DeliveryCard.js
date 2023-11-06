@@ -172,7 +172,7 @@ function DeliveryCard({
                         <Paper
                           onClick={() => {                       
                             setSelectedAddress(item)
-                            close()
+                              close && close()
                             
                           }}
                           className={clsx(
@@ -457,6 +457,7 @@ function DeliveryCard({
         toggleModal={toggleAddressModal}
         regionDetail={addressInfo}
         changeAddress={setAddressInfo}
+        setShowDetail={setShowDetail}
       />
     </Box>
   );
