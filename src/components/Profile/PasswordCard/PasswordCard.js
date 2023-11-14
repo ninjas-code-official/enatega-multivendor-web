@@ -12,12 +12,14 @@ import { changePassword } from "../../../apollo/server";
 import FlashMessage from "../../FlashMessage";
 import useStyle from "./styles";
 import PasswordIcon from "@mui/icons-material/Password";
+import { useTranslation } from 'react-i18next';
 
 const CHANGE_PASSWORD = gql`
   ${changePassword}
 `;
 
 function PasswordCard() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const formRef = useRef(null);
   const classes = useStyle();
@@ -92,7 +94,7 @@ function PasswordCard() {
         className={classes.profileContainer}
       >
         <Box className={classes.headerBar}>
-          <Typography className={classes.titleText}>Password Info</Typography>
+          <Typography className={classes.titleText}>{t('passwordInfo')}</Typography>
         </Box>
         {/* <Divider light orientation="horizontal" className={classes.MH3} /> */}
         <form ref={formRef} className={classes.formMargin}>
@@ -135,7 +137,7 @@ function PasswordCard() {
                   style={{ color: theme.palette.common.black }}
                   className={classes.textBold}
                 >
-                  SAVE
+                  {t('saveButton')}
                 </Typography>
               )}
             </Button>

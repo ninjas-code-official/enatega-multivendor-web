@@ -19,6 +19,7 @@ import { ReactComponent as Payment } from "../../assets/icons/payment_method.svg
 import useStyles from "./styles";
 import UserContext from "../../context/User";
 import ConfigurationContext from "../../context/Configuration";
+import { useTranslation } from 'react-i18next';
 
 const PAYMENT_OPTIONS = [
   {
@@ -50,7 +51,7 @@ function PaymentCard({
   loading,
   calculateTotal,
 }) {
-  
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const { cart } = useContext(UserContext);
@@ -78,7 +79,7 @@ function PaymentCard({
                 color="textSecondary"
                 fontWeight={800}
               >
-                Payment method
+                {t('paymentMethod')}
               </Typography>
             </Box>
             <Divider
@@ -198,7 +199,7 @@ function PaymentCard({
                 fontWeight: 700,
               }}
             >
-              Place Order
+              {t('orderBtn')}
             </Typography>
           )}
         </Button>

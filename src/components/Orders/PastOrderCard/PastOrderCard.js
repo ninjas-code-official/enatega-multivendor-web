@@ -15,8 +15,9 @@ import UserContext from "../../../context/User";
 import useStyles from "./styles";
 import { Status } from "../Status/Status";
 import { Link as RouterLink } from "react-router-dom";
-
+import { useTranslation } from 'react-i18next';
 function PastOrderCard({ item }) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const navigate = useNavigate();
@@ -26,12 +27,12 @@ function PastOrderCard({ item }) {
   const small = useMediaQuery(theme.breakpoints.down("sm"));
 
   const STATUS_ORDER = [
-    "PENDING",
-    "ACCEPTED",
-    "ASSIGNED",
-    "PICKED",
-    "DELIVERED",
-    "CANCELLED",
+    t('pending'),
+    t('accepted'),
+    t('assigned'),
+    t('picked'),
+    t('delivered'),
+    t('completed'),
   ];
 
   const onAddToCart = async () => {

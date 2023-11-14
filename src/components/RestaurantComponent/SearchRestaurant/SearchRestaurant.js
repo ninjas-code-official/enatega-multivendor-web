@@ -10,8 +10,10 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import React from "react";
 import SearchIcon from "../../../assets/icons/SearchIcon";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
 
 function SearchRestaurant({ search, setSearch }) {
+  const { t  } = useTranslation();
   const theme = useTheme();
   const extraSmall = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles(extraSmall);
@@ -35,7 +37,7 @@ function SearchRestaurant({ search, setSearch }) {
             disableUnderline={true}
             fullWidth
             type="text"
-            placeholder="Search for restaurant and cuisines"
+            placeholder= {t('searchRestaurantPlaceholder')}
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             inputProps={{

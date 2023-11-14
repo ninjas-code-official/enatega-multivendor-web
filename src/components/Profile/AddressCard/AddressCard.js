@@ -4,13 +4,16 @@ import useStyle from "./styles";
 import { DeliveryCard } from "../../Checkout";
 import { useLocationContext } from "../../../context/Location";
 import { ReactComponent as Address } from "../../../assets/images/Address.svg";
+import { useTranslation } from 'react-i18next';
 
 function AddressCard() {
+  const { t } = useTranslation();
   const classes = useStyle();
   const [selectedAddress, setSelectedAddress] = useState();
   const { setLocation } = useLocationContext();
 
   const setDeliveryAddress = (item) => {
+    
     setSelectedAddress(item);
     setLocation({
       _id: item?._id,
@@ -33,7 +36,7 @@ function AddressCard() {
         className={classes.profileContainer}
       >
         <Box className={classes.headerBar}>
-          <Typography className={classes.titleText}>My addresses</Typography>
+          <Typography className={classes.titleText}>{t('myAddresses')}</Typography>
         </Box>
         <Box style={{ margin: "30px auto", textAlign: "center" }}>
           <Address />

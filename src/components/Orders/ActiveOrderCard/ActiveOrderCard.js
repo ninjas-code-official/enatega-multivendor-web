@@ -10,20 +10,23 @@ import { Link as RouterLink } from "react-router-dom";
 import ConfigurationContext from "../../../context/Configuration";
 import { Status } from "../Status/Status";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
+
 
 function ActiveOrderCard(props) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const small = useMediaQuery(theme.breakpoints.down("sm"));
   const configuration = useContext(ConfigurationContext);
 
   const STATUS_ORDER = [
-    "PENDING",
-    "ACCEPTED",
-    "ASSIGNED",
-    "PICKED",
-    "DELIVERED",
-    "CANCELLED",
+    t('pending'),
+    t('accepted'),
+    t('assigned'),
+    t('picked'),
+    t('delivered'),
+    t('completed'),
   ];
 
   return (

@@ -34,6 +34,7 @@ import AuthRoute from "./routes/AuthRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import VerifyPhone from "./screens/VerifyPhone/VerifyPhone";
 import UserContext from "./context/User";
+import Settings from "./screens/Settings/Settings";
 
 function App() {
   const { isLoggedIn } = useContext(UserContext);
@@ -205,6 +206,14 @@ function App() {
           element={
             <PrivateRoute>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={"/settings"}
+          element={
+            <PrivateRoute>
+              <Settings />
             </PrivateRoute>
           }
         />

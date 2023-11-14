@@ -7,8 +7,10 @@ import Scooter from "../../../assets/images/scooter.png";
 import Arrow from "../../../assets/images/arrow.png";
 import Preparing from "../../../assets/images/preparing.png";
 import Delivered from "../../../assets/images/delivered.png";
+import { useTranslation } from 'react-i18next';
 
 export default function StatusCard(props) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const small = useMediaQuery(theme.breakpoints.down("sm"));
@@ -22,12 +24,12 @@ export default function StatusCard(props) {
   } = props;
 
   const STATUS_ORDER = [
-    "PENDING",
-    "ACCEPTED",
-    "ASSIGNED",
-    "PICKED",
-    "DELIVERED",
-    "CANCELLED",
+    t('pending'),
+    t('accepted'),
+    t('assigned'),
+    t('picked'),
+    t('delivered'),
+    t('completed'),
   ];
 
   const formatTime = (date) =>
