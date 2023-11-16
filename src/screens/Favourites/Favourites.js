@@ -25,12 +25,14 @@ import UserContext from "../../context/User";
 import analytics from "../../utils/analytics";
 import useStyles from "./styles";
 import Footer from "../../components/Footer/Footer";
+import { useTranslation } from 'react-i18next';
 
 const RESTAURANTS = gql`
   ${FavouriteRestaurant}
 `;
 
 function EmptyView() {
+  const { t } = useTranslation()
   const classes = useStyles();
   return (
     <Grid item xs={12} className={classes.mt2}>
@@ -39,7 +41,7 @@ function EmptyView() {
       </Box>
       <Box className={classes.mt2} display="flex" justifyContent="center">
         <Typography variant="h6" className={classes.textBold}>
-          No Favourites Saved
+          {t('titleEmptyFav')}
         </Typography>
       </Box>
       <Box className={classes.mt2} display="flex" justifyContent="center">
@@ -47,8 +49,7 @@ function EmptyView() {
           variant="caption"
           className={clsx(classes.disableText, classes.smallText)}
         >
-          You’ll see all your favorites here, to make ordering even faster. Just
-          look for the
+          {t('emptyFavDesc')}
         </Typography>
       </Box>
       <Box className={classes.mt2} display="flex" justifyContent="center">
@@ -73,7 +74,7 @@ function EmptyView() {
               color="primary"
               className={clsx(classes.textBold, classes.smallText)}
             >
-              Let's find some favourites
+              {t('emptyFavBtn')}
             </Typography>
           </Button>
         </RouterLink>
@@ -82,6 +83,7 @@ function EmptyView() {
   );
 }
 function Favourites() {
+  const { t } = useTranslation()
   const navigate = useNavigate();
   const firstTime = useRef(true);
   const classes = useStyles();
@@ -178,7 +180,7 @@ function Favourites() {
       <Box className={classes.topContainer}>
         <Box style={{ zIndex: 100 }}>
           <Typography variant="h5" align="center">
-            Favourites
+            {t('titleFavourite')}
           </Typography>
           <img src={Favourite} alt="fav" />
         </Box>

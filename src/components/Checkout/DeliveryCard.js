@@ -30,6 +30,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useLocationContext } from "../../context/Location";
+import { useTranslation } from 'react-i18next';
 import HomeIcon from "@mui/icons-material/Home";
 const LATITUDE = 33.7001019;
 const LONGITUDE = 72.9735978;
@@ -46,6 +47,7 @@ function DeliveryCard({
   isCheckout,
   close
 }) {
+  const { t } = useTranslation()
   const deleteId = useRef(null);
   const theme = useTheme();
   const classes = useStyles();
@@ -327,7 +329,7 @@ function DeliveryCard({
                 color="textSecondary"
                 className={clsx(classes.boldText, classes.smallText)}
               >
-                Delivery address
+                {t('deliveryAddress')}
               </Typography>
               {!showDetail && (
                 <Button

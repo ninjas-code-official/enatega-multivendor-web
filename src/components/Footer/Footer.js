@@ -232,7 +232,7 @@ function Footer() {
             fontSize: 12,
           }}
         >
-          Enatega – © 2022 All Rights Reserved
+         {t('footerEndText')}
         </Typography>
       </Grid>
     </Grid>

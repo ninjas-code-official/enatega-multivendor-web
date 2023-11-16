@@ -148,7 +148,7 @@ export default function StatusCard(props) {
       <Box className={classes.bottomOrder} mt={!small && theme.spacing(2)}>
         <StatusRow
           isEta={false}
-          status={"Order placed"}
+          status={t('orderPlaced')}
           time={formatTime(createdAt)}
           first={true}
           number={1}
@@ -157,7 +157,7 @@ export default function StatusCard(props) {
 
         <StatusRow
           isEta={STATUS_ORDER.indexOf(orderStatus) < 1}
-          status={"Accepted"}
+          status={t('ACCEPTED')}
           time={acceptedAt ? formatTime(acceptedAt) : "--:--"}
           first={false}
           last={false}
@@ -165,7 +165,7 @@ export default function StatusCard(props) {
         />
         <StatusRow
           isEta={STATUS_ORDER.indexOf(orderStatus) < 2}
-          status={"Assigned"}
+          status={t('ASSIGNED')}
           time={assignedAt ? formatTime(assignedAt) : "--:--"}
           first={false}
           number={3}
@@ -173,7 +173,7 @@ export default function StatusCard(props) {
         />
         <StatusRow
           isEta={STATUS_ORDER.indexOf(orderStatus) < 3}
-          status={"Picked"}
+          status={t('PICKED')}
           time={pickedAt ? formatTime(pickedAt) : "--:--"}
           first={false}
           number={4}
@@ -181,7 +181,7 @@ export default function StatusCard(props) {
         />
         <StatusRow
           isEta={STATUS_ORDER.indexOf(orderStatus) < 4}
-          status={"Delivered"}
+          status={t('DELIVERED')}
           time={deliveredAt ? formatTime(deliveredAt) : "--:--"}
           first={false}
           number={5}

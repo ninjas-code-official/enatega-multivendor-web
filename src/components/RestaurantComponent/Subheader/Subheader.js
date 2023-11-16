@@ -24,11 +24,13 @@ import { useLocationContext } from "../../../context/Location";
 import { useLocation } from "../../../hooks";
 import FlashMessage from "../../FlashMessage";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
 import { DeliveryCard } from "../../Checkout";
 
 const autocompleteService = { current: null };
 
 function Subheader() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
   const spacingTop = mobile ? "52px" : "63px";
@@ -151,7 +153,7 @@ function Subheader() {
                   fontWeight: theme.typography.fontWeightBold,
                 }}
               >
-                DELIVERING TO
+                {t('deliveringTo')}
               </Typography>
               <Box
                 style={{

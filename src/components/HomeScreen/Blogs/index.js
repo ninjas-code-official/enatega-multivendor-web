@@ -10,8 +10,11 @@ import {
 } from "@mui/material";
 import Blog1 from "../../../assets/images/blog1.png";
 import Blog2 from "../../../assets/images/blog2.png";
+import { useTranslation } from 'react-i18next';
+
 
 export default function Blogs() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
@@ -46,7 +49,7 @@ export default function Blogs() {
           variant="contained"
           disableElevation
         >
-          Read All
+          {t('readAll')}
         </Button>
         <Box mt={mobile ? 5 : 0} />
       </Grid>
@@ -55,6 +58,7 @@ export default function Blogs() {
 }
 
 function BlogComponent({ title, desc }) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -139,7 +143,7 @@ function BlogComponent({ title, desc }) {
                   window.open("https://medium.com/enatega", "_blank")
                 }
               >
-                Read More
+                {t('readMore')}
               </Button>
             </Box>
           </Box>

@@ -105,7 +105,7 @@ function Restaurants() {
           {loading ? (
             <CircularProgress color="primary" size={48} />
           ) : (
-            <Typography>Unable to load data </Typography>
+            <Typography>Unable to load data</Typography>
           )}
         </Box>
       </Grid>

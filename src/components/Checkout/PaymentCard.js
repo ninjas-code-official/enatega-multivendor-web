@@ -21,7 +21,7 @@ import UserContext from "../../context/User";
 import ConfigurationContext from "../../context/Configuration";
 import { useTranslation } from 'react-i18next';
 
-const PAYMENT_OPTIONS = [
+/*const PAYMENT_OPTIONS = [
   {
     id: 0,
     payment: "STRIPE",
@@ -41,7 +41,7 @@ const PAYMENT_OPTIONS = [
     label: "Cash",
     icon: <CodIcon />,
   },
-];
+];*/
 
 function PaymentCard({
   paymentMethod,
@@ -52,6 +52,27 @@ function PaymentCard({
   calculateTotal,
 }) {
   const { t } = useTranslation();
+  const PAYMENT_OPTIONS = [
+    {
+      id: 0,
+      payment: "STRIPE",
+      label: t('creditDebitCard'),
+      icon: <VisaIcon />,
+      icon1: <MastercardIcon />,
+    },
+    {
+      id: 1,
+      payment: "PAYPAL",
+      label: t('paypal'),
+      icon: <PayPalIcon />,
+    },
+    {
+      id: 2,
+      payment: "COD",
+      label: t('cash'),
+      icon: <CodIcon />,
+    },
+  ];
   const theme = useTheme();
   const classes = useStyles();
   const { cart } = useContext(UserContext);

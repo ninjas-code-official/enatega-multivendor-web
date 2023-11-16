@@ -104,7 +104,7 @@ function PasswordCard() {
               name="currentPassword"
               className={classes.textField}
               type="password"
-              placeholder="Current Password"
+              placeholder={t('currentPassword')}
             />
           </Box>
           <Box className={classes.fieldWrapper}>
@@ -114,7 +114,7 @@ function PasswordCard() {
               type="password"
               name="newPassword"
               className={classes.textField}
-              placeholder="New Password"
+              placeholder={t('newPassword')}
               autoComplete="off"
             />
           </Box>

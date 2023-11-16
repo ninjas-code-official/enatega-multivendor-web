@@ -30,6 +30,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { SearchRestaurant } from "../../RestaurantComponent";
 import { useNavigate } from "react-router-dom";
 import RestMarker from "../../../assets/images/rest-map-2.png";
+import { useTranslation } from 'react-i18next';
 
 const autocompleteService = { current: null };
 const RESTAURANTS = gql`
@@ -41,6 +42,7 @@ function SearchContainer({
   search: searchProp,
   setSearch: setSearchProp,
 }) {
+  const { t } = useTranslation()
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("md"));
   const extraSmall = useMediaQuery(theme.breakpoints.down("sm"));
@@ -402,7 +404,7 @@ function SearchContainer({
                           }
                         }}
                       >
-                        Find Restaurants
+                        {t('findRestaurants')}
                       </Button>
                     </Grid>
                   ) : null}
@@ -587,7 +589,7 @@ function SearchContainer({
                       }
                     }}
                   >
-                    Find Restaurants
+                    {t('findRestaurants')}
                   </Button>
                 </Grid>
               ) : null}

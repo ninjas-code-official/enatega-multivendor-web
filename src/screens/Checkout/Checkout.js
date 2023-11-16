@@ -690,7 +690,7 @@ function Checkout() {
                           variant="caption"
                           fontWeight={800}
                         >
-                          Deliver to:
+                          {t('deliverTo')}:
                         </Typography>
                         <Typography
                           style={{
@@ -755,7 +755,7 @@ function Checkout() {
                               className={clsx(classes.smallText, classes.PH1)}
                               fontWeight={600}
                             >
-                              Use current location
+                              {t('currentLocation')}
                             </Typography>
                           </Box>
                           {loadingLocation && (

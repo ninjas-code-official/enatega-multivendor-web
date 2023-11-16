@@ -9,6 +9,7 @@ import useStyle from "./styles";
 import AppStore from "../../../assets/images/AppVector.png";
 import Vector from "../../../assets/images/Vector.png";
 import Demo from "../../../assets/images/demo.png";
+import { useTranslation } from 'react-i18next';
 
 export default function CategoryCards({
   title,
@@ -20,6 +21,7 @@ export default function CategoryCards({
   android,
   ios,
 }) {
+  const { t } = useTranslation();
   const classes = useStyle();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
@@ -120,7 +122,7 @@ export default function CategoryCards({
                 backgroundColor: "#FFFFFF",
               }}
             >
-              Demo
+              {t('demo')}
             </Button>
           </Box>
         )}

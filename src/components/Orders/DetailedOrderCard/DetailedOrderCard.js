@@ -117,7 +117,7 @@ function DetailedOrderCard(props) {
                   color="black"
                   style={{ fontWeight: 600 }}
                 >
-                  {props?.orderStatus}
+                  {t(props.orderStatus)} {console.log(props?.orderStatus)}
                 </Typography>
               </Box>
             </Box>
@@ -144,15 +144,15 @@ function DetailedOrderCard(props) {
                 pt={2}
               >
                 {props.orderStatus === "PENDING"
-                  ? "Your order is still pending."
+                  ? t('orderPending')
                   : props.orderStatus === "ASSIGNED" ||
                     props.orderStatus === "ACCEPTED"
-                  ? "We are asking the restaurant how long it will take to deliver your food".slice(
+                  ? t('restaurantDeliver').slice(
                       0,
                       40
                     ) + "..."
                   : props.orderStatus === "PICKED"
-                  ? "We are asking the rider how long it will take to deliver your food".slice(
+                  ? t('riderDeliver').slice(
                       0,
                       40
                     ) + "..."

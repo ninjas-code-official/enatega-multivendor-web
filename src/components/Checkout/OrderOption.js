@@ -12,8 +12,10 @@ import React, { useState } from "react";
 import useStyle from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
 import moment from "moment";
+import { useTranslation } from 'react-i18next';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+
 
 function OrderOption(props) {
   const theme = useTheme();
@@ -27,6 +29,7 @@ function OrderOption(props) {
     isPickUp,
   } = props;
   const [timeType, setTimeType] = useState("PM");
+  const { t } = useTranslation()
   const extraSmall = useMediaQuery(theme.breakpoints.down("md"));
   const [calModal, setCalModal] = useState(false);
   const [timeModal, setTimeModal] = useState(false);
@@ -102,7 +105,7 @@ function OrderOption(props) {
               }}
               fontWeight={600}
             >
-              Delivery
+              {t('deliver')}
             </Typography>
           </Box>
           <Box
@@ -131,7 +134,7 @@ function OrderOption(props) {
               }}
               fontWeight={600}
             >
-              Pickup
+              {t('pickup')}
             </Typography>
           </Box>
         </Box>
@@ -173,7 +176,7 @@ function OrderOption(props) {
               style={{ textTransform: "capitalize" }}
               fontWeight={800}
             >
-              Edit
+              {t('edit')}
             </Typography>
           </Button>
         </Box>
@@ -213,6 +216,7 @@ function CalendarComponent({
   setDate,
 }) {
   const theme = useTheme();
+  const { t } = useTranslation()
   const extraSmall = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyle();
   return (
@@ -265,7 +269,7 @@ function CalendarComponent({
             style={{ textTransform: "capitalize" }}
             fontWeight={800}
           >
-            Time
+            {t('time')}
           </Typography>
         </Button>
       </Box>
@@ -286,6 +290,7 @@ function TimeComponent({
   date,
 }) {
   const theme = useTheme();
+  const { t } = useTranslation()
   const extraSmall = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyle();
   const handleHours = (e) => {
@@ -340,7 +345,7 @@ function TimeComponent({
         </IconButton>
       </Box>
       <Typography align="center" variant="h6" color="black">
-        Select Time
+        {t('selectTime')}
       </Typography>
       <Box className={classes.timeContainer}>
         <Box display="flex" alignItems="center" justifyContent="center">
@@ -409,7 +414,7 @@ function TimeComponent({
               }}
               fontWeight={600}
             >
-              AM
+              {t('am')}
             </Typography>
           </Box>
           <Box
@@ -433,7 +438,7 @@ function TimeComponent({
               }}
               fontWeight={600}
             >
-              PM
+              {t('pm')}
             </Typography>
           </Box>
         </Box>
@@ -455,7 +460,7 @@ function TimeComponent({
             style={{ textTransform: "capitalize" }}
             fontWeight={800}
           >
-            Set
+            {t('set')}
           </Typography>
         </Button>
       </Box>
