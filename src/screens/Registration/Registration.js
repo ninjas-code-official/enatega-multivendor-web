@@ -20,14 +20,14 @@ import "react-phone-input-2/lib/style.css";
 import { gql, useMutation } from "@apollo/client";
 import { phoneExist } from "../../apollo/server";
 import { useEffect } from "react";
-
+import { useTranslation } from 'react-i18next';
 
 const PHONE = gql`
   ${phoneExist}
 `;
 
 function Registration() {
-
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const [error, setError] = useState("");
@@ -109,28 +109,28 @@ function Registration() {
     const passRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/;
 
     if (!isValidEmailAddress(emailValue)) {
-      setEmailError("Invalid Email");
+      setEmailError(t('emailErr2'));
       validate = false;
     }
     if (!firstNameValue.trim()) {
-      setFNameError("Invalid First Name");
+      setFNameError(t('firstnameErr2'));
       validate = false;
     }
     if (!lastNameValue.trim()) {
-      setLNameError("Invalid Last Name");
+      setLNameError(t('lastnameErr2'));
       validate = false;
     }
     if (!userPass) {
-      setPassError("Invalid Password");
+      setPassError(t('passwordErr2'));
       validate = false;
     }
     if (!phone) {
-      setPhoneError("Invalid phone");
+      setPhoneError(t('mobileErr2'));
       validate = false;
     }
     if (!passRegex.test(userPass)) {
       setPassError(
-        "Invalid Password. Password must contain at least 1 capital letter, 1 small letter, and 1 number."
+       t('passwordErr1')
       );
       validate = false;
     }
@@ -138,7 +138,7 @@ function Registration() {
       setLoading(true);
       PhoneEixst({ variables: { phone: `+${phone}` } });
     } else {
-      setError("Something is missing");
+      setError(t('generalErr'));
     }
   };
 
@@ -172,14 +172,14 @@ function Registration() {
       </Box>
       <Box mt={theme.spacing(1)} />
       <Typography variant="h5" className={classes.font700}>
-        Let's get you started!
+        {t('letsGetStarted')}
       </Typography>
       <Box mt={theme.spacing(1)} />
       <Typography
         variant="caption"
         className={`${classes.caption} ${classes.fontGrey}`}
       >
-        First, create your account
+        {t('createAccount')}
       </Typography>
       <Box mt={theme.spacing(3)} />
       <form ref={formRef}>
@@ -308,7 +308,7 @@ function Registration() {
               variant="caption"
               className={`${classes.caption} ${classes.font700}`}
             >
-              CONTINUE
+              {t('continue')}
             </Typography>
           )}
         </Button>

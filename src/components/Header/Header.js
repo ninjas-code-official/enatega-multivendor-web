@@ -60,7 +60,7 @@ function Header() {
   };
 
   const handleClose = async (route) => {
-    if (route === "Logout") {
+    if (route === t('titleLogout')) {
       logout();
       await Analytics.track(Analytics.events.USER_LOGGED_OUT);
       await Analytics.identify(null, null);
