@@ -149,5 +149,14 @@ export default {
   resendCode: "重新发送代码",
   retryAfter:  "稍后重试",
   loginBtn: '登录',
+  addToCart: '添加到购物车',
+  customize: '自定义',
+  optional: '可选的',
+  required: '必需的',
+  specialInstructions: '特别说明',
+  anySpecific: '有什么特别的喜好吗？告诉餐厅。',
+  selectVariation: '选择变体',
+  closed: "关闭",
+  new: "新",
 }
 }

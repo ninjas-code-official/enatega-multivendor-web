@@ -150,5 +150,14 @@ export default {
   resendCode: "Renvoyer le code",
   retryAfter: "Réessayer après",
   loginBtn: "S'identifier",
+  addToCart: 'Ajouter au panier',
+  customize: 'Personnaliser',
+  optional: 'Facultatif',
+  required: 'Obligatoire',
+  specialInstructions: 'Instructions spéciales',
+  anySpecific: 'Des préférences spécifiques ? Faites-le savoir au restaurant.',
+  selectVariation: 'Sélectionner la variation',
+  closed: "Fermé",
+  new: "NOUVEAU",
   }
 }

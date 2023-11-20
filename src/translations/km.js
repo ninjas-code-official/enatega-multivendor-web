@@ -150,5 +150,14 @@ export default {
   resendCode: "ផ្ញើម្ដងទៀតកូដ",
   retryAfter: "ព្រមាន​ម្ដង​ទៀត បន្ទាប់ពី",
   loginBtn: 'ចូល',
+  addToCart: 'បន្ថែមទៅកន្ត្រក',
+  customize: 'កំណត់​ប្រៀបធៀប',
+  optional: 'ជ្រើស​រើស​បាន',
+  required: 'ត្រូវ​ការ',
+  specialInstructions: 'ការ​ណែនាំ​ពិសេស',
+  anySpecific: 'មាន​ចង់​អនុញ្ញាត​អ្វី​មួយ​ទៀតដែរទេ? ឲ្យ​មើល​ពិសេស​ទៅ​បាន​គឺ​បាន។',
+  selectVariation: 'ជ្រើស​រើស​ការ​ផ្លាស់​ប្ដូរ',
+  closed: "បិទ",
+  new: "ថ្មី",
 }
 }

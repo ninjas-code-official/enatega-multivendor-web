@@ -149,5 +149,14 @@ export default {
   resendCode: "إعادة إرسال الرمز",
   retryAfter: "إعادة المحاولة بعد",
   loginBtn: 'تسجيل الدخول',
+  addToCart: 'أضف إلى السلة',
+  customize: 'تخصيص',
+  optional: 'اختياري',
+  required: 'مطلوب',
+  specialInstructions: 'تعليمات خاصة',
+  anySpecific: 'هل لديك تفضيلات معينة؟ أخبر المطعم.',
+  selectVariation: 'اختر التباين',
+  closed: "مغلق",
+  new: "جديد",
     }
   };

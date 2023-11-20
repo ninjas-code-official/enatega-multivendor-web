@@ -150,5 +150,14 @@ export default {
   resendCode: "Resend code",
   retryAfter: "Retry after",
   loginBtn: 'Login',
+  addToCart: 'Add to Cart',
+  customize: 'Customize',
+  optional: 'OPTIONAL',
+  required: 'REQUIRED',
+  specialInstructions: 'Special Instructions',
+  anySpecific: 'Any specific preferances? Let the restaurant know.',
+  selectVariation: 'Select Variation',
+  closed: "Closed",
+  new: "NEW",
 }
 }

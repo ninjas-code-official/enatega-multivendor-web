@@ -5,8 +5,6 @@ import DHeader from "./desktop.header";
 import Analytics from "../../utils/analytics";
 import { useTranslation } from 'react-i18next';
 
-
-
 const TITLE = "Enatega";
 const NAME = "...";
 /*const NAVITEMS = [
