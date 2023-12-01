@@ -165,4 +165,4 @@ const en = {
   review: "Review"
 }
 }
-export default en
+export default en;
