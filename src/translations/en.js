@@ -1,4 +1,4 @@
-export default {
+const en = {
     translation: {
     selectLanguage: 'Select Language',
     saveButton: 'Save',
@@ -165,3 +165,4 @@ export default {
   review: "Review"
 }
 }
+export default en

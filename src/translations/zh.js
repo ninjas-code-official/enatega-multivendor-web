@@ -1,4 +1,4 @@
-export default {
+const zh = {
     translation: {
     selectLanguage: '选择语言',
     saveButton: '节省',
@@ -164,3 +164,4 @@ reorder: "重新订购",
 review: "评论",
 }
 }
+export default zh;

@@ -1,4 +1,4 @@
-export default {
+const fr = {
     translation: {
     selectLanguage: 'Choisir la langue',
     saveButton: 'sauvegarder',
@@ -165,3 +165,4 @@ reorder: "RECOMMANDER",
 review: "Critique"
   }
 }
+export default fr;

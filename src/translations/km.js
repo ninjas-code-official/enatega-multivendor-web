@@ -1,4 +1,4 @@
-export default {
+const km = {
     translation: {
     selectLanguage: 'ជ្រើសរើស​ភាសា',
     saveButton: 'រក្សាទុក',
@@ -165,3 +165,4 @@ reorder: "កម្មវិធីការបញ្ជាទិញឡើងវ�
 review: "ពិនិត្យឡើងវិញ"
 }
 }
+export default km;

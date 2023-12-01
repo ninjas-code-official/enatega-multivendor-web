@@ -1,4 +1,4 @@
-export default {
+const ar = {
     translation: {
         selectLanguage: 'اللغة المختارة',
         saveButton: 'يحفظ',
@@ -164,3 +164,4 @@ reorder: "إعادة الطلب",
 review: "مراجعة",
     }
   };
+  export default ar;
