@@ -19,6 +19,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useTranslation } from 'react-i18next';
 import i18n from "../../i18n";
+console.log(i18n)
 
 const UPDATEUSER = gql`
   ${updateUser}
