@@ -159,5 +159,9 @@ export default {
   selectVariation: 'Sélectionner la variation',
   closed: "Fermé",
   new: "NOUVEAU",
+  orderCancelled: "Votre commande a été annulée",
+orderCompleted: "Commande complétée avec succès. Merci d'avoir passé commande",
+reorder: "RECOMMANDER",
+review: "Critique"
   }
 }
