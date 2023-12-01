@@ -37,8 +37,6 @@ function LanguageCard() {
   const formRef = useRef(null);
   const classes = useStyle();
   const { profile } = useContext(UserContext);
-  const [languageName, languageNameSetter] = useState('English')
-  const [activeRadio, activeRadioSetter] = useState(languageTypes[0].index)
   
   const [error, setError] = useState({});
   const [mutate, { loading }] = useMutation(UPDATEUSER, {
