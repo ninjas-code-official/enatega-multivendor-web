@@ -14,6 +14,7 @@ import React from "react";
 import useStyles from "./styles";
 import CloseIcon from "@mui/icons-material/Close";
 import { ReactComponent as VoucherImage } from "../../assets/images/voucher.svg";
+import { useTranslation } from 'react-i18next';
 
 function Voucher({
   isVisible,
@@ -27,6 +28,7 @@ function Voucher({
   const theme = useTheme();
   const classes = useStyles();
   const extraSmall = useMediaQuery(theme.breakpoints.down("md"));
+  const { t } = useTranslation()
 
   return (
     <Dialog
@@ -61,7 +63,7 @@ function Voucher({
           variant="h5"
           align="center"
         >
-          Apply a voucher
+          {t('applyAVoucher')}
         </Typography>
         <VoucherImage />
       </Box>
@@ -109,7 +111,7 @@ function Voucher({
                 <CircularProgress size={18} />
               ) : (
                 <Typography variant="caption" color="black" fontWeight={800}>
-                  Apply
+                  {t('apply')}
                 </Typography>
               )}
             </Button>

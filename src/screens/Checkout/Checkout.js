@@ -56,6 +56,7 @@ import RestMarker from "../../assets/images/rest-map-2.png";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import clsx from "clsx";
 import { useLocation } from "../../hooks";
+import { useTranslation } from 'react-i18next';
 import moment from "moment";
 
 const PLACEORDER = gql`
@@ -73,6 +74,8 @@ const PAYMENT = {
 };
 
 function Checkout() {
+
+  const { t  } = useTranslation();
   const classes = useStyle();
   const navigate = useNavigate();
   const [isClose, setIsClose] = useState(false);
@@ -582,7 +585,7 @@ function Checkout() {
                   fontWeight: 600,
                 }}
               >
-                Delivery Time
+               {t('deliveryTime')}
               </Typography>
               <Typography
                 style={{
@@ -603,7 +606,7 @@ function Checkout() {
                     fontWeight: 600,
                   }}
                 >
-                  {isPickUp ? "Pickup" : "Delivery"}
+                  {isPickUp ? "Pickup" : t('delivery')}
                 </Typography>
                 <Button
                   variant="contained"
@@ -622,7 +625,7 @@ function Checkout() {
                       textTransform: "capitalize",
                     }}
                   >
-                    Change
+                    {t('change')}
                   </Typography>
                 </Button>
                 <OrderOption
@@ -687,7 +690,7 @@ function Checkout() {
                           variant="caption"
                           fontWeight={800}
                         >
-                          Deliver to:
+                          {t('deliverTo')}:
                         </Typography>
                         <Typography
                           style={{
@@ -752,7 +755,7 @@ function Checkout() {
                               className={clsx(classes.smallText, classes.PH1)}
                               fontWeight={600}
                             >
-                              Use current location
+                              {t('currentLocation')}
                             </Typography>
                           </Box>
                           {loadingLocation && (

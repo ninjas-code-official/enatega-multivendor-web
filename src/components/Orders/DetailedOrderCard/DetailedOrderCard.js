@@ -4,20 +4,22 @@ import { Link as RouterLink } from "react-router-dom";
 import ConfigurationContext from "../../../context/Configuration";
 import { Status } from "../Status/Status";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
 
 function DetailedOrderCard(props) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const small = useMediaQuery(theme.breakpoints.down("sm"));
 
   const configuration = useContext(ConfigurationContext);
   const STATUS_ORDER = [
-    "PENDING",
-    "ACCEPTED",
-    "ASSIGNED",
-    "PICKED",
-    "DELIVERED",
-    "CANCELLED",
+    t('pending'),
+    t('accepted'),
+    t('assigned'),
+    t('picked'),
+    t('delivered'),
+    t('completed'),
   ];
   return (
     <RouterLink
@@ -115,7 +117,7 @@ function DetailedOrderCard(props) {
                   color="black"
                   style={{ fontWeight: 600 }}
                 >
-                  {props?.orderStatus}
+                  {t(props.orderStatus)} {console.log(props?.orderStatus)}
                 </Typography>
               </Box>
             </Box>
@@ -142,15 +144,15 @@ function DetailedOrderCard(props) {
                 pt={2}
               >
                 {props.orderStatus === "PENDING"
-                  ? "Your order is still pending."
+                  ? t('orderPending')
                   : props.orderStatus === "ASSIGNED" ||
                     props.orderStatus === "ACCEPTED"
-                  ? "We are asking the restaurant how long it will take to deliver your food".slice(
+                  ? t('restaurantDeliver').slice(
                       0,
                       40
                     ) + "..."
                   : props.orderStatus === "PICKED"
-                  ? "We are asking the rider how long it will take to deliver your food".slice(
+                  ? t('riderDeliver').slice(
                       0,
                       40
                     ) + "..."

@@ -1,7 +1,9 @@
 import { Typography, Box, Divider, Button, useTheme } from "@mui/material";
 import useStyle from "./styles";
+import { useTranslation } from 'react-i18next';
 
 export default function PriceCard({ price, offer, desc, center }) {
+  const { t } = useTranslation()
   const classes = useStyle();
   const theme = useTheme();
   return (
@@ -94,7 +96,7 @@ export default function PriceCard({ price, offer, desc, center }) {
                   window.open("https://enatega.com/#contact", "_blank")
                 }
               >
-                Get Quote
+                {t('getQuote')}
               </Button>
             </Box>
           </Box>

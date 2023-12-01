@@ -22,7 +22,9 @@ import useStyle from "./styles";
 import MarkerImage from "../../../assets/images/marker.png";
 import ClearIcon from "@mui/icons-material/Clear";
 import PlacesAutocomplete from "react-places-autocomplete";
+import { useTranslation } from 'react-i18next';
 import { GOOGLE_MAPS_KEY } from "../../../config/constants";
+
 
 function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, settingRegionDetail, setShowDetail }) {
   console.log(settingRegionDetail)
@@ -30,6 +32,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
   const [region, setRegion] = useState(null);
   const [mainError, setMainError] = useState({});
   const [locationName, setLocationName] = useState("");
+  const { t } = useTranslation()
   const { getCurrentLocation } = useLocation();
   const { latLngToGeoString } = useLocation();
   const [loading, setLoading] = useState();
@@ -156,7 +159,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
               color="textSecondary"
               className={clsx(classes.boldText, classes.title)}
             >
-              Is this your exact location?
+              {t('exactLocation')}
             </Typography>
           </Box>
         </DialogTitle>
@@ -175,7 +178,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
               <div>
                 <TextField
                   variant="outlined"
-                  label="Enter your area"
+                  label= {t('yourArea')}
                   fullWidth
                   {...getInputProps()}
                   InputProps={{
@@ -266,7 +269,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
               <CircularProgress color="secondary" />
             ) : (
               <Typography variant="subtitle2" className={classes.boldText}>
-                Submit
+                {t('submit')}
               </Typography>
             )}
           </Button>
