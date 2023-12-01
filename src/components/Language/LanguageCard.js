@@ -32,7 +32,7 @@ const languageTypes = [
   { value: 'arabic', code: 'ar', index: 5 }
 ]
 function LanguageCard() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const theme = useTheme();
   const formRef = useRef(null);
   const classes = useStyle();
@@ -43,6 +43,7 @@ function LanguageCard() {
     onCompleted,
     onError,
   });
+  console.log(mutate)
   function onError(error) {
     setError({ type: "error", message: error.message });
   }
