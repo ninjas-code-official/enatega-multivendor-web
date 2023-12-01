@@ -139,9 +139,9 @@ function PastOrderCard({ item }) {
                   color={theme.palette.common.black}
                 >
                   {item?.orderStatus === "CANCELLED"
-                    ? "Your order has been cancelled"
+                    ? t('orderCancelled')
                     : item?.orderStatus === "DELIVERED"
-                    ? "Order completed successfully. Thankyou for placing order"
+                    ? t('orderCompleted')
                     : null}
                 </Typography>
                 <Box ml={theme.spacing(1)} />
@@ -169,7 +169,7 @@ function PastOrderCard({ item }) {
                   color={theme.palette.button.main}
                   className={classes.textBold}
                 >
-                  REORDER
+                  {t('reorder')}
                 </Typography>
               )}
             </Button>
@@ -190,7 +190,7 @@ function PastOrderCard({ item }) {
                     color={theme.palette.button.main}
                     className={classes.textBold}
                   >
-                    Review
+                    {t('review')}
                   </Typography>
                 )}
               </Button>

@@ -158,5 +158,9 @@ export default {
   selectVariation: '选择变体',
   closed: "关闭",
   new: "新",
+  orderCancelled: "您的订单已取消",
+orderCompleted: "订单已成功完成。感谢您的订购",
+reorder: "重新订购",
+review: "评论",
 }
 }

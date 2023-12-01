@@ -158,5 +158,9 @@ export default {
   selectVariation: 'اختر التباين',
   closed: "مغلق",
   new: "جديد",
+  orderCancelled: "تم إلغاء طلبك",
+orderCompleted: "تم إكمال الطلب بنجاح. شكرًا لك على طلبك",
+reorder: "إعادة الطلب",
+review: "مراجعة",
     }
   };

@@ -159,5 +159,9 @@ export default {
   selectVariation: 'Select Variation',
   closed: "Closed",
   new: "NEW",
+  orderCancelled: "Your order has been cancelled",
+  orderCompleted: "Order completed successfully. Thankyou for placing order",
+  reorder: "REORDER",
+  review: "Review"
 }
 }
