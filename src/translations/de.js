@@ -162,7 +162,9 @@ const de = {
   orderCancelled: "Ihre Bestellung wurde storniert",
 orderCompleted: "Bestellung erfolgreich abgeschlossen. Vielen Dank für Ihre Bestellung",
 reorder: "NEUBESTELLEN",
-review: "Überprüfung"
+review: "Überprüfung",
+warning: "Warnung",
+  warningText: "Ein oder mehrere Elemente sind nicht verfügbar"
 }
 }
 export default de;

@@ -162,7 +162,9 @@ const fr = {
   orderCancelled: "Votre commande a été annulée",
 orderCompleted: "Commande complétée avec succès. Merci d'avoir passé commande",
 reorder: "RECOMMANDER",
-review: "Critique"
+review: "Critique",
+warning: "Avertissement",
+warningText: "Un ou plusieurs éléments ne sont pas disponibles"
   }
 }
 export default fr;

@@ -162,7 +162,9 @@ const en = {
   orderCancelled: "Your order has been cancelled",
   orderCompleted: "Order completed successfully. Thankyou for placing order",
   reorder: "REORDER",
-  review: "Review"
+  review: "Review",
+  warning: "warning",
+  warningText: "One or more item is not available"
 }
 }
 export default en;

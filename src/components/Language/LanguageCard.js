@@ -75,7 +75,7 @@ function LanguageCard() {
     console.log('Saved language in localStorage:', savedLanguage);
     
   };
-
+  
   return (
     <Grid
       container
@@ -114,7 +114,7 @@ function LanguageCard() {
                 value={lang.code}
                 control={<Radio color="primary" />}
                 label={lang.value}
-                defaultChecked={lang.code === selectedLanguage}
+                checked={lang.code === localStorage.getItem('enatega-language')}
               />
             ))}
         </RadioGroup>

@@ -162,6 +162,8 @@ const zh = {
 orderCompleted: "订单已成功完成。感谢您的订购",
 reorder: "重新订购",
 review: "评论",
+warning: "警告",
+  warningText: "一个或多个项目不可用"
 }
 }
 export default zh;

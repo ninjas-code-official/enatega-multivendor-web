@@ -162,6 +162,8 @@ const ar = {
 orderCompleted: "تم إكمال الطلب بنجاح. شكرًا لك على طلبك",
 reorder: "إعادة الطلب",
 review: "مراجعة",
+warning: "تحذير",
+  warningText: "أحد العناصر غير متاح"
     }
   };
   export default ar;

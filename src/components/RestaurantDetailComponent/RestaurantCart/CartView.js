@@ -13,8 +13,10 @@ import { useRestaurant } from "../../../hooks";
 import CartItem from "./CartItem";
 import PricingView from "./PricingView";
 import useStyles from "./styles";
+import { useTranslation } from "react-i18next";
 
 function CartView(props) {
+  const {t} = useTranslation()
   const classes = useStyles();
   const theme = useTheme();
   const [loadingData, setLoadingData] = useState(true);
@@ -84,8 +86,8 @@ function CartView(props) {
         });
         if (transformCart.length !== updatedItems.length) {
           props.showMessage({
-            type: "warning",
-            message: "One or more item is not available",
+            type: t('warning'),
+            message: t('warningText'),
           });
         }
       }
@@ -142,7 +144,7 @@ function CartView(props) {
               fontWeight: 600,
             }}
           >
-            Delivery Time
+           {t('deliveryTime')}
           </Typography>
           <Typography
             style={{
@@ -159,7 +161,7 @@ function CartView(props) {
             style={{ fontSize: "0.78rem" }}
             className={classes.textBold}
           >
-            {`Your order from ${restaurantData?.name ?? "..."}`}
+            {`${t('orderFrom')} ${restaurantData?.name ?? "..."}`}
           </Typography>
         </Box>
       </Box>
