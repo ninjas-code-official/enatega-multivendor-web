@@ -62,11 +62,8 @@ function LanguageCard() {
 
   const currentLang = localStorage.getItem('enatega-language');
   const [selectedLanguage, setSelectedLanguage] = useState(currentLang? currentLang : 'en');
-
-  useEffect(() => {
-    // Update the selected language whenever the profile changes
-    setSelectedLanguage(profile?.language || 'en');
-  }, [profile]);
+  console.log(selectedLanguage)
+ 
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);
@@ -75,7 +72,7 @@ function LanguageCard() {
     console.log('Saved language in localStorage:', savedLanguage);
     
   };
-
+  
   return (
     <Grid
       container
@@ -114,7 +111,7 @@ function LanguageCard() {
                 value={lang.code}
                 control={<Radio color="primary" />}
                 label={lang.value}
-                defaultChecked={lang.code === selectedLanguage}
+                checked={lang.code === localStorage.getItem('enatega-language')}
               />
             ))}
         </RadioGroup>

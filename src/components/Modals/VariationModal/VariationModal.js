@@ -420,7 +420,7 @@ function VariationModal({ isVisible, toggleModal, data }) {
                       onChange={(event) =>
                         setSpecialInstructions(event.target.value)
                       }
-                      placeholder={"e.g. No mayo"}
+                      placeholder={t('placeholder')}
                       variant="filled"
                       color="primary"
                       inputProps={{
@@ -490,7 +490,7 @@ function VariationModal({ isVisible, toggleModal, data }) {
                     }}
                   >
                     <Typography className={classes.checkoutText}>
-                      ADD TO CART
+                      {t('addToCart')}
                     </Typography>
                   </Button>
                 </Box>

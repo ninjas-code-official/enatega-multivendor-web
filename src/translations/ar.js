@@ -162,6 +162,14 @@ const ar = {
 orderCompleted: "تم إكمال الطلب بنجاح. شكرًا لك على طلبك",
 reorder: "إعادة الطلب",
 review: "مراجعة",
+subTitle: " اختر ١",
+placeholder: "على سبيل المثال، بدون مايونيز",
+phoneNumMissing: "الرقم الهاتفي مفقود",
+updatePhone: "قم بتحديث هاتفك",
+  number: "الرقم؟",
+  secureAcc: "نحتاج هذا لتأمين حسابك",
+  verifyPhone: "تحقق من هاتفك",
+  skipNow: "تخطى الآن",
     }
   };
   export default ar;

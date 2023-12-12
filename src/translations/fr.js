@@ -162,7 +162,15 @@ const fr = {
   orderCancelled: "Votre commande a été annulée",
 orderCompleted: "Commande complétée avec succès. Merci d'avoir passé commande",
 reorder: "RECOMMANDER",
-review: "Critique"
+review: "Critique",
+subTitle: "Sélectionner 1",
+placeholder: "par exemple, sans mayonnaise",
+phoneNumMissing: "Numéro de téléphone manquant",
+updatePhone: "Mettez à jour votre téléphone",
+  number: "numéro ?",
+  secureAcc: "Nous avons besoin de ceci pour sécuriser votre compte",
+  verifyPhone: "Vérifiez votre téléphone",
+  skipNow: "Passer maintenant",
   }
 }
 export default fr;

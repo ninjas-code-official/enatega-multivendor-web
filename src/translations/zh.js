@@ -162,6 +162,14 @@ const zh = {
 orderCompleted: "订单已成功完成。感谢您的订购",
 reorder: "重新订购",
 review: "评论",
+subTitle: "选择 1",
+placeholder: "例如，不要蛋黄酱",
+phoneNumMissing: "电话号码缺失",
+updatePhone: "更新您的电话",
+number: "号码？",
+secureAcc: "我们需要这个来保护您的账户",
+verifyPhone: "验证您的电话",
+skipNow: "现在跳过",
 }
 }
 export default zh;

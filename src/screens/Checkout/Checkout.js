@@ -487,7 +487,7 @@ function Checkout() {
       showMessage({
         alive: true,
         type: "Error",
-        message: "Phone Number is missing",
+        message: t('phoneNumMissing'),
       });
 
       setTimeout(() => {

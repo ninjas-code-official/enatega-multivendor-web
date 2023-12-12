@@ -162,7 +162,15 @@ const en = {
   orderCancelled: "Your order has been cancelled",
   orderCompleted: "Order completed successfully. Thankyou for placing order",
   reorder: "REORDER",
-  review: "Review"
+  review: "Review",
+  subTitle: "Select 1",
+  placeholder: "e.g. No mayo",
+  phoneNumMissing: "Phone Number is missing",
+  updatePhone: "Update your phone",
+  number: "number?",
+  secureAcc: "We need this to secure your account",
+  verifyPhone: "Verify your phone",
+  skipNow: "Skip now",
 }
 }
 export default en;

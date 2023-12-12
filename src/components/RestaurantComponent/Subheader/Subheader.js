@@ -130,6 +130,7 @@ function Subheader() {
       <Box
         style={{
           overflowY: "auto", // Make the inner Box scrollable
+          marginTop: "60px",
           maxHeight: `calc(100vh - ${spacingTop})`, // Limit the inner Box height
         }}
         className={`${classes.root} ${classes.shadow} ${classes.mainContainer}`}

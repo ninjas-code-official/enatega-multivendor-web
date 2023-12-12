@@ -162,7 +162,15 @@ const de = {
   orderCancelled: "Ihre Bestellung wurde storniert",
 orderCompleted: "Bestellung erfolgreich abgeschlossen. Vielen Dank für Ihre Bestellung",
 reorder: "NEUBESTELLEN",
-review: "Überprüfung"
+review: "Überprüfung",
+subTitle: "Auswahl 1",
+placeholder: "z.B. Keine Mayo",
+phoneNumMissing: "Telefonnummer fehlt",
+updatePhone: "Aktualisieren Sie Ihr Telefon",
+  number: "Nummer?",
+  secureAcc: "Wir brauchen das, um Ihr Konto zu sichern",
+  verifyPhone: "Überprüfen Sie Ihr Telefon",
+  skipNow: "Jetzt überspringen",
 }
 }
 export default de;
