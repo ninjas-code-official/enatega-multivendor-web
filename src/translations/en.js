@@ -171,6 +171,20 @@ const en = {
   secureAcc: "We need this to secure your account",
   verifyPhone: "Verify your phone",
   skipNow: "Skip now",
+  favouriteListUpdated: 'Favourite list updated',
+  pendingText: "Waiting response from",
+  acceptedText: "Estimated preparation time",
+  orderLateText: "Sorry! Your order is bit late.",
+  riderPickText: "Your rider will pick it up once its ready",
+  orderIs: "Your order is",
+  orderAssigned: "assigned to the rider",
+  orderAssignedToRider: "Your order is assigned to our rider, order will be picked once its ready.",
+  riderOnWay: "Your rider is on the way.",
+  orderHasBeen: "Your order has been",
+  enjoyYourMeal: "Enjoy your meal!",
+  cancelled:"Cancelled",
+  personalDetail: "Personal Detail",
+  
 }
 }
 export default en;

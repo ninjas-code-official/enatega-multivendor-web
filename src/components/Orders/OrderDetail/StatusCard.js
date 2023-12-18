@@ -51,43 +51,43 @@ export default function StatusCard(props) {
     let status_image = "";
     switch (orderStatus) {
       case "PENDING":
-        description = "Waiting response from";
+        description = t('pendingText');
         estimated_time = restaurant?.name ?? "...";
         feedback = "";
         status_image = Arrow;
         break;
       case "ACCEPTED":
-        description = `Estimated preparation time`;
+        description = `${t('acceptedText')}`;
         estimated_time =
           calculateTime > 0
             ? `${calculateTime} Min`
-            : "Sorry! Your order is bit late.";
+            : t('orderLateText');
         feedback = `Preparing your food.${
-          isPickedUp ? "" : " Your rider will pick it up once its ready"
+          isPickedUp ? "" : t('riderPickText')
         }`;
         status_image = Preparing;
         break;
       case "ASSIGNED":
-        description = `Your order is `;
-        estimated_time = "assigned to the rider";
-        feedback = `Your order is assigned to our rider, order will be picked once its ready.`;
+        description = `${t('orderIs')}`;
+        estimated_time = t('orderAssigned');
+        feedback = `${t('orderAssignedToRider')}`;
         status_image = Scooter;
         break;
       case "PICKED":
-        description = " Your order is ";
-        estimated_time = "Picked";
-        feedback = "Your rider is on the way.";
+        description = t('orderIs');
+        estimated_time = t('picked');
+        feedback = t('riderOnWay');
         status_image = Scooter;
         break;
       case "DELIVERED":
-        description = "Your order has been";
-        estimated_time = "Delivered";
-        feedback = "Enjoy your meal!";
+        description = t('orderHasBeen');
+        estimated_time = t('delivered');
+        feedback = t('enjoyYourMeal');
         status_image = Delivered;
         break;
       case "CANCELLED":
-        description = "Your order has been";
-        estimated_time = "Cancelled";
+        description = t('orderHasBeen');
+        estimated_time = t('cancelled');
         feedback = "";
         status_image = null;
         break;
