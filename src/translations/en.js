@@ -184,7 +184,8 @@ const en = {
   enjoyYourMeal: "Enjoy your meal!",
   cancelled:"Cancelled",
   personalDetail: "Personal Detail",
-  
+  voucherCode: "Voucher code",
+  pickUp: "Pickup"
 }
 }
 export default en;

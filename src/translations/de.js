@@ -184,6 +184,8 @@ updatePhone: "Aktualisieren Sie Ihr Telefon",
   enjoyYourMeal: "Guten Appetit!",
   cancelled: "Abgebrochen",
   personalDetail: "Persönliche Angaben",
+  voucherCode: "Gutscheincode",
+  pickUp: "Abholung"
 }
 }
 export default de;

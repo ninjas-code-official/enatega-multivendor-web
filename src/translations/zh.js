@@ -183,6 +183,8 @@ orderHasBeen: "您的订单已",
 enjoyYourMeal: "享用您的餐点！",
 cancelled:"已取消",
 personalDetail: "个人详情",
+voucherCode: "优惠码",
+pickUp: "取件"
 }
 }
 export default zh;

@@ -183,6 +183,8 @@ updatePhone: "قم بتحديث هاتفك",
   enjoyYourMeal: "استمتع بوجبتك!",
   cancelled:"تم الإلغاء",
   personalDetail: "التفاصيل الشخصية",
+  voucherCode: "رمز القسيمة",
+  pickUp: "استلام"
     }
   };
   export default ar;

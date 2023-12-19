@@ -606,7 +606,7 @@ function Checkout() {
                     fontWeight: 600,
                   }}
                 >
-                  {isPickUp ? "Pickup" : t('delivery')}
+                  {isPickUp ? t('pickUp') : t('delivery')}
                 </Typography>
                 <Button
                   variant="contained"

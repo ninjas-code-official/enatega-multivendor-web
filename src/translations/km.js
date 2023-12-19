@@ -184,6 +184,8 @@ updatePhone: "ធ្វើបច្ចុប្បន្នភាពទូរស
   enjoyYourMeal: "សូមស្រស់ស្អាត!",
   cancelled:"បោះបង់",
   personalDetail: "ព័ត៌មានផ្ទាល់ខ្លួន",
+  voucherCode: "លេខ​កូដ​ប៉ាន់ស្សារ",
+  pickUp: "យកមកដល់"
 }
 }
 export default km;

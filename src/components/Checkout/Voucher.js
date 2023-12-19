@@ -78,7 +78,7 @@ function Voucher({
             <TextField
               className={classes.textContainer}
               variant="outlined"
-              label="Voucher code"
+              label={t('voucherCode')}
               size="small"
               error={!!couponError}
               helperText={couponError}
