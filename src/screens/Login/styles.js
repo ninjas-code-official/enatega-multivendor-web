@@ -1,6 +1,8 @@
 import makeStyles from "@mui/styles/makeStyles";
-import { COLORS } from "../../config/constants";
+//import ConfigurableValues from "../../config/constants";
 
+// const { COLORS } = ConfigurableValues();
+const COLORS = "#dd4b39";
 const useStyles = makeStyles((theme) => ({
   font700: {
     fontWeight: theme.typography.fontWeightBold,
