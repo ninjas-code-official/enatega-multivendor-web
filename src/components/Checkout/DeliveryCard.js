@@ -30,7 +30,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useLocationContext } from "../../context/Location";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import HomeIcon from "@mui/icons-material/Home";
 const LATITUDE = 33.7001019;
 const LONGITUDE = 72.9735978;
@@ -45,9 +45,9 @@ function DeliveryCard({
   isProfile,
   isModal,
   isCheckout,
-  close
+  close,
 }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const deleteId = useRef(null);
   const theme = useTheme();
   const classes = useStyles();
@@ -133,7 +133,6 @@ function DeliveryCard({
   }, []);
 
   return (
-    
     <Box
     // sx={{
     //   overflow: 'auto',
@@ -141,7 +140,7 @@ function DeliveryCard({
     //   height: '100%',
     //  '-webkit-overflow-scrolling': 'touch', // For smoother scrolling on iOS
     // }}
-      >
+    >
       <FlashMessage
         open={Boolean(mainError.message)}
         severity={mainError.type}
@@ -154,8 +153,7 @@ function DeliveryCard({
           style={{ borderRadius: isCheckout ? 30 : "inherit" }}
           elevation={0}
         >
-          <Container
-          >
+          <Container>
             {showDetail ? (
               <AddressDetail
                 toggleDetail={toggleShowDetail}
@@ -171,95 +169,94 @@ function DeliveryCard({
                     return (
                       <Grid item xs={12} lg={11} key={item._id}>
                         <Box display={"flex"}>
-                        <Paper
-                          onClick={() => {                       
-                            setSelectedAddress(item)
+                          <Paper
+                            onClick={() => {
+                              setSelectedAddress(item);
                               setMainError({
                                 type: "success",
                                 message: "Address Selected",
-                              })
-                              close && close()
-                            
-                          }}
-                          className={clsx(
-                            classes.width100,
-                            classes.deliveryPaperProfile
-                          )}
-                        >
-                          <Box
+                              });
+                              close && close();
+                            }}
                             className={clsx(
-                              classes.PH1,
-                              classes.PB2,
-                              classes.PT2,
-
-                              {
-                                [classes.selectedDeliveryBox]: isSelected,
-                              }
+                              classes.width100,
+                              classes.deliveryPaperProfile
                             )}
-                            display="flex"
-                            justifyContent="space-between"
-                            alignItems="center"
                           >
-                            <Box display="flex" alignItems="center" >
-                              <HomeIcon
-                                width={100}
-                                height={100}
-                                style={{ color: "#000" }}
-                              />
-                              <Typography
-                                variant="subtitle2"
-                                color="textSecondary"
-                                align="left"
-                                className={clsx(
-                                  classes.smallText,
-                                  classes.PH1,
-                                  classes.wieght600
-                                )}
-                              >
-                                {item.deliveryAddress}
-                              </Typography>
-                            </Box>
+                            <Box
+                              className={clsx(
+                                classes.PH1,
+                                classes.PB2,
+                                classes.PT2,
 
-                            
-                          </Box>
-                        </Paper>
-                        <Box
+                                {
+                                  [classes.selectedDeliveryBox]: isSelected,
+                                }
+                              )}
                               display="flex"
-                              justifyContent="flex-start"
+                              justifyContent="space-between"
                               alignItems="center"
-                              style={{marginLeft: 10}}
                             >
-                              <Button
-                                style={{ minWidth: "auto", padding: 0 }}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  editAddress(item);
-                                }}
-                              >
-                                <ModeEditIcon
+                              <Box display="flex" alignItems="center">
+                                <HomeIcon
                                   width={100}
                                   height={100}
-                                  style={{ color: "#000" }}
+                                  style={{ color: theme.palette.common.black }}
                                 />
-                              </Button>
-                              <Box ml={theme.spacing(1)} />
-                              <Button
-                                disabled={loadingDelete}
-                                style={{ minWidth: "auto", padding: 0 }}
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  deleteId.current = item._id;
-                                  mutate({ variables: { id: item._id } });
-                                }}
-                              >
-                                {loadingDelete &&
-                                deleteId.current === item._id ? (
-                                  <CircularProgress size={18} color="primary" />
-                                ) : (
-                                  <DeleteIcon style={{ color: "#000" }} />
-                                )}
-                              </Button>
+                                <Typography
+                                  variant="subtitle2"
+                                  color="textSecondary"
+                                  align="left"
+                                  className={clsx(
+                                    classes.smallText,
+                                    classes.PH1,
+                                    classes.wieght600
+                                  )}
+                                >
+                                  {item.deliveryAddress}
+                                </Typography>
+                              </Box>
                             </Box>
+                          </Paper>
+                          <Box
+                            display="flex"
+                            justifyContent="flex-start"
+                            alignItems="center"
+                            style={{ marginLeft: 10 }}
+                          >
+                            <Button
+                              style={{ minWidth: "auto", padding: 0 }}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                editAddress(item);
+                              }}
+                            >
+                              <ModeEditIcon
+                                width={100}
+                                height={100}
+                                style={{ color: theme.palette.common.black }}
+                              />
+                            </Button>
+                            <Box ml={theme.spacing(1)} />
+                            <Button
+                              disabled={loadingDelete}
+                              style={{ minWidth: "auto", padding: 0 }}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                deleteId.current = item._id;
+                                mutate({ variables: { id: item._id } });
+                              }}
+                            >
+                              {loadingDelete &&
+                              deleteId.current === item._id ? (
+                                <CircularProgress size={18} color="primary" />
+                              ) : (
+                                <DeleteIcon
+                                  style={{ color: theme.palette.common.black }}
+                                />
+                              )}
+                            </Button>
+                          </Box>
                         </Box>
                       </Grid>
                     );
@@ -269,7 +266,7 @@ function DeliveryCard({
                   style={{
                     width: "80%",
                     height: 1,
-                    backgroundColor: "#000",
+                    backgroundColor: theme.palette.common.black,
                     margin: "auto",
                     marginTop: "2rem",
                     marginBottom: "1.4rem",
@@ -329,7 +326,7 @@ function DeliveryCard({
                 color="textSecondary"
                 className={clsx(classes.boldText, classes.smallText)}
               >
-                {t('deliveryAddress')}
+                {t("deliveryAddress")}
               </Typography>
               {!showDetail && (
                 <Button

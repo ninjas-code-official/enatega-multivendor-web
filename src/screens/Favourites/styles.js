@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
   },
   footerContainer: {
-    background: "#F0F0F0",
+    background: theme.palette.success.dark,
     width: "100%",
   },
   footerWrapper: {

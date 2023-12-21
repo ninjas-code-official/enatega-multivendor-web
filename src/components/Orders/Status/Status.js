@@ -37,7 +37,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function Status({ first, isEta, last, isActive, firstCol = "#90EA93", secondCol = "#C4C4C4" }) {
+export function Status({
+  first,
+  isEta,
+  last,
+  isActive,
+  firstCol = "#90EA93",
+  secondCol = "#C4C4C4",
+}) {
   const theme = useTheme();
   const classes = useStyles();
   const small = useMediaQuery(theme.breakpoints.down("sm"));

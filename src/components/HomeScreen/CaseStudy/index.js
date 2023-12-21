@@ -18,7 +18,7 @@ const useStyle = makeStyles((theme) => ({
     right: 0,
     fontSize: 80,
     fontWeight: 500,
-    color: "#000000",
+    color: theme.palette.common.black,
     mixBlendMode: "normal",
     opacity: 0.24,
   },
@@ -28,7 +28,7 @@ const useStyle = makeStyles((theme) => ({
     right: 0,
     fontSize: 30,
     fontWeight: 500,
-    color: "#000000",
+    color: theme.palette.common.black,
     mixBlendMode: "normal",
     opacity: 0.24,
   },
@@ -92,7 +92,7 @@ export default function CaseStudy() {
           <Button
             style={{
               backgroundColor: "white",
-              color: "#3C8F7C",
+              color: theme.palette.button.main,
               width: mobile ? 140 : 160,
               fontSize: mobile ? 10 : 12,
               fontWeight: 600,
