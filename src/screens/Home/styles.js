@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appContainer: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.common.white,
     borderRadius: "0px",
     width: "100%",
     height: "auto",
