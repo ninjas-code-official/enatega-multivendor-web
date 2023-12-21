@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   headerBar: {
-    background: "linear-gradient(261.53deg, #6FCF97 -8.04%, #90EA93 111.96%)",
+    background:
+      "linear-gradient(261.53deg, theme.palette.success.light -8.04%, theme.palette.primary.main 111.96%)",
     borderRadius: 30,
     height: 80,
     display: "flex",

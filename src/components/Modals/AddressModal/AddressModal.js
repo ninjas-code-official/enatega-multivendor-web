@@ -10,6 +10,7 @@ import {
   InputAdornment,
   TextField,
   Typography,
+  useTheme,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
@@ -22,47 +23,54 @@ import useStyle from "./styles";
 import MarkerImage from "../../../assets/images/marker.png";
 import ClearIcon from "@mui/icons-material/Clear";
 import PlacesAutocomplete from "react-places-autocomplete";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { GOOGLE_MAPS_KEY } from "../../../config/constants";
 
-
-function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, settingRegionDetail, setShowDetail }) {
-  console.log(settingRegionDetail)
+function AddressModal({
+  toggleModal,
+  isVisible,
+  regionDetail,
+  changeAddress,
+  settingRegionDetail,
+  setShowDetail,
+}) {
+  console.log(settingRegionDetail);
+  const theme = useTheme();
   const classes = useStyle();
   const [region, setRegion] = useState(null);
   const [mainError, setMainError] = useState({});
   const [locationName, setLocationName] = useState("");
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const { getCurrentLocation } = useLocation();
   const { latLngToGeoString } = useLocation();
   const [loading, setLoading] = useState();
   const handleLocationSelection = (selectedLocation) => {
     const apiKey = GOOGLE_MAPS_KEY;
-    
+
     setLocationName(selectedLocation);
     const encodedLocation = encodeURIComponent(selectedLocation);
-  
+
     const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedLocation}&key=${apiKey}`;
     fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === 'OK' && data.results.length > 0) {
-        const location = data.results[0].geometry.location;
-        const latitude = location.lat;
-        const longitude = location.lng;
-        setRegion({
-          lat: latitude,
-          lng: longitude,
-        });
-      } else {
-        console.error('Location not found');
-      }
-    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "OK" && data.results.length > 0) {
+          const location = data.results[0].geometry.location;
+          const latitude = location.lat;
+          const longitude = location.lng;
+          setRegion({
+            lat: latitude,
+            lng: longitude,
+          });
+        } else {
+          console.error("Location not found");
+        }
+      });
   };
 
   useEffect(() => {
     if (regionDetail) {
-      console.log(regionDetail)
+      console.log(regionDetail);
       setRegion({
         lat: regionDetail.lat,
         lng: regionDetail.lng,
@@ -144,8 +152,8 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
           <IconButton
             size="medium"
             onClick={() => {
-              toggleModal()
-              setShowDetail()
+              toggleModal();
+              setShowDetail();
             }}
             className={classes.closeContainer}
           >
@@ -159,7 +167,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
               color="textSecondary"
               className={clsx(classes.boldText, classes.title)}
             >
-              {t('exactLocation')}
+              {t("exactLocation")}
             </Typography>
           </Box>
         </DialogTitle>
@@ -178,7 +186,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
               <div>
                 <TextField
                   variant="outlined"
-                  label= {t('yourArea')}
+                  label={t("yourArea")}
                   fullWidth
                   {...getInputProps()}
                   InputProps={{
@@ -215,7 +223,9 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
                   {loading ? <div>Loading...</div> : null}
                   {suggestions.map((suggestion) => {
                     const style = {
-                      backgroundColor: suggestion.active ? "#90EA93" : "#fff",
+                      backgroundColor: suggestion.active
+                        ? theme.palette.primary.main
+                        : theme.palette.common.white,
                       color: "black",
                       fontSize: "16px",
                       padding: "10px 16px",
@@ -269,7 +279,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, set
               <CircularProgress color="secondary" />
             ) : (
               <Typography variant="subtitle2" className={classes.boldText}>
-                {t('submit')}
+                {t("submit")}
               </Typography>
             )}
           </Button>

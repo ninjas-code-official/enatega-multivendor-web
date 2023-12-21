@@ -276,7 +276,7 @@ function RestaurantDetail() {
                 >
                   <MoreHorizIcon
                     style={{
-                      background: "#0000008c",
+                      background: theme.palette.common.blackShade,
                       color: theme.palette.common.white,
                       borderRadius: 20,
                       padding: 2,

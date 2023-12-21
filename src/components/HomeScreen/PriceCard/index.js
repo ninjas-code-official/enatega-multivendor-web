@@ -1,9 +1,9 @@
 import { Typography, Box, Divider, Button, useTheme } from "@mui/material";
 import useStyle from "./styles";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 export default function PriceCard({ price, offer, desc, center }) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const classes = useStyle();
   const theme = useTheme();
   return (
@@ -12,14 +12,18 @@ export default function PriceCard({ price, offer, desc, center }) {
         <Box>
           <Typography
             variant="h5"
-            style={{ fontWeight: 900, color: "#fff", fontSize: 30 }}
+            style={{
+              fontWeight: 900,
+              color: theme.palette.common.white,
+              fontSize: 30,
+            }}
             align="center"
           >
             $
             <Typography
               variant="body1"
               style={{
-                color: "#fff",
+                color: theme.palette.common.white,
                 display: "inline",
                 fontSize: 30,
                 marginBottom: "5%",
@@ -31,14 +35,14 @@ export default function PriceCard({ price, offer, desc, center }) {
           </Typography>
           <Typography
             variant="h5"
-            style={{ fontWeight: 600, color: "#fff" }}
+            style={{ fontWeight: 600, color: theme.palette.common.white }}
             align="center"
           >
             {offer[0]}
             <Typography
               variant="body1"
               style={{
-                color: "#fff",
+                color: theme.palette.common.white,
                 display: "inline",
                 fontSize: 25,
               }}
@@ -71,7 +75,7 @@ export default function PriceCard({ price, offer, desc, center }) {
                 width: "90%",
                 marginTop: 10,
                 borderBottomWidth: 2,
-                backgroundColor: "#000",
+                backgroundColor: theme.palette.common.black,
               }}
             />
 
@@ -85,8 +89,12 @@ export default function PriceCard({ price, offer, desc, center }) {
             <Box mt={5} mb={2}>
               <Button
                 style={{
-                  backgroundColor: center ? "#3C8F7C" : "#fff",
-                  color: center ? "#fff" : "#000",
+                  backgroundColor: center
+                    ? theme.palette.button.main
+                    : theme.palette.common.white,
+                  color: center
+                    ? theme.palette.common.white
+                    : theme.palette.common.black,
                   width: 140,
                   fontWeight: 700,
                 }}
@@ -96,7 +104,7 @@ export default function PriceCard({ price, offer, desc, center }) {
                   window.open("https://enatega.com/#contact", "_blank")
                 }
               >
-                {t('getQuote')}
+                {t("getQuote")}
               </Button>
             </Box>
           </Box>

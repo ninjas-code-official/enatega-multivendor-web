@@ -5,11 +5,11 @@ import { Link as RouterLink } from "react-router-dom";
 import ConfigurationContext from "../../../context/Configuration";
 import UserContext from "../../../context/User";
 import useStyles from "./styles";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { calculateDistance } from "../../../utils/customFunction";
 
 function PricingView(props) {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const classes = useStyles();
   const theme = useTheme();
   const configuration = useContext(ConfigurationContext);
@@ -123,7 +123,9 @@ function PricingView(props) {
         }}
         className={classes.border}
       >
-        <Typography className={classes.subtotalText}>{t('subTotal')}</Typography>
+        <Typography className={classes.subtotalText}>
+          {t("subTotal")}
+        </Typography>
         <Typography className={classes.subtotalText}>
           {`${configuration.currencySymbol} ${calculatePrice(0)}`}
         </Typography>
@@ -136,7 +138,9 @@ function PricingView(props) {
         }}
         className={classes.border}
       >
-        <Typography className={classes.subtotalText}>{t('deliveryFee')}</Typography>
+        <Typography className={classes.subtotalText}>
+          {t("deliveryFee")}
+        </Typography>
         <Typography className={classes.subtotalText}>
           {`${configuration.currencySymbol} ${deliveryCharges.toFixed(2)}`}
         </Typography>
@@ -149,7 +153,7 @@ function PricingView(props) {
         }}
         className={classes.border}
       >
-        <Typography className={classes.subtotalText}>{t('taxFee')}</Typography>
+        <Typography className={classes.subtotalText}>{t("taxFee")}</Typography>
         <Typography className={classes.subtotalText}>
           {`${configuration.currencySymbol} ${taxCalculation()}`}
         </Typography>
@@ -165,7 +169,7 @@ function PricingView(props) {
           style={{ fontWeight: 700, color: theme.palette.text.secondary }}
           className={classes.subtotalText}
         >
-          {t('total')} (Inc. TAX)
+          {t("total")} (Inc. TAX)
         </Typography>
         <Typography
           style={{ fontWeight: 700, color: theme.palette.text.secondary }}
@@ -192,7 +196,7 @@ function PricingView(props) {
               color: theme.palette.common.black,
               padding: "5px 10px",
               borderRadius: 5,
-              border: "1px solid #000",
+              border: "1px solid theme.palette.common.black",
               margin: "0 8px",
             }}
           >
@@ -213,7 +217,7 @@ function PricingView(props) {
                 style={{ color: theme.palette.common.black }}
                 className={classes.checkoutText}
               >
-                {t('goToCheckout')}
+                {t("goToCheckout")}
               </Typography>
             </Button>
           </RouterLink>
