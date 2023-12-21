@@ -10,20 +10,23 @@ import { Link as RouterLink } from "react-router-dom";
 import ConfigurationContext from "../../../context/Configuration";
 import { Status } from "../Status/Status";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
+
 
 function ActiveOrderCard(props) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const small = useMediaQuery(theme.breakpoints.down("sm"));
   const configuration = useContext(ConfigurationContext);
 
   const STATUS_ORDER = [
-    "PENDING",
-    "ACCEPTED",
-    "ASSIGNED",
-    "PICKED",
-    "DELIVERED",
-    "CANCELLED",
+    t('pending'),
+    t('accepted'),
+    t('assigned'),
+    t('picked'),
+    t('delivered'),
+    t('completed'),
   ];
 
   return (
@@ -101,12 +104,12 @@ function ActiveOrderCard(props) {
                 props.orderAmount
               ).toFixed(2)}`} */}
               {props.orderStatus === "PENDING"
-                ? "We are asking the restaurant to accept your order"
+                ? t('orderPending')
                 : props.orderStatus === "ASSIGNED" ||
                   props.orderStatus === "ACCEPTED"
-                ? "We are asking the restaurant how long it will take to deliver your food"
+                ? t('restaurantDeliver')
                 : props.orderStatus === "PICKED"
-                ? "We are asking the rider how long it will take to deliver your food"
+                ? t('riderDeliver')
                 : null}
             </Typography>
             {/* <Typography
@@ -160,7 +163,7 @@ function ActiveOrderCard(props) {
               color="black"
               style={{ fontWeight: 600 }}
             >
-              {props?.orderStatus}
+              {t(props?.orderStatus)}
             </Typography>
           </Box>
         </Box>

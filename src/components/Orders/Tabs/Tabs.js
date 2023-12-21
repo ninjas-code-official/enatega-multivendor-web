@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
-
+import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: theme.palette.primary.main,
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const OrderTabs = ({ tab, setTab }) => {
   const classes = useStyles();
+  const { t } = useTranslation()
   return (
     <Box className={classes.container}>
       <Button
@@ -37,7 +38,7 @@ const OrderTabs = ({ tab, setTab }) => {
         }}
         onClick={() => setTab(0)}
       >
-        Active Orders
+        {t('activeOrders')}
       </Button>
       <Button
         variant="text"
@@ -48,7 +49,7 @@ const OrderTabs = ({ tab, setTab }) => {
         }}
         onClick={() => setTab(1)}
       >
-        Past Orders
+        {t('pastOrders')}
       </Button>
     </Box>
   );

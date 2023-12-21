@@ -20,17 +20,49 @@ import { useLocation } from "../../../hooks";
 import FlashMessage from "../../FlashMessage";
 import useStyle from "./styles";
 import MarkerImage from "../../../assets/images/marker.png";
+import ClearIcon from "@mui/icons-material/Clear";
+import PlacesAutocomplete from "react-places-autocomplete";
+import { useTranslation } from 'react-i18next';
+import { GOOGLE_MAPS_KEY } from "../../../config/constants";
 
-function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress }) {
+
+function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress, settingRegionDetail, setShowDetail }) {
+  console.log(settingRegionDetail)
   const classes = useStyle();
   const [region, setRegion] = useState(null);
   const [mainError, setMainError] = useState({});
   const [locationName, setLocationName] = useState("");
+  const { t } = useTranslation()
   const { getCurrentLocation } = useLocation();
   const { latLngToGeoString } = useLocation();
   const [loading, setLoading] = useState();
+  const handleLocationSelection = (selectedLocation) => {
+    const apiKey = GOOGLE_MAPS_KEY;
+    
+    setLocationName(selectedLocation);
+    const encodedLocation = encodeURIComponent(selectedLocation);
+  
+    const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedLocation}&key=${apiKey}`;
+    fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === 'OK' && data.results.length > 0) {
+        const location = data.results[0].geometry.location;
+        const latitude = location.lat;
+        const longitude = location.lng;
+        setRegion({
+          lat: latitude,
+          lng: longitude,
+        });
+      } else {
+        console.error('Location not found');
+      }
+    })
+  };
+
   useEffect(() => {
     if (regionDetail) {
+      console.log(regionDetail)
       setRegion({
         lat: regionDetail.lat,
         lng: regionDetail.lng,
@@ -42,6 +74,10 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress }) {
   const toggleSnackbar = useCallback(() => {
     setMainError({});
   }, []);
+
+  const handleClearClick = () => {
+    setLocationName("");
+  };
 
   const changeCoordinates = async (coordinates, index) => {
     setLoading(true);
@@ -107,7 +143,10 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress }) {
         <Box display="flex" justifyContent="flex-end">
           <IconButton
             size="medium"
-            onClick={toggleModal}
+            onClick={() => {
+              toggleModal()
+              setShowDetail()
+            }}
             className={classes.closeContainer}
           >
             <CloseIcon color="primary" />
@@ -120,40 +159,81 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress }) {
               color="textSecondary"
               className={clsx(classes.boldText, classes.title)}
             >
-              Is this your exact location?
+              {t('exactLocation')}
             </Typography>
           </Box>
         </DialogTitle>
         <DialogContent>
-          <TextField
-            variant="outlined"
-            label="Enter your area"
-            fullWidth
+          <PlacesAutocomplete
             value={locationName}
-            disabled
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  {loading ? (
-                    <CircularProgress size={24} />
-                  ) : (
-                    <IconButton
-                      onClick={(e) => {
-                        e.preventDefault();
-                        if (!loading) {
-                          setLoading(true);
-                          getCurrentLocation(locationCallback);
-                        }
-                      }}
-                      size="large"
-                    >
-                      <GpsFixedIcon color="primary" />
-                    </IconButton>
-                  )}
-                </InputAdornment>
-              ),
-            }}
-          />
+            onChange={setLocationName}
+            onSelect={handleLocationSelection}
+          >
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
+              <div>
+                <TextField
+                  variant="outlined"
+                  label= {t('yourArea')}
+                  fullWidth
+                  {...getInputProps()}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        {loading ? (
+                          <CircularProgress size={24} />
+                        ) : (
+                          <>
+                            {locationName && (
+                              <IconButton onClick={handleClearClick}>
+                                <ClearIcon color="primary" />
+                              </IconButton>
+                            )}
+                            <IconButton
+                              onClick={(e) => {
+                                e.preventDefault();
+                                if (!loading) {
+                                  setLoading(true);
+                                  getCurrentLocation(locationCallback);
+                                }
+                              }}
+                              size="large"
+                            >
+                              <GpsFixedIcon color="primary" />
+                            </IconButton>
+                          </>
+                        )}
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <div>
+                  {loading ? <div>Loading...</div> : null}
+                  {suggestions.map((suggestion) => {
+                    const style = {
+                      backgroundColor: suggestion.active ? "#90EA93" : "#fff",
+                      color: "black",
+                      fontSize: "16px",
+                      padding: "10px 16px",
+                    };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, { style })}
+                        key={suggestion.placeId}
+                      >
+                        {suggestion.description}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </PlacesAutocomplete>
+
           <Box display="flex" className={classes.mapContainer}>
             <GoogleMap
               mapContainerStyle={{ height: "400px", width: "100%" }}
@@ -189,7 +269,7 @@ function AddressModal({ toggleModal, isVisible, regionDetail, changeAddress }) {
               <CircularProgress color="secondary" />
             ) : (
               <Typography variant="subtitle2" className={classes.boldText}>
-                Submit
+                {t('submit')}
               </Typography>
             )}
           </Button>

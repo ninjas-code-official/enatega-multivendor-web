@@ -24,6 +24,7 @@ import { LoginWrapper } from "../Wrapper";
 import { createUser, sendOtpToEmail } from "../../apollo/server";
 import UserContext from "../../context/User";
 import OtpInput from "react-otp-input";
+import { useTranslation } from 'react-i18next';
 
 const SEND_OTP_TO_EMAIL = gql`
   ${sendOtpToEmail}
@@ -32,6 +33,7 @@ const CREATEUSER = gql`
   ${createUser}
 `;
 function VerifyEmail() {
+  const { t } = useTranslation();
   const formRef = useRef();
   const theme = useTheme();
   const classes = useStyles();
@@ -43,6 +45,20 @@ function VerifyEmail() {
   const [otpError, setOtpError] = useState(false);
   const [seconds, setSeconds] = useState(30);
   const [otp, setOtp] = useState("");
+  const handleBackNavigation = () => {
+    // Use history.push to navigate to the desired route
+    navigate("/registration");
+  };
+
+  useEffect(() => {
+    // Add an event listener for the popstate event
+    window.addEventListener("popstate", handleBackNavigation);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("popstate", handleBackNavigation);
+    };
+  });
   const [otpFrom, setOtpFrom] = useState(
     Math.floor(100000 + Math.random() * 900000).toString()
   );
@@ -83,7 +99,7 @@ function VerifyEmail() {
         name: createUser.name,
         email: createUser.email,
       });
-      navigate("/verify-phone", {
+      navigate("/", {
         replace: true,
       });
       setTokenAsync(createUser.token);
@@ -174,14 +190,14 @@ function VerifyEmail() {
         <form ref={formRef}>
           <Box mt={theme.spacing(2)} />
           <Typography variant="h5" className={classes.font700}>
-            Verify your email
+            {t('verifyEmail')}
           </Typography>
           <Box mt={theme.spacing(2)} />
           <Typography
             variant="caption"
             className={`${classes.caption} ${classes.fontGrey}`}
           >
-            Please enter the OTP we sent to your email updated
+            {t('enterOtp')}
           </Typography>
           <Box mt={theme.spacing(2)} />
           <OtpInput
@@ -211,7 +227,7 @@ function VerifyEmail() {
           <Box mt={2} />
           {otpError && (
             <Typography variant={"h6"} style={{ color: "red", fontSize: 14 }}>
-              Invalid code, please check and enter again
+              {t('invalidCode')}
             </Typography>
           )}
           <Box mt={theme.spacing(8)} />
@@ -235,13 +251,13 @@ function VerifyEmail() {
                 variant="caption"
                 className={`${classes.caption} ${classes.font700}`}
               >
-                Resend code
+                {t('resendCode')}
               </Typography>
             )}
           </Button>
           <Box mt={theme.spacing(2)} />
           <Typography variant="caption" className={`${classes.caption}`}>
-            {seconds === 0 ? "" : `Retry after ${seconds}s`}
+            {seconds === 0 ? "" : `${t('retryAfter')} ${seconds}s`}
           </Typography>
         </form>
       )}

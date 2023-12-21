@@ -56,6 +56,7 @@ import RestMarker from "../../assets/images/rest-map-2.png";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import clsx from "clsx";
 import { useLocation } from "../../hooks";
+import { useTranslation } from 'react-i18next';
 import moment from "moment";
 
 const PLACEORDER = gql`
@@ -73,6 +74,8 @@ const PAYMENT = {
 };
 
 function Checkout() {
+
+  const { t  } = useTranslation();
   const classes = useStyle();
   const navigate = useNavigate();
   const [isClose, setIsClose] = useState(false);
@@ -82,6 +85,9 @@ function Checkout() {
   const [addressModal, setAddressModal] = useState(false);
   const [orderOptionModal, setOrderOptionModal] = useState(false);
   const fetchRef = useRef(false);
+
+  const [loadingLocation, setLoadingLocation] = useState(false);
+  const [selectedAddress, setSelectedAddress] = useState(null);
   const {
     profile,
     clearCart,
@@ -93,13 +99,13 @@ function Checkout() {
   } = useContext(UserContext);
 
   const { location, setLocation } = useLocationContext();
-  const { getCurrentLocation } = useLocation();
+  // const { getCurrentLocation } = useLocation();
   const theme = useTheme();
   const [minimumOrder, setMinimumOrder] = useState("");
   const [selectedTip, setSelectedTip] = useState();
   const [paymentMethod, setPaymentMethod] = useState(PAYMENT);
   const [taxValue, setTaxValue] = useState();
-  const [selectedAddress, setSelectedAddress] = useState();
+
   const [coupon, setCoupon] = useState({});
   const [selectedDate, handleDateChange] = useState(new Date());
   const [isPickUp, setIsPickUp] = useState(false);
@@ -395,12 +401,51 @@ function Checkout() {
       });
     }
   }
+  // const locationCallback = (error, data) => {
+  //   console.log(data);
+  //   if (error) {
+  //     return;
+  //   }
+  //   setLocation(data);
+  // };
+
   const locationCallback = (error, data) => {
-    console.log(data);
+    setLoadingLocation(false); // Stop loading
     if (error) {
+      console.error(error);
       return;
     }
-    setLocation(data);
+
+    // Create an object for the selected address using the current location data
+    const selectedAddress = {
+      label: "Your Location",
+      deliveryAddress: data.label,
+      details: data.details,
+      latitude: data.coords.latitude,
+      longitude: data.coords.longitude,
+    };
+
+    // Update the selected address in state
+    setSelectedAddress(selectedAddress);
+    setAddressModal((prev) => !prev);
+  };
+
+  const getCurrentLocation = () => {
+    setLoadingLocation(true); // Start loading (optional)
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          locationCallback(null, position);
+        },
+        (error) => {
+          locationCallback(error, null);
+        }
+      );
+    } else {
+      // Geolocation is not supported by the browser
+      locationCallback(new Error("Geolocation is not supported."), null);
+    }
   };
 
   function validateOrder() {
@@ -423,7 +468,7 @@ function Checkout() {
       });
       return false;
     }
-    if (!location._id) {
+    if (!location) {
       showMessage({
         alive: true,
         type: "Warning",
@@ -442,8 +487,13 @@ function Checkout() {
       showMessage({
         alive: true,
         type: "Error",
-        message: "Phone Number is missing",
+        message: t('phoneNumMissing'),
       });
+
+      setTimeout(() => {
+        navigate("/phone-number");
+      }, 1000);
+
       return false;
     }
     if (!profile.phoneIsVerified) {
@@ -452,6 +502,11 @@ function Checkout() {
         type: "Error",
         message: "Phone Number is not verified",
       });
+
+      setTimeout(() => {
+        navigate("/phone-number");
+      }, 1000);
+
       return false;
     }
     return true;
@@ -530,7 +585,7 @@ function Checkout() {
                   fontWeight: 600,
                 }}
               >
-                Delivery Time
+               {t('deliveryTime')}
               </Typography>
               <Typography
                 style={{
@@ -551,7 +606,7 @@ function Checkout() {
                     fontWeight: 600,
                   }}
                 >
-                  {isPickUp ? "Pickup" : "Delivery"}
+                  {isPickUp ? t('pickUp') : t('delivery')}
                 </Typography>
                 <Button
                   variant="contained"
@@ -570,7 +625,7 @@ function Checkout() {
                       textTransform: "capitalize",
                     }}
                   >
-                    Change
+                    {t('change')}
                   </Typography>
                 </Button>
                 <OrderOption
@@ -635,7 +690,7 @@ function Checkout() {
                           variant="caption"
                           fontWeight={800}
                         >
-                          Deliver to:
+                          {t('deliverTo')}:
                         </Typography>
                         <Typography
                           style={{
@@ -681,16 +736,13 @@ function Checkout() {
                           display="flex"
                           justifyContent="space-between"
                           alignItems="center"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            console.log("clicked");
+                            getCurrentLocation();
+                          }}
                         >
-                          <Box
-                            display="flex"
-                            alignItems="center"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              getCurrentLocation(locationCallback);
-                              toggleAdressModal();
-                            }}
-                          >
+                          <Box display="flex" alignItems="center">
                             <NearMeIcon
                               width={100}
                               height={100}
@@ -703,9 +755,12 @@ function Checkout() {
                               className={clsx(classes.smallText, classes.PH1)}
                               fontWeight={600}
                             >
-                              Use current location
+                              {t('currentLocation')}
                             </Typography>
                           </Box>
+                          {loadingLocation && (
+                            <CircularProgress color={"warning"} />
+                          )}
                         </Box>
                       </Paper>
                     </Grid>

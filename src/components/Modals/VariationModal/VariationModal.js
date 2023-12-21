@@ -28,9 +28,11 @@ import React, { useCallback, useContext, useEffect, useState } from "react";
 import ConfigurationContext from "../../../context/Configuration";
 import UserContext from "../../../context/User";
 import HeadingView from "./HeadingView";
+import { useTranslation } from 'react-i18next';
 import useStyles from "./styles";
 
 function VariationModal({ isVisible, toggleModal, data }) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const configuration = useContext(ConfigurationContext);
@@ -316,7 +318,7 @@ function VariationModal({ isVisible, toggleModal, data }) {
             }}
           >
             <Typography variant="h4" color="white" style={{ fontWeight: 600 }}>
-              Customize
+              {t('customize')}
             </Typography>
             <Button onClick={toggleModal} className={classes.closeContainer}>
               <CloseIcon style={{ color: "black" }} />
@@ -392,8 +394,8 @@ function VariationModal({ isVisible, toggleModal, data }) {
                           error={addon.error}
                           status={
                             addon.quantityMinimum === 0
-                              ? "OPTIONAL"
-                              : `${addon.quantityMinimum} REQUIRED`
+                              ? t('optional')
+                              : `${addon.quantityMinimum} ${t('required')}`
                           }
                         />
                         {radioORcheckboxes(addon)}
@@ -402,9 +404,9 @@ function VariationModal({ isVisible, toggleModal, data }) {
                   </FormGroup>
                   <FormGroup>
                     <HeadingView
-                      title="Special Instructions"
-                      subTitle="Any specific preferances? Let the restaurant know."
-                      status="OPTIONAL"
+                      title={t('specialInstructions')}
+                      subTitle={t('anySpecific')}
+                      status={t('optional')}
                       error={false}
                     />
                     <Box mt={theme.spacing(2)} />
@@ -418,7 +420,7 @@ function VariationModal({ isVisible, toggleModal, data }) {
                       onChange={(event) =>
                         setSpecialInstructions(event.target.value)
                       }
-                      placeholder={"e.g. No mayo"}
+                      placeholder={t('placeholder')}
                       variant="filled"
                       color="primary"
                       inputProps={{
@@ -488,7 +490,7 @@ function VariationModal({ isVisible, toggleModal, data }) {
                     }}
                   >
                     <Typography className={classes.checkoutText}>
-                      ADD TO CART
+                      {t('addToCart')}
                     </Typography>
                   </Button>
                 </Box>

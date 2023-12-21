@@ -22,7 +22,7 @@ export default function useLocation() {
             longitude,
             deliveryAddress: location.results[0].formatted_address,
           })
-          console.log(location)
+    
         } catch (error) {
           callback(error)
         }

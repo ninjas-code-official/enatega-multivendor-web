@@ -55,7 +55,9 @@ function ItemCard(props) {
                     {item.title}
                   </Typography>
                   <Typography variant="caption" className={classes.itemDesc}>
-                    {item.description}
+                    {item.description.length > 80
+                      ? `${item.description.substring(0, 80)}...`
+                      : item.description}
                   </Typography>
                 </Box>
                 <Typography variant="body2" color="textSecondary">

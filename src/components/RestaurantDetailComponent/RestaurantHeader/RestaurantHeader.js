@@ -4,10 +4,11 @@ import clsx from "clsx";
 import React, { useCallback } from "react";
 import { DAYS } from "../../../utils/constantValues";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
 
 function RestaurantHeader({ headerData, loading = false }) {
   const classes = useStyles();
-
+  const { t } = useTranslation();
   const isOpen = useCallback(() => {
     if (headerData.openingTimes) {
       if (headerData?.openingTimes?.length < 1) return false;
@@ -71,7 +72,7 @@ function RestaurantHeader({ headerData, loading = false }) {
                   [classes.closeTag]: isClosed,
                 })}
               >
-                {true ? "NEW" : "Closed"}
+                {true ? t('new') : t('closed')}
               </Typography>
             </Box>
             <Box
@@ -110,7 +111,7 @@ function RestaurantHeader({ headerData, loading = false }) {
                 style={{ paddingRight: "5px" }}
                 align="center"
               >
-                Delivery {headerData?.deliveryTime} Minutes
+                {t('deliver')} {headerData?.deliveryTime} {t('minute')}
               </Typography>
             </Box>
           </Container>

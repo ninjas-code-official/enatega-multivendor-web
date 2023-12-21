@@ -4,8 +4,10 @@ import React, { useContext } from "react";
 import ConfigurationContext from "../../../context/Configuration";
 import useStyles from "./styles";
 import RiderImage from "../../../assets/images/rider.png";
+import { useTranslation } from 'react-i18next';
 
 function EmptyView() {
+  const { t } = useTranslation()
   const configuration = useContext(ConfigurationContext);
   const classes = useStyles();
   const theme = useTheme();
@@ -42,7 +44,7 @@ function EmptyView() {
             }}
             align="left"
           >
-            Your cart
+           {t('yourCart')}
           </Typography>
 
           <Typography
@@ -52,7 +54,7 @@ function EmptyView() {
             className={classes.textBold}
             align="center"
           >
-            Start adding items to your cart
+            {t('startAdding')}
           </Typography>
         </Box>
       </Box>
@@ -66,7 +68,7 @@ function EmptyView() {
           }}
         >
           <Typography variant="body1" className={classes.smallFont}>
-            Subtotal
+            {t('subTotal')}
           </Typography>
           <Typography variant="body1" className={classes.smallFont}>
             {`${configuration.currencySymbol}`} 0.00
@@ -84,7 +86,7 @@ function EmptyView() {
             color="textSecondary"
             className={clsx(classes.textBold, classes.smallFont)}
           >
-            Total (Incl. TAX)
+            {t('total')} (Incl. TAX)
           </Typography>
           <Typography
             variant="body1"
@@ -105,7 +107,7 @@ function EmptyView() {
             <Typography
               className={clsx(classes.checkoutText, classes.whiteText)}
             >
-              GO TO CHECKOUT
+              {t('goToCheckout')}
             </Typography>
           </Button>
         </Box>

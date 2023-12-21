@@ -27,10 +27,17 @@ const useStyles = makeStyles((theme) => ({
   customBtn: {
     background: theme.palette.common.black,
     width: "70%",
+    transition: "opacity 0.3s",
+    opacity: 1,
+    "&:hover": {
+      backgroundColor: theme.palette.common.black,
+      opacity: 0.8,
+    },
   },
   gButton: {
     marginTop: theme.spacing(3),
     background: COLORS.GOOGLE,
+    transition: "opacity 0.3s",
     "&:disabled": {
       backgroundColor: COLORS.GOOGLE,
     },

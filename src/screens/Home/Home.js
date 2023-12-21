@@ -29,8 +29,10 @@ import AppComponent from "../../components/HomeScreen/AppComponent";
 import Banner2 from "../../assets/images/banner-2.png";
 import Banner1 from "../../assets/images/banner-1.png";
 import TawkMessengerReact from "@tawk.to/tawk-messenger-react";
+import { useTranslation } from 'react-i18next';
 
 function Home() {
+  const { t } = useTranslation()
   const classes = useStyles();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
@@ -130,8 +132,8 @@ function Home() {
                       title={"Rider App"}
                       image={RiderApp}
                       description={[
-                        "• Finding address using GPS integration",
-                        "• Zones functionality for Restaurants and Riders",
+                        "• "+t('findingAddress'),
+                        "• "+t('zonesFunctionality'),
                       ]}
                       android={
                         "https://play.google.com/store/apps/details?id=com.enatega.multirider"
@@ -153,8 +155,8 @@ function Home() {
                       title={"Restaurant App"}
                       image={RestaurantApp}
                       description={[
-                        "• Multiple Restaurant  adding feature",
-                        "• Real-time order receiving updates",
+                        "• "+t('multipleRestaurants'),
+                        "• "+t('realTimeOrder'),
                       ]}
                       android={
                         "https://play.google.com/store/apps/details?id=multivendor.enatega.restaurant"
@@ -177,8 +179,8 @@ function Home() {
                       title={"Customer App"}
                       image={CustApp}
                       description={[
-                        "• Different sections feature for promoting restaurants",
-                        "• Previous order history and adding favorite restaurants",
+                        "• "+t('differentSections'),
+                        "• "+t('previousOrder'),
                       ]}
                       android={
                         "https://play.google.com/store/apps/details?id=com.enatega.multivendor"
@@ -197,11 +199,11 @@ function Home() {
                     title={"Admin Dashboard"}
                     image={Dashboard}
                     description={[
-                      "• Finding address using GPS integration",
-                      "• Zones functionality for Restaurants and Riders",
+                      "• "+t('findingAddress'),
+                      "• "+t('zonesFunctionality'),
                     ]}
                     web={true}
-                    link={"https://multivendor-admin.ninjascode.com/"}
+                    link={"https://multivendor-admin.enatega.com/"}
                     isMobile={false}
                   />
                 </Grid>
@@ -212,8 +214,8 @@ function Home() {
                       title={"Product Page"}
                       image={WebApp}
                       description={[
-                        "• Our delivery management system is designed for the future.",
-                        "• Built on community-driven principles.",
+                        "• "+t('ourDelivery'),
+                        "• "+t('builtOnCommunity'),
                       ]}
                       web={true}
                       link={"https://enatega.com/"}

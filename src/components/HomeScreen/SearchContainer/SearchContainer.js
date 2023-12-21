@@ -30,6 +30,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { SearchRestaurant } from "../../RestaurantComponent";
 import { useNavigate } from "react-router-dom";
 import RestMarker from "../../../assets/images/rest-map-2.png";
+import { useTranslation } from 'react-i18next';
 
 const autocompleteService = { current: null };
 const RESTAURANTS = gql`
@@ -41,6 +42,7 @@ function SearchContainer({
   search: searchProp,
   setSearch: setSearchProp,
 }) {
+  const { t } = useTranslation()
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("md"));
   const extraSmall = useMediaQuery(theme.breakpoints.down("sm"));
@@ -81,7 +83,7 @@ function SearchContainer({
   const handleClose = useCallback(() => {
     setOpen(false);
   }, []);
-  console.log("location", location);
+  
 
   useEffect(() => {
     loadMap();
@@ -138,6 +140,15 @@ function SearchContainer({
     fetchRestaurants({ variables });
     fetchRef.current = true;
   }, [location]);
+
+  const handleLocationButtonClick = () => {
+    setLoading(true);
+    getCurrentLocation(locationCallback);
+  };
+  
+  window.onload = () => {
+    handleLocationButtonClick();
+  };
 
   const { restaurants } = data?.nearByRestaurants ?? {};
   return (
@@ -393,7 +404,7 @@ function SearchContainer({
                           }
                         }}
                       >
-                        Find Restaurants
+                        {t('findRestaurants')}
                       </Button>
                     </Grid>
                   ) : null}
@@ -469,6 +480,11 @@ function SearchContainer({
                         }}
                         variant="outlined"
                         placeholder="Enter your full address"
+                        onKeyPress={(event) => { if(event.key === 'Enter'){
+                          if (location) {
+                            navigateTo("/restaurant-list");
+                          }
+                         } }}
                         InputLabelProps={{ style: { display: "none" } }}
                         fullWidth
                         InputProps={{
@@ -564,6 +580,7 @@ function SearchContainer({
                   xs={12}
                   sm={3}
                   style={{ paddingLeft: "10px", textAlign: "center" }}
+                  
                 >
                   <Button
                     variant="contained"
@@ -578,7 +595,7 @@ function SearchContainer({
                       }
                     }}
                   >
-                    Find Restaurants
+                    {t('findRestaurants')}
                   </Button>
                 </Grid>
               ) : null}

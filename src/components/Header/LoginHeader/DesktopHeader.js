@@ -10,8 +10,10 @@ import { ReactComponent as Logo } from "../../../assets/images/logo.svg";
 import { useTheme } from "@emotion/react";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import PersonIcon from "@mui/icons-material/Person";
+import { useTranslation } from 'react-i18next';
 
 function LoginDesktopHeader({ title, showIcon, showCart = false }) {
+  const { t } = useTranslation();
   const classes = useStyle();
   const theme = useTheme();
   const location = useLocation();
@@ -45,7 +47,7 @@ function LoginDesktopHeader({ title, showIcon, showCart = false }) {
                     color="textSecondary"
                     className={`${classes.ml} ${classes.font700}`}
                   >
-                    {"Login"}
+                    {t('loginBtn')}
                   </Typography>
                 </Button>
               </RouterLink>

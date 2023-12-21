@@ -105,7 +105,7 @@ function Restaurants() {
           {loading ? (
             <CircularProgress color="primary" size={48} />
           ) : (
-            <Typography>Unable to load data </Typography>
+            <Typography>Unable to load data</Typography>
           )}
         </Box>
       </Grid>
@@ -175,30 +175,21 @@ function Restaurants() {
           />
         </Grid>
       </Box>
-      <Box
+      {activeOrders.length > 0 ? (<Box
         style={{
           backgroundColor: "#8EE590",
           padding: mobile ? "10px" : "80px 90px",
           width: "100%",
         }}
-      >
-        <Grid container spacing={2}>
-          {activeOrders.length > 0 ? (
-            activeOrders.map((item) => (
+      ><Grid container spacing={2}>
+          {activeOrders.map((item) => (
               <Grid key={item.id} item sm={12} xl={6} lg={6}>
                 {mobile ? null : <DetailedOrderCard key={item._id} {...item} />}
-              </Grid>
-            ))
-          ) : (
-            <Grid item xs={12}>
-              <Typography variant="body1" color="white" align="center">
-                You have no active orders.
-              </Typography>
-            </Grid>
-          )}
+              </Grid> 
+            ))}
         </Grid>
-      </Box>
-      {search ? null : (
+      </Box>) : null}
+      {restaurantSections.length<1 ? null : (
         <Box className={classes.topRestContainer}>
           <Box className={classes.topRestWrapper}>
             <Grid container item>
@@ -212,7 +203,7 @@ function Restaurants() {
         </Box>
       )}
 
-      <Box style={{ width: "100%", minHeight: "100vh" }}>
+    <Box style={{ width: "100%", minHeight: "100vh" }}>
         <RestaurantGrid
           checkCart={checkCart}
           restaurants={search ? searchRestaurants(search) : restaurants}

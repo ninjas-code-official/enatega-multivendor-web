@@ -99,32 +99,35 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   tipRow: {
-    "& .MuiButton-outlined": {
-      "& .MuiButton-label": {
-        color: theme.palette.text.secondary,
-      },
+    "& .MuiButton-root.MuiButton-outlined": {
       borderRadius: "0px",
       margin: theme.spacing(0, 1),
       backgroundColor: "transparent",
+      "& .MuiButton-label": {
+        color: theme.palette.text.secondary,
+      },
       "&:hover": {
-        "& .MuiButton-label": {
-          color: theme.palette.text.primary,
-        },
         backgroundColor: theme.palette.primary.main,
+        color: theme.palette.text.primary,
+        "& .MuiButton-label": {
+          color: theme.palette.primary.main,
+        },
+        borderColor: theme.palette.primary.main, 
       },
     },
-    "& .MuiButton-contained": {
-      "& .MuiButton-label": {
-        color: theme.palette.text.primary,
-      },
+    "& .MuiButton-root.MuiButton-contained": {
       borderRadius: "0px",
       margin: theme.spacing(0, 1),
       backgroundColor: theme.palette.primary.main,
+      "& .MuiButton-label": {
+        color: theme.palette.text.primary,
+      },
       "&:hover": {
         backgroundColor: theme.palette.primary.main,
       },
     },
   },
+  
   inputprops: {
     ...theme.typography.subtitle1,
     backgroundColor: theme.palette.grey[200],
@@ -172,6 +175,12 @@ const useStyle = makeStyles((theme) => ({
     width: 120,
     borderRadius: 10,
     padding: 0,
+    opacity: 1,
+    transition: "opacity 0.3s",
+    "&:hover": {
+      backgroundColor: "#959191",
+      opacity: 0.7,
+    },
   },
   largeText: {
     fontSize: "1.775rem",

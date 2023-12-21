@@ -1,6 +1,9 @@
 import makeStyles from "@mui/styles/makeStyles";
 
 const useStyles = makeStyles((theme) => ({
+  link: {
+    textDecoration: "none",
+  },
   disabledText: {
     color: "black",
   },
@@ -39,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     padding: 13,
     width: 100,
     marginTop: theme.spacing(2),
-    border: "1px solid",
+    border: "2px solid",
+    borderColor: theme.palette.button.main
   },
   reOrder: {
     maxWidth: "auto",

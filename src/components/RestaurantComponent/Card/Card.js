@@ -19,6 +19,7 @@ import { addFavouriteRestaurant, profile } from "../../../apollo/server";
 import ConfigurationContext from "../../../context/Configuration";
 import UserContext from "../../../context/User";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
 
 const ADD_FAVOURITE = gql`
   ${addFavouriteRestaurant}
@@ -35,6 +36,7 @@ function PricingDelivery({
   isSmall,
   index,
 }) {
+  
   const classes = useStyles();
   const theme = useTheme();
   const containerStyle = !grid
@@ -108,6 +110,7 @@ function PricingDelivery({
   );
 }
 function Card(props) {
+  const { t } = useTranslation();
   const item = props.data ?? null;
   const navigateTo = useNavigate();
   const { profile } = useContext(UserContext);
@@ -128,7 +131,7 @@ function Card(props) {
   function onCompleted() {
     props.showMessage({
       type: "success",
-      message: "Favourite list updated.",
+      message: t('favouriteListUpdated'),
     });
   }
 

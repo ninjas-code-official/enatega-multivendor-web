@@ -1,6 +1,6 @@
 import { Box, CircularProgress } from "@mui/material";
 import { useJsApiLoader } from "@react-google-maps/api";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { getToken, onMessage } from "firebase/messaging";
 import { initialize, isFirebaseSupported } from "./firebase";
@@ -33,8 +33,11 @@ import * as Sentry from "@sentry/react";
 import AuthRoute from "./routes/AuthRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import VerifyPhone from "./screens/VerifyPhone/VerifyPhone";
+import UserContext from "./context/User";
+import Settings from "./screens/Settings/Settings";
 
 function App() {
+  const { isLoggedIn } = useContext(UserContext);
   const [message, setMessage] = useState(null);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -49,7 +52,7 @@ function App() {
           .then(() => {
             getToken(messaging, {
               vapidKey:
-                "BJhEPGTFlkP_iIOlscRX036TS4reCJsIL9HS3na9UhHuUoxvU45MIdkqjzn_3k7sEwLXAv1TU8SQR1heJyVPq8M",
+                "BOpVOtmawD0hzOR0F5NQTz_7oTlNVwgKX_EgElDnFuILsaE_jWYPIExAMIIGS-nYmy1lhf2QWFHQnDEFWNG_Z5w",
             })
               .then((token) => {
                 localStorage.setItem("messaging-token", token);
@@ -207,12 +210,16 @@ function App() {
           }
         />
         <Route
-          path={"/checkout"}
+          path={"/settings"}
           element={
             <PrivateRoute>
-              <Checkout />
+              <Settings />
             </PrivateRoute>
           }
+        />
+        <Route
+          path={"/checkout"}
+          element={isLoggedIn ? <Checkout /> : <Login />}
         />
         <Route
           path={"/order-detail/:id"}

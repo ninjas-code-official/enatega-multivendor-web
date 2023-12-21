@@ -196,7 +196,7 @@ function Checkout() {
   }
 
   function update(cache, { data: { placeOrder } }) {
-    console.log("update");
+    
     if (placeOrder && placeOrder.paymentMethod === "COD") {
       const data = cache.readQuery({ query: ORDERS });
       if (data) {
@@ -209,7 +209,7 @@ function Checkout() {
   }
 
   function onError(error) {
-    console.log("Check-out Error", error);
+  
     showMessage({
       type: "error",
       message: error.message,

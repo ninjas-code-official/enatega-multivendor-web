@@ -214,22 +214,24 @@ const useStyles = makeStyles((theme) => ({
   },
   bannerContainer: {
     position: "absolute",
-    right: "2%",
-    top: "2.5%",
+    left: "52%",
+    top: "5%",
     zIndex: 1000,
     [theme.breakpoints.down("md")]: {
       position: "relative",
     },
   },
   bannerTwo: {
-    height: "auto",
-    maxWidth: "80vw",
-    marginTop: "42%",
+    maxWidth: "40vw",
+    width: "40%",
+    height: "40%",
+    marginTop: "15%",
   },
   bannerOne: {
-    maxWidth: "80vw",
-    height: "auto",
-    marginTop: "20%",
+    width: "40%",
+    height: "40%",
+    maxWidth: "60vw",
+    marginTop: "30%",
   },
   topBottomMargin: {
     marginTop: "10rem",

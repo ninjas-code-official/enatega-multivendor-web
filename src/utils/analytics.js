@@ -55,7 +55,7 @@ export async function track(event, options) {
 
   if (properties) {
     await amplitude.getInstance().logEvent(event, properties);
-    console.log(properties);
+    
   } else {
     await amplitude.getInstance().logEvent(event);
   }
