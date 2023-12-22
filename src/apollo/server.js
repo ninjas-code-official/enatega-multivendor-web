@@ -553,6 +553,8 @@ export const getConfiguration = `query Configuration{
     googleMapLibraries
     googleColor
     webSentryUrl
+    publishableKey
+    clientId
   }
 }`;
 

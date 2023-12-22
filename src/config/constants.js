@@ -5,12 +5,11 @@ import ConfigurationContext from "../../src/context/Configuration";
 const ConfigurableValues = () => {
   const configuration = useContext(ConfigurationContext);
   console.log("configuration", configuration);
-  const SERVER_URL = "http://10.97.39.98:8001/";
-  const WS_SERVER_URL = "ws://10.97.39.98:8001/";
+  const SERVER_URL = "http://10.97.38.21:8001/";
+  const WS_SERVER_URL = "ws://10.97.38.21:8001/";
   const GOOGLE_CLIENT_ID = configuration.webClientID;
-  const STRIPE_PUBLIC_KEY = "pk_test_lEaBbVGnTkzja2FyFiNlbqtw";
-  const PAYPAL_KEY =
-    "AeGIgSX--JEVwoQgLjGOb8gh1DUJG0MFVgLc2mBIe6_V5NefV0LM3L78m01fLLI6U2FFB-qJr4ErrtL1";
+  const STRIPE_PUBLIC_KEY = configuration.publishableKey;
+  const PAYPAL_KEY = configuration.clientId;
   const GOOGLE_MAPS_KEY = configuration.googleApiKey;
   const AMPLITUDE_API_KEY = configuration.webAmplitudeApiKey;
   const LIBRARIES = "places,drawing,geometry,localContext,visualization".split(
