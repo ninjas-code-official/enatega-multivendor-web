@@ -479,6 +479,11 @@ function SearchContainer({
                         }}
                         variant="outlined"
                         placeholder="Enter your full address"
+                        onKeyPress={(event) => { if(event.key === 'Enter'){
+                          if (location) {
+                            navigateTo("/restaurant-list");
+                          }
+                         } }}
                         InputLabelProps={{ style: { display: "none" } }}
                         fullWidth
                         InputProps={{
@@ -574,6 +579,7 @@ function SearchContainer({
                   xs={12}
                   sm={3}
                   style={{ paddingLeft: "10px", textAlign: "center" }}
+                  
                 >
                   <Button
                     variant="contained"

@@ -162,8 +162,32 @@ const zh = {
 orderCompleted: "订单已成功完成。感谢您的订购",
 reorder: "重新订购",
 review: "评论",
+subTitle: "选择 1",
+placeholder: "例如，不要蛋黄酱",
+phoneNumMissing: "电话号码缺失",
+updatePhone: "更新您的电话",
+number: "号码？",
+secureAcc: "我们需要这个来保护您的账户",
+verifyPhone: "验证您的电话",
+skipNow: "现在跳过",
+favouriteListUpdated: "收藏列表已更新",
+pendingText: "等待来自的回复",
+acceptedText: "预计准备时间",
+orderLateText: "抱歉！您的订单有点晚了。",
+riderPickText: "您的骑手会在准备好后取货。",
+orderIs: "您的订单是",
+orderAssigned: "分配给骑手",
+orderAssignedToRider: "您的订单已分配给我们的骑手，订单准备好后将被取货。",
+riderOnWay: "您的骑手正在路上。",
+orderHasBeen: "您的订单已",
+enjoyYourMeal: "享用您的餐点！",
+cancelled:"已取消",
+personalDetail: "个人详情",
+voucherCode: "优惠码",
+pickUp: "取件",
 warning: "警告",
   warningText: "一个或多个项目不可用"
+
 }
 }
 export default zh;

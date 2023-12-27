@@ -163,8 +163,32 @@ const fr = {
 orderCompleted: "Commande complétée avec succès. Merci d'avoir passé commande",
 reorder: "RECOMMANDER",
 review: "Critique",
+subTitle: "Sélectionner 1",
+placeholder: "par exemple, sans mayonnaise",
+phoneNumMissing: "Numéro de téléphone manquant",
+updatePhone: "Mettez à jour votre téléphone",
+  number: "numéro ?",
+  secureAcc: "Nous avons besoin de ceci pour sécuriser votre compte",
+  verifyPhone: "Vérifiez votre téléphone",
+  skipNow: "Passer maintenant",
+  favouriteListUpdated: "Liste de favoris mise à jour",
+  pendingText: "En attente d'une réponse de",
+  acceptedText: "Temps de préparation estimé",
+  orderLateText: "Désolé ! Votre commande est un peu en retard.",
+  riderPickText: "Votre livreur la récupérera une fois prête.",
+  orderIs: "Votre commande est",
+  orderAssigned: "Assignée au livreur",
+  orderAssignedToRider: "Votre commande a été assignée à notre livreur, elle sera récupérée une fois prête.",
+  riderOnWay: "Votre livreur est en chemin.",
+  orderHasBeen: "Votre commande a été",
+  enjoyYourMeal: "Bon appétit !",
+  cancelled:"Annulée",
+  personalDetail: "Détail personnel",
+  voucherCode: "Code de réduction",
+  pickUp: "Ramassage",
 warning: "Avertissement",
 warningText: "Un ou plusieurs éléments ne sont pas disponibles"
+
   }
 }
 export default fr;

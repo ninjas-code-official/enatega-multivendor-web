@@ -14,12 +14,14 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { phoneExist } from "../../apollo/server";
 import { gql, useMutation } from "@apollo/client";
+import { useTranslation } from 'react-i18next';
 
 const PHONE = gql`
   ${phoneExist}
 `;
 
 function PhoneNumber() {
+  const { t  } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const [error, setError] = useState("");
@@ -29,7 +31,7 @@ function PhoneNumber() {
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
-
+console.log(phoneError)
   const [PhoneEixst] = useMutation(PHONE, {
     onCompleted,
     onError,
@@ -92,14 +94,14 @@ function PhoneNumber() {
         </Box>
       </Box>
       <Typography variant="h5" className={classes.font700}>
-        Update your phone <br /> number?
+        {t('updatePhone')} <br /> {t('number')}
       </Typography>
       <Box mt={theme.spacing(1)} />
       <Typography
         variant="caption"
         className={`${classes.caption} ${classes.fontGrey}`}
       >
-        We need this to secure your account
+        {t('secureAcc')}
       </Typography>
       <Box mt={theme.spacing(4)} />
       <form ref={formRef}>
@@ -122,7 +124,7 @@ function PhoneNumber() {
           />
         </Box>
         <Typography variant="caption" style={{ color: "red" }}>
-          {phoneError}
+          {t('mobileErr1')}
         </Typography>
         <Box mt={theme.spacing(8)} />
         <Button
@@ -144,7 +146,7 @@ function PhoneNumber() {
               variant="caption"
               className={`${classes.caption} ${classes.font700}`}
             >
-              CONTINUE
+              {t('continue')}
             </Typography>
           )}
         </Button>

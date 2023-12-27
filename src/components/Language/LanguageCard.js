@@ -8,9 +8,8 @@ import {
   useTheme,
 } from "@mui/material";
 import gql from "graphql-tag";
-import React, { useCallback, useContext, useRef, useState, useEffect } from "react";
+import React, { useCallback, useRef, useState} from "react";
 import { updateUser } from "../../apollo/server";
-import UserContext from "../../context/User";
 import FlashMessage from "../FlashMessage";
 import useStyle from "./styles";
 //import { Link as RouterLink } from "react-router-dom";
@@ -37,7 +36,6 @@ function LanguageCard() {
   const theme = useTheme();
   const formRef = useRef(null);
   const classes = useStyle();
-  const { profile } = useContext(UserContext);
   
   const [error, setError] = useState({});
   const [mutate, { loading }] = useMutation(UPDATEUSER, {
@@ -62,11 +60,8 @@ function LanguageCard() {
 
   const currentLang = localStorage.getItem('enatega-language');
   const [selectedLanguage, setSelectedLanguage] = useState(currentLang? currentLang : 'en');
-
-  useEffect(() => {
-    // Update the selected language whenever the profile changes
-    setSelectedLanguage(profile?.language || 'en');
-  }, [profile]);
+  console.log(selectedLanguage)
+ 
 
   const handleLanguageChange = (event) => {
     setSelectedLanguage(event.target.value);

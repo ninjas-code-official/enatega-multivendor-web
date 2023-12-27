@@ -163,8 +163,32 @@ const de = {
 orderCompleted: "Bestellung erfolgreich abgeschlossen. Vielen Dank für Ihre Bestellung",
 reorder: "NEUBESTELLEN",
 review: "Überprüfung",
+subTitle: "Auswahl 1",
+placeholder: "z.B. Keine Mayo",
+phoneNumMissing: "Telefonnummer fehlt",
+updatePhone: "Aktualisieren Sie Ihr Telefon",
+  number: "Nummer?",
+  secureAcc: "Wir brauchen das, um Ihr Konto zu sichern",
+  verifyPhone: "Überprüfen Sie Ihr Telefon",
+  skipNow: "Jetzt überspringen",
+  favouriteListUpdated: "Favoritenliste aktualisiert",
+  pendingText: "Warten auf Antwort von",
+  acceptedText:  "Geschätzte Zubereitungszeit",
+  orderLateText: "Entschuldigung! Ihre Bestellung kommt etwas spät.",
+  riderPickText: "Ihr Fahrer wird es abholen, sobald es bereit ist.",
+  orderIs: "Ihre Bestellung ist",
+  orderAssigned: "Dem Fahrer zugewiesen",
+  orderAssignedToRider: "Ihre Bestellung wurde unserem Fahrer zugewiesen und wird abgeholt, sobald sie bereit ist.",
+  riderOnWay: "Ihr Fahrer ist unterwegs.",
+  orderHasBeen: "Ihre Bestellung wurde",
+  enjoyYourMeal: "Guten Appetit!",
+  cancelled: "Abgebrochen",
+  personalDetail: "Persönliche Angaben",
+  voucherCode: "Gutscheincode",
+  pickUp: "Abholung",
 warning: "Warnung",
   warningText: "Ein oder mehrere Elemente sind nicht verfügbar"
+
 }
 }
 export default de;

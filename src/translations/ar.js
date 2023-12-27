@@ -162,8 +162,32 @@ const ar = {
 orderCompleted: "تم إكمال الطلب بنجاح. شكرًا لك على طلبك",
 reorder: "إعادة الطلب",
 review: "مراجعة",
+subTitle: " اختر ١",
+placeholder: "على سبيل المثال، بدون مايونيز",
+phoneNumMissing: "الرقم الهاتفي مفقود",
+updatePhone: "قم بتحديث هاتفك",
+  number: "الرقم؟",
+  secureAcc: "نحتاج هذا لتأمين حسابك",
+  verifyPhone: "تحقق من هاتفك",
+  skipNow: "تخطى الآن",
+  favouriteListUpdated: "تم تحديث قائمة المفضلات",
+  pendingText: "في انتظار الرد من",
+  acceptedText: "الوقت المقدر للتحضير",
+  orderLateText: "آسف! طلبك متأخر قليلاً.",
+  riderPickText: "سيقوم سائقك بالحصول عليه عندما يكون جاهزًا.",
+  orderIs: "طلبك هو",
+  orderAssigned: "تم تعيينه للسائق",
+  orderAssignedToRider: "تم تعيين طلبك لسائقنا، سيتم استلام الطلب عندما يكون جاهزًا.",
+  riderOnWay: "سائقك في الطريق.",
+  orderHasBeen: "تم طلبك",
+  enjoyYourMeal: "استمتع بوجبتك!",
+  cancelled:"تم الإلغاء",
+  personalDetail: "التفاصيل الشخصية",
+  voucherCode: "رمز القسيمة",
+  pickUp: "استلام",
 warning: "تحذير",
   warningText: "أحد العناصر غير متاح"
+
     }
   };
   export default ar;

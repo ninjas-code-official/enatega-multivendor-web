@@ -479,7 +479,7 @@ function Checkout() {
       showMessage({
         alive: true,
         type: "Error",
-        message: "Phone Number is missing",
+        message: t('phoneNumMissing'),
       });
 
       setTimeout(() => {
@@ -598,7 +598,7 @@ function Checkout() {
                     fontWeight: 600,
                   }}
                 >
-                  {isPickUp ? "Pickup" : t("delivery")}
+                  {isPickUp ? t('pickUp') : t('delivery')}
                 </Typography>
                 <Button
                   variant="contained"
