@@ -8,7 +8,7 @@ import {
   useTheme,
 } from "@mui/material";
 import gql from "graphql-tag";
-import React, { useCallback, useContext, useRef, useState, useEffect } from "react";
+import React, { useCallback, useContext, useRef, useState} from "react";
 import { updateUser } from "../../apollo/server";
 import UserContext from "../../context/User";
 import FlashMessage from "../FlashMessage";
@@ -37,7 +37,6 @@ function LanguageCard() {
   const theme = useTheme();
   const formRef = useRef(null);
   const classes = useStyle();
-  const { profile } = useContext(UserContext);
   
   const [error, setError] = useState({});
   const [mutate, { loading }] = useMutation(UPDATEUSER, {

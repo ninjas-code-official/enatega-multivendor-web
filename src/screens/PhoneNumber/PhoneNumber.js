@@ -31,7 +31,7 @@ function PhoneNumber() {
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
   const [phoneError, setPhoneError] = useState("");
-
+console.log(phoneError)
   const [PhoneEixst] = useMutation(PHONE, {
     onCompleted,
     onError,
