@@ -53,19 +53,6 @@ function Stripe() {
     setMainError(messageObj);
   }, []);
 
-  // const handleResponse = useCallback(async () => {
-  //   await clearCart();
-  //   const result = await client.query({
-  //     query: ORDERS,
-  //     fetchPolicy: "network-only",
-  //   });
-  //   const order = result.data.orders.find(
-  //     (item) => item.orderId === data.orderStripe.orderId
-  //   );
-  //   setLoader(false);
-  //   navigate(`/order-detail/${order._id}`, { replace: true });
-  // }, [clearCart, client, data, navigate]);
-
   const handleResponse = async () => {
     await clearCart();
     const result = await client.query({
@@ -108,42 +95,6 @@ function Stripe() {
       });
   };
 
-  // const onToken = useCallback(
-  //   (token) => {
-  //     setLoader(true);
-  //     fetch(`${SERVER_URL}stripe/charge?id=${data.orderStripe.orderId}`, {
-  //       method: "post",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(token),
-  //     })
-  //       .then((response) => response.json())
-  //       .then((result) => {
-  //         if (result.redirect === "stripe/success") {
-  //           handleResponse();
-  //         } else {
-  //           showMessage({
-  //             type: "error",
-  //             message: "Stripe card error",
-  //           });
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.log("error", error);
-  //         showMessage({
-  //           type: "error",
-  //           message: error.message,
-  //         });
-  //       });
-  //   },
-  //   [data.orderStripe.orderId, handleResponse, showMessage]
-  // );
-
-  // useEffect(() => {
-  //   Analytics.track(Analytics.events.NAVIGATE_TO_STRIPE);
-  // }, []);
-
   useEffect(() => {
     const trackEvent = async () => {
       await Analytics.track(Analytics.events.NAVIGATE_TO_STRIPE);
@@ -174,7 +125,6 @@ function Stripe() {
       </Grid>
     );
   }
-  //const order = data?.orderStripe ?? undefined;
 
   const order = data && data.orderStripe;
 
@@ -184,7 +134,6 @@ function Stripe() {
         open={Boolean(mainError.type)}
         severity={mainError.type}
         alertMessage={mainError.message}
-        //handleClose={toggleSnackbar}
       />
       <Header />
       <Grid

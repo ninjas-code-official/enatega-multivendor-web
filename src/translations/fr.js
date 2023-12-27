@@ -185,7 +185,10 @@ updatePhone: "Mettez à jour votre téléphone",
   cancelled:"Annulée",
   personalDetail: "Détail personnel",
   voucherCode: "Code de réduction",
-  pickUp: "Ramassage"
+  pickUp: "Ramassage",
+warning: "Avertissement",
+warningText: "Un ou plusieurs éléments ne sont pas disponibles"
+
   }
 }
 export default fr;

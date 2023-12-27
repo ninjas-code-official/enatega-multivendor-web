@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 import ConfigurationContext from "../../../context/Configuration";
 import { Status } from "../Status/Status";
 import useStyles from "./styles";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 function DetailedOrderCard(props) {
   const { t } = useTranslation();
@@ -14,12 +14,12 @@ function DetailedOrderCard(props) {
 
   const configuration = useContext(ConfigurationContext);
   const STATUS_ORDER = [
-    t('pending'),
-    t('accepted'),
-    t('assigned'),
-    t('picked'),
-    t('delivered'),
-    t('completed'),
+    t("pending"),
+    t("accepted"),
+    t("assigned"),
+    t("picked"),
+    t("delivered"),
+    t("completed"),
   ];
   return (
     <RouterLink
@@ -58,7 +58,10 @@ function DetailedOrderCard(props) {
                 numberoflines={1}
                 className={classes.textBold}
               >
-                  {(props.restaurant?.name ?? "...").slice(0, 8).replace(/\s/g, "") + (props.restaurant?.name?.length > 9 ? "..." : "")}
+                {(props.restaurant?.name ?? "...")
+                  .slice(0, 8)
+                  .replace(/\s/g, "") +
+                  (props.restaurant?.name?.length > 9 ? "..." : "")}
               </Typography>
               <Box
                 display="flex"
@@ -70,8 +73,8 @@ function DetailedOrderCard(props) {
               >
                 <Box display="flex" marginBottom={{ xs: "10px", sm: 0 }}>
                   <Status
-                    firstCol="#90EA93"
-                    secondCol="#C4C4C4"
+                    firstCol={theme.palette.primary.main}
+                    secondCol={theme.palette.primary.darkest}
                     isEta={false}
                     first={true}
                     last={false}
@@ -105,11 +108,11 @@ function DetailedOrderCard(props) {
                 //className={classes.status}
                 className={`${classes.textBold} ${classes.smallText}`}
                 style={{
-                  backgroundColor: "#90EA93",
+                  backgroundColor: theme.palette.primary.main,
                   borderRadius: "8px",
                   padding: "6px 15px 6px 15px",
                   marginLeft: "10px",
-                  boxShadow: "3px 3px 3px #cfcfcf"
+                  boxShadow: "3px 3px 3px theme.palette.primary.lightest",
                 }}
               >
                 <Typography
@@ -123,19 +126,19 @@ function DetailedOrderCard(props) {
             </Box>
 
             <Box display={{ xs: "block", sm: "block" }}>
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              pt={theme.spacing(1)}
-              style={{color: "black", fontWeight: 700, fontSize: 17}}
-            >
-              <Box display="flex">
-              {props?.items.length} item(s) |{" "}
-            {`${configuration.currencySymbol} ${parseFloat(
-              props.orderAmount
-            ).toFixed(2)}`}
+              <Box
+                display="flex"
+                justifyContent="space-between"
+                pt={theme.spacing(1)}
+                style={{ color: "black", fontWeight: 700, fontSize: 17 }}
+              >
+                <Box display="flex">
+                  {props?.items.length} item(s) |{" "}
+                  {`${configuration.currencySymbol} ${parseFloat(
+                    props.orderAmount
+                  ).toFixed(2)}`}
+                </Box>
               </Box>
-            </Box>
 
               <Typography
                 gutterBottom
@@ -144,18 +147,12 @@ function DetailedOrderCard(props) {
                 pt={2}
               >
                 {props.orderStatus === "PENDING"
-                  ? t('orderPending')
+                  ? t("orderPending")
                   : props.orderStatus === "ASSIGNED" ||
                     props.orderStatus === "ACCEPTED"
-                  ? t('restaurantDeliver').slice(
-                      0,
-                      40
-                    ) + "..."
+                  ? t("restaurantDeliver").slice(0, 40) + "..."
                   : props.orderStatus === "PICKED"
-                  ? t('riderDeliver').slice(
-                      0,
-                      40
-                    ) + "..."
+                  ? t("riderDeliver").slice(0, 40) + "..."
                   : null}
               </Typography>
             </Box>

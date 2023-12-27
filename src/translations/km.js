@@ -163,6 +163,7 @@ const km = {
 orderCompleted: "ការបញ្ជាទិញបានបញ្ចប់ដោយជោគជ័យ។ សូមអរគុណចំពោះការបញ្ជាទិញរបស់អ្នក",
 reorder: "កម្មវិធីការបញ្ជាទិញឡើងវិញ",
 review: "ពិនិត្យឡើងវិញ",
+
 subTitle: "ជ្រើសរើស ១",
 placeholder: "ឧបករណ៍ មិនមាចវ៉ាអ៊ី",
 phoneNumMissing: "លេខទូរស័ព្ទបានខុសបាត់",
@@ -185,7 +186,10 @@ updatePhone: "ធ្វើបច្ចុប្បន្នភាពទូរស
   cancelled:"បោះបង់",
   personalDetail: "ព័ត៌មានផ្ទាល់ខ្លួន",
   voucherCode: "លេខ​កូដ​ប៉ាន់ស្សារ",
-  pickUp: "យកមកដល់"
+  pickUp: "យកមកដល់",
+warning: "ប្រុងប្រយ័ត្ន",
+warningText: "មានមួយឬច្រើនធាតុមួយចំនួនមិនមានទេ"
+
 }
 }
 export default km;

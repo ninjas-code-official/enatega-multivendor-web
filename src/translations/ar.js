@@ -184,7 +184,10 @@ updatePhone: "قم بتحديث هاتفك",
   cancelled:"تم الإلغاء",
   personalDetail: "التفاصيل الشخصية",
   voucherCode: "رمز القسيمة",
-  pickUp: "استلام"
+  pickUp: "استلام",
+warning: "تحذير",
+  warningText: "أحد العناصر غير متاح"
+
     }
   };
   export default ar;

@@ -4,10 +4,10 @@ import React, { useContext } from "react";
 import ConfigurationContext from "../../../context/Configuration";
 import useStyles from "./styles";
 import RiderImage from "../../../assets/images/rider.png";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 function EmptyView() {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const configuration = useContext(ConfigurationContext);
   const classes = useStyles();
   const theme = useTheme();
@@ -16,7 +16,7 @@ function EmptyView() {
       <Box
         style={{
           background:
-            "linear-gradient(260.99deg, #90EA93 2.79%, #6FCF97 96.54%)",
+            "linear-gradient(260.99deg, theme.palette.primary.main 2.79%, theme.palette.success.light 96.54%)",
           borderRadius: "20px",
           padding: "30px 20px",
         }}
@@ -44,7 +44,7 @@ function EmptyView() {
             }}
             align="left"
           >
-           {t('yourCart')}
+            {t("yourCart")}
           </Typography>
 
           <Typography
@@ -54,7 +54,7 @@ function EmptyView() {
             className={classes.textBold}
             align="center"
           >
-            {t('startAdding')}
+            {t("startAdding")}
           </Typography>
         </Box>
       </Box>
@@ -68,7 +68,7 @@ function EmptyView() {
           }}
         >
           <Typography variant="body1" className={classes.smallFont}>
-            {t('subTotal')}
+            {t("subTotal")}
           </Typography>
           <Typography variant="body1" className={classes.smallFont}>
             {`${configuration.currencySymbol}`} 0.00
@@ -86,7 +86,7 @@ function EmptyView() {
             color="textSecondary"
             className={clsx(classes.textBold, classes.smallFont)}
           >
-            {t('total')} (Incl. TAX)
+            {t("total")} (Incl. TAX)
           </Typography>
           <Typography
             variant="body1"
@@ -107,7 +107,7 @@ function EmptyView() {
             <Typography
               className={clsx(classes.checkoutText, classes.whiteText)}
             >
-              {t('goToCheckout')}
+              {t("goToCheckout")}
             </Typography>
           </Button>
         </Box>

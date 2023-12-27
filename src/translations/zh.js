@@ -184,7 +184,10 @@ enjoyYourMeal: "享用您的餐点！",
 cancelled:"已取消",
 personalDetail: "个人详情",
 voucherCode: "优惠码",
-pickUp: "取件"
+pickUp: "取件",
+warning: "警告",
+  warningText: "一个或多个项目不可用"
+
 }
 }
 export default zh;

@@ -68,7 +68,7 @@ const useStyle = makeStyles((theme) => ({
     position: "relative",
     borderRadius: 40,
     boxShadow:
-      "inset 0 0 0 1000px rgba(0, 0, 0, 0), inset 0 0 0 1000px #00000040",
+      "inset 0 0 0 1000px rgba(0, 0, 0, 0), inset 0 0 0 1000px theme.palette.common.lightBlack",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

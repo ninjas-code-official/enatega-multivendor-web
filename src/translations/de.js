@@ -185,7 +185,10 @@ updatePhone: "Aktualisieren Sie Ihr Telefon",
   cancelled: "Abgebrochen",
   personalDetail: "Persönliche Angaben",
   voucherCode: "Gutscheincode",
-  pickUp: "Abholung"
+  pickUp: "Abholung",
+warning: "Warnung",
+  warningText: "Ein oder mehrere Elemente sind nicht verfügbar"
+
 }
 }
 export default de;
