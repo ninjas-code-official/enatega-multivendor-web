@@ -8,9 +8,8 @@ import {
   useTheme,
 } from "@mui/material";
 import gql from "graphql-tag";
-import React, { useCallback, useContext, useRef, useState} from "react";
+import React, { useCallback, useRef, useState} from "react";
 import { updateUser } from "../../apollo/server";
-import UserContext from "../../context/User";
 import FlashMessage from "../FlashMessage";
 import useStyle from "./styles";
 //import { Link as RouterLink } from "react-router-dom";
