@@ -8,7 +8,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import React, { useCallback, useContext, useEffect, useState } from "react";
@@ -102,7 +102,6 @@ function OrderDetail() {
   }
 
   function onError(error) {
-    
     FlashMessage({
       message: error.networkError.result.errors[0].message,
     });
@@ -292,10 +291,7 @@ function OrderDetail() {
       <Footer />
 
       <Modal isOpen={isOpen} onRequestClose={closeModal}>
-        <CloseIcon
-          className={classes.closeButton}
-          onClick={closeModal}
-        />
+        <CloseIcon className={classes.closeButton} onClick={closeModal} />
         <div className={classes.modalContainer}>
           <div className={classes.title}>
             <h2>Write a Review</h2>
@@ -323,7 +319,11 @@ function OrderDetail() {
             <div className={classes.submit}>
               {loadingMutation && <ThreeDots />}
               {!loadingMutation && (
-                <button onClick={onSubmit} className={classes.submitButton} disabled={rating < 2 || description.length < 1}>
+                <button
+                  onClick={onSubmit}
+                  className={classes.submitButton}
+                  disabled={rating < 2 || description.length < 1}
+                >
                   Submit
                 </button>
               )}

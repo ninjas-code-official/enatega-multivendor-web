@@ -185,7 +185,9 @@ const en = {
   cancelled:"Cancelled",
   personalDetail: "Personal Detail",
   voucherCode: "Voucher code",
-  pickUp: "Pickup"
+  pickUp: "Pickup",
+  warning: "warning",
+  warningText: "One or more item is not available"
 }
 }
 export default en;

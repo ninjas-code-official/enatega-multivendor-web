@@ -56,7 +56,7 @@ import RestMarker from "../../assets/images/rest-map-2.png";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import clsx from "clsx";
 import { useLocation } from "../../hooks";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import moment from "moment";
 
 const PLACEORDER = gql`
@@ -74,8 +74,7 @@ const PAYMENT = {
 };
 
 function Checkout() {
-
-  const { t  } = useTranslation();
+  const { t } = useTranslation();
   const classes = useStyle();
   const navigate = useNavigate();
   const [isClose, setIsClose] = useState(false);
@@ -401,13 +400,6 @@ function Checkout() {
       });
     }
   }
-  // const locationCallback = (error, data) => {
-  //   console.log(data);
-  //   if (error) {
-  //     return;
-  //   }
-  //   setLocation(data);
-  // };
 
   const locationCallback = (error, data) => {
     setLoadingLocation(false); // Stop loading
@@ -585,7 +577,7 @@ function Checkout() {
                   fontWeight: 600,
                 }}
               >
-               {t('deliveryTime')}
+                {t("deliveryTime")}
               </Typography>
               <Typography
                 style={{
@@ -625,7 +617,7 @@ function Checkout() {
                       textTransform: "capitalize",
                     }}
                   >
-                    {t('change')}
+                    {t("change")}
                   </Typography>
                 </Button>
                 <OrderOption
@@ -690,7 +682,7 @@ function Checkout() {
                           variant="caption"
                           fontWeight={800}
                         >
-                          {t('deliverTo')}:
+                          {t("deliverTo")}:
                         </Typography>
                         <Typography
                           style={{
@@ -746,7 +738,7 @@ function Checkout() {
                             <NearMeIcon
                               width={100}
                               height={100}
-                              style={{ color: "#000" }}
+                              style={{ color: theme.palette.common.black }}
                             />
                             <Typography
                               variant="subtitle2"
@@ -755,7 +747,7 @@ function Checkout() {
                               className={clsx(classes.smallText, classes.PH1)}
                               fontWeight={600}
                             >
-                              {t('currentLocation')}
+                              {t("currentLocation")}
                             </Typography>
                           </Box>
                           {loadingLocation && (

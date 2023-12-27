@@ -26,7 +26,10 @@ function CartItem(props) {
           }}
           style={{ background: theme.palette.primary.main }}
         >
-          <RemoveIcon fontSize="small" style={{ color: "#000" }} />
+          <RemoveIcon
+            fontSize="small"
+            style={{ color: theme.palette.common.black }}
+          />
         </IconButton>
         <Typography
           style={{
@@ -35,7 +38,7 @@ function CartItem(props) {
             color: theme.palette.common.black,
             padding: "5px 10px",
             borderRadius: 5,
-            border: "1px solid #000",
+            border: "1px solid theme.palette.common.black",
             margin: "0 8px",
           }}
         >
@@ -49,7 +52,11 @@ function CartItem(props) {
           }}
           style={{ background: theme.palette.primary.main }}
         >
-          <AddIcon fontSize="small" color="primary" style={{ color: "#000" }} />
+          <AddIcon
+            fontSize="small"
+            color="primary"
+            style={{ color: theme.palette.common.black }}
+          />
         </IconButton>
       </Box>
       <Box
