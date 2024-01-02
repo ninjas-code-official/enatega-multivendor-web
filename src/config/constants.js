@@ -5,8 +5,8 @@ import ConfigurationContext from "../../src/context/Configuration";
 const ConfigurableValues = () => {
   const configuration = useContext(ConfigurationContext);
   console.log("configuration", configuration);
-  const SERVER_URL = "http://10.97.34.116:8001/";
-  const WS_SERVER_URL = "ws://10.97.34.116:8001/";
+  const SERVER_URL = "https://enatega-multivendor.up.railway.app/";
+  const WS_SERVER_URL = "wss://enatega-multivendor.up.railway.app/";
   const GOOGLE_CLIENT_ID = configuration.webClientID;
   const STRIPE_PUBLIC_KEY = configuration.publishableKey;
   const PAYPAL_KEY = configuration.clientId;
