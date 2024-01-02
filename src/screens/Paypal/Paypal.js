@@ -126,9 +126,10 @@ function Paypal() {
             >
               <Box
                 style={{
-                  width: "100%",
+                  width: "50%",
                   height: "auto",
                   textAlign: "center",
+                  alignSelf: "center",
                 }}
               >
                 <PayPalButton

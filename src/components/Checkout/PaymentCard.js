@@ -19,8 +19,9 @@ import { ReactComponent as Payment } from "../../assets/icons/payment_method.svg
 import useStyles from "./styles";
 import UserContext from "../../context/User";
 import ConfigurationContext from "../../context/Configuration";
+import { useTranslation } from "react-i18next";
 
-const PAYMENT_OPTIONS = [
+/*const PAYMENT_OPTIONS = [
   {
     id: 0,
     payment: "STRIPE",
@@ -40,7 +41,7 @@ const PAYMENT_OPTIONS = [
     label: "Cash",
     icon: <CodIcon />,
   },
-];
+];*/
 
 function PaymentCard({
   paymentMethod,
@@ -50,7 +51,28 @@ function PaymentCard({
   loading,
   calculateTotal,
 }) {
-  
+  const { t } = useTranslation();
+  const PAYMENT_OPTIONS = [
+    {
+      id: 0,
+      payment: "STRIPE",
+      label: t("creditDebitCard"),
+      icon: <VisaIcon />,
+      icon1: <MastercardIcon />,
+    },
+    {
+      id: 1,
+      payment: "PAYPAL",
+      label: t("paypal"),
+      icon: <PayPalIcon />,
+    },
+    {
+      id: 2,
+      payment: "COD",
+      label: t("cash"),
+      icon: <CodIcon />,
+    },
+  ];
   const theme = useTheme();
   const classes = useStyles();
   const { cart } = useContext(UserContext);
@@ -78,7 +100,7 @@ function PaymentCard({
                 color="textSecondary"
                 fontWeight={800}
               >
-                Payment method
+                {t("paymentMethod")}
               </Typography>
             </Box>
             <Divider
@@ -169,7 +191,7 @@ function PaymentCard({
             color: theme.palette.common.black,
             padding: "8px 15px",
             borderRadius: 5,
-            border: "1px solid #000",
+            border: "1px solid theme.palette.common.black",
             margin: "0 8px",
           }}
         >
@@ -198,7 +220,7 @@ function PaymentCard({
                 fontWeight: 700,
               }}
             >
-              Place Order
+              {t("orderBtn")}
             </Typography>
           )}
         </Button>

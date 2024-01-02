@@ -10,8 +10,10 @@ import {
 } from "@mui/material";
 import Blog1 from "../../../assets/images/blog1.png";
 import Blog2 from "../../../assets/images/blog2.png";
+import { useTranslation } from "react-i18next";
 
 export default function Blogs() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
@@ -36,7 +38,7 @@ export default function Blogs() {
         <Button
           style={{
             backgroundColor: "white",
-            color: "#3C8F7C",
+            color: theme.palette.button.main,
             width: 160,
             margin: mobile ? "1rem 0 1rem 0" : 0,
             fontWeight: 700,
@@ -46,7 +48,7 @@ export default function Blogs() {
           variant="contained"
           disableElevation
         >
-          Read All
+          {t("readAll")}
         </Button>
         <Box mt={mobile ? 5 : 0} />
       </Grid>
@@ -55,6 +57,7 @@ export default function Blogs() {
 }
 
 function BlogComponent({ title, desc }) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -65,8 +68,9 @@ function BlogComponent({ title, desc }) {
         <Box
           style={{
             width: small ? "90%" : "80%",
-            backgroundColor: "#FFF",
-            background: "linear-gradient(to right, #90EA93 0%, #FFFFFF 20%)",
+            backgroundColor: theme.palette.common.white,
+            background:
+              "linear-gradient(to right, theme.palette.primary.main 0%, theme.palette.common.white 20%)",
             minHeight: small ? 400 : 200,
             borderRadius: 40,
             display: "flex",
@@ -129,7 +133,7 @@ function BlogComponent({ title, desc }) {
               <Button
                 style={{
                   backgroundColor: "#90B991",
-                  color: "#FFF",
+                  color: theme.palette.common.white,
                   width: small ? "auto" : 160,
                   borderRadius: 10,
                 }}
@@ -139,7 +143,7 @@ function BlogComponent({ title, desc }) {
                   window.open("https://medium.com/enatega", "_blank")
                 }
               >
-                Read More
+                {t("readMore")}
               </Button>
             </Box>
           </Box>

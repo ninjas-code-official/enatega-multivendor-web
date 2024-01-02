@@ -11,8 +11,10 @@ import AppStore from "../../../assets/images/app-store.png";
 import Banner2 from "../../../assets/images/banner-2.png";
 import Banner1 from "../../../assets/images/banner-1.png";
 import useStyles from "./styles";
+import { useTranslation } from 'react-i18next';
 
 export default function AppComponent() {
+  const { t } = useTranslation()
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
   const medium = useMediaQuery(theme.breakpoints.down("lg"));
@@ -44,12 +46,10 @@ export default function AppComponent() {
           variant="body2"
           style={{ fontWeight: 600, fontSize: "1.4rem" }}
         >
-          Put us in your pocket
+          {t('putUsInYourPocket')}
         </Typography>
         <Typography variant="body2" className={classes.fontContainer}>
-          It's all at your fingertips - the restaurants you love. Find the right
-          food to suit your mood, and make the first bite last. Go ahead,
-          download us.
+          {t('containerText')}
         </Typography>
         {medium && (
           <Box display="flex" justifyContent="center">

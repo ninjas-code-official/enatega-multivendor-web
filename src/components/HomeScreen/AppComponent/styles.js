@@ -17,10 +17,10 @@ const useStyle = makeStyles((theme) => ({
     marginRight: "2%",
   },
   btn: {
-    backgroundColor: "#3C8F7C",
+    backgroundColor: theme.palette.button.main,
     color: theme.palette.common.white,
     "&:hover": {
-      backgroundColor: "#3C8F7C",
+      backgroundColor: theme.palette.button.main,
     },
   },
   img2: {

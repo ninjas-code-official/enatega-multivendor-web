@@ -15,8 +15,9 @@ import UserContext from "../../../context/User";
 import useStyles from "./styles";
 import { Status } from "../Status/Status";
 import { Link as RouterLink } from "react-router-dom";
-
+import { useTranslation } from 'react-i18next';
 function PastOrderCard({ item }) {
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const navigate = useNavigate();
@@ -26,12 +27,12 @@ function PastOrderCard({ item }) {
   const small = useMediaQuery(theme.breakpoints.down("sm"));
 
   const STATUS_ORDER = [
-    "PENDING",
-    "ACCEPTED",
-    "ASSIGNED",
-    "PICKED",
-    "DELIVERED",
-    "CANCELLED",
+    t('pending'),
+    t('accepted'),
+    t('assigned'),
+    t('picked'),
+    t('delivered'),
+    t('completed'),
   ];
 
   const onAddToCart = async () => {
@@ -138,9 +139,9 @@ function PastOrderCard({ item }) {
                   color={theme.palette.common.black}
                 >
                   {item?.orderStatus === "CANCELLED"
-                    ? "Your order has been cancelled"
+                    ? t('orderCancelled')
                     : item?.orderStatus === "DELIVERED"
-                    ? "Order completed successfully. Thankyou for placing order"
+                    ? t('orderCompleted')
                     : null}
                 </Typography>
                 <Box ml={theme.spacing(1)} />
@@ -168,7 +169,7 @@ function PastOrderCard({ item }) {
                   color={theme.palette.button.main}
                   className={classes.textBold}
                 >
-                  REORDER
+                  {t('reorder')}
                 </Typography>
               )}
             </Button>
@@ -189,7 +190,7 @@ function PastOrderCard({ item }) {
                     color={theme.palette.button.main}
                     className={classes.textBold}
                   >
-                    Review
+                    {t('review')}
                   </Typography>
                 )}
               </Button>

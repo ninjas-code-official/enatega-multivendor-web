@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
   },
   cardContainer: {
-    background: "linear-gradient(180deg, #E5EDEF 0%, #FFFFFF 100%)",
+    background:
+      "linear-gradient(180deg, theme.palette.common.whiteShade 0%, theme.palette.common.white 100%)",
     borderRadius: "0px",
     // padding: "40px",
   },
@@ -65,13 +66,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   appContainer: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.common.white,
     borderRadius: "0px",
     width: "100%",
     height: "auto",
   },
   contactContainer: {
-    background: "linear-gradient(180deg, #2d6734 0%, #90EA93 100%)",
+    background:
+      "linear-gradient(180deg, theme.palette.secondary.lightest 0%, theme.palette.primary.main 100%)",
     borderRadius: "0px",
     width: "100%",
     [theme.breakpoints.down("md")]: {
@@ -79,7 +81,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   leftWrapper: {
-    background: "linear-gradient(180deg, #E5EDEF 0%, #FFFFFF 100%)",
+    background:
+      "linear-gradient(180deg, theme.palette.common.whiteShade 0%, theme.palette.common.white 100%)",
     width: "80%",
     minHeight: "80vh",
     borderTopRightRadius: "5rem",
@@ -87,7 +90,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
   appWrapper: {
-    background: "linear-gradient(180deg, #FFFFFF 0%, #E5EDEF 100%)",
+    background:
+      "linear-gradient(180deg, theme.palette.common.white 0%, theme.palette.common.whiteShade 100%)",
     width: "80%",
     minHeight: "110vh",
     borderTopRightRadius: "5rem",
@@ -126,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
     right: 200,
     fontSize: 80,
     fontWeight: 500,
-    color: "#000000",
+    color: theme.palette.common.black,
     mixBlendMode: "normal",
     opacity: 0.24,
   },
@@ -136,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
     right: 10,
     fontSize: 50,
     fontWeight: 500,
-    color: "#000000",
+    color: theme.palette.common.black,
     mixBlendMode: "normal",
     opacity: 0.24,
   },
@@ -148,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
   },
   caseWrapper: {
     background:
-      "linear-gradient(180.27deg, #CED8DA 0.09%, #E1E5E8 36.76%, #E6EBEE 72.67%, #f1f1f1  99.63%)",
+      "linear-gradient(180.27deg, theme.palette.info.lightest 0.09%, theme.palette.info.light 36.76%, theme.palette.success.darkest 72.67%, theme.palette.success.lightest 99.63%)",
     width: "90%",
     minHeight: "95vh",
     borderTopRightRadius: "5rem",
@@ -159,7 +163,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   techContainer: {
-    background: "linear-gradient(180.62deg, #FCFCFD 0.54%, #CDD7D8 100.36%)",
+    background:
+      "linear-gradient(180.62deg, theme.palette.info.darkest 0.54%, theme.palette.info.dark 100.36%)",
   },
   techWrapper: {
     backgroundColor: theme.palette.primary.main,
@@ -175,10 +180,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
   },
   blogContainer: {
-    background: "linear-gradient(180deg, #EDF1F2 0%, #F1F3F3 100%)",
+    background:
+      "linear-gradient(180deg, theme.palette.shades.main 0%, theme.palette.error.light 100%)",
   },
   contactWrapper: {
-    background: "linear-gradient(180deg, #f0f0fd 0%, #FFFFFF 100%)",
+    background:
+      "linear-gradient(180deg, theme.palette.shades.light 0%, theme.palette.common.white 100%)",
     width: "95%",
     minHeight: "80vh",
     borderTopRightRadius: "5rem",

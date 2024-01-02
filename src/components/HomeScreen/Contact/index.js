@@ -29,10 +29,13 @@ export default function Contact() {
   const [emailError, setEmailError] = useState("");
   const [messageError, setMessageError] = useState("");
   const [formMessage, setFormMessage] = useState("");
-  const [mutateForm, { loading: formLoading }] = useMutation(SEND_FORM_SUBMISSION, {
-    onError,
-    onCompleted,
-  });
+  const [mutateForm, { loading: formLoading }] = useMutation(
+    SEND_FORM_SUBMISSION,
+    {
+      onError,
+      onCompleted,
+    }
+  );
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -124,7 +127,7 @@ export default function Contact() {
                 <Box className={classes.iconContainer}>
                   <WhatsAppIcon style={{ color: theme.palette.primary.main }} />
                 </Box>
-                <Typography style={{ color: "#FFF" }}>
+                <Typography style={{ color: theme.palette.common.white }}>
                   (+92) 3339461270
                 </Typography>
               </Box>
@@ -132,7 +135,7 @@ export default function Contact() {
                 <Box className={classes.iconContainer}>
                   <EmailIcon style={{ color: theme.palette.primary.main }} />
                 </Box>
-                <Typography style={{ color: "#FFF" }}>
+                <Typography style={{ color: theme.palette.common.white }}>
                   sharan@ninjascode.com
                 </Typography>
               </Box>
@@ -142,7 +145,7 @@ export default function Contact() {
                     style={{ color: theme.palette.primary.main }}
                   />
                 </Box>
-                <Typography style={{ color: "#FFF" }}>
+                <Typography style={{ color: theme.palette.common.white }}>
                   Islamabad, Pakistan
                 </Typography>
               </Box>
@@ -251,7 +254,7 @@ export default function Contact() {
                   <Button
                     variant="contained"
                     style={{
-                      backgroundColor: "#000",
+                      backgroundColor: theme.palette.common.black,
                       color: theme.palette.primary.main,
                       fontWeight: 700,
                       width: 140,
@@ -277,7 +280,7 @@ export default function Contact() {
                     variant="contained"
                     style={{
                       backgroundColor: theme.palette.primary.main,
-                      color: "#000",
+                      color: theme.palette.common.black,
                       fontWeight: 700,
                       width: 140,
                       fontSize: 12,

@@ -48,13 +48,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "-26px",
   },
   topRestContainer: {
-    backgroundColor: "#8EE590",
+    backgroundColor: theme.palette.button.lightest,
     borderRadius: "0px",
     width: "100%",
     paddingBottom: 10,
   },
   topRestWrapper: {
-    background: "#EFF4F7",
+    background: theme.palette.button.dark,
     width: "90%",
     minHeight: "60vh",
     borderTopRightRadius: "5rem",
@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   footerContainer: {
-    background: "#F0F0F0",
+    background: theme.palette.success.dark,
     width: "100%",
   },
   footerWrapper: {

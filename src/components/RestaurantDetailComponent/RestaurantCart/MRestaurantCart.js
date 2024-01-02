@@ -220,7 +220,7 @@ function MRestaurantCart(props) {
                         color: theme.palette.common.black,
                         padding: "5px 10px",
                         borderRadius: 5,
-                        border: "1px solid #000",
+                        border: "1px solid theme.palette.common.black",
                         margin: "0 8px",
                       }}
                       align="left"

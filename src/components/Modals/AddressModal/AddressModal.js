@@ -10,6 +10,7 @@ import {
   InputAdornment,
   TextField,
   Typography,
+  useTheme,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import GpsFixedIcon from "@mui/icons-material/GpsFixed";
@@ -22,7 +23,12 @@ import useStyle from "./styles";
 import MarkerImage from "../../../assets/images/marker.png";
 import ClearIcon from "@mui/icons-material/Clear";
 import PlacesAutocomplete from "react-places-autocomplete";
+
 import ConfigurableValues from "../../../config/constants";
+
+import { useTranslation } from "react-i18next";
+
+
 
 function AddressModal({
   toggleModal,
@@ -34,11 +40,16 @@ function AddressModal({
 }) {
   console.log(settingRegionDetail);
 
+
   const { GOOGLE_MAPS_KEY } = ConfigurableValues();
+
+  const theme = useTheme();
+
   const classes = useStyle();
   const [region, setRegion] = useState(null);
   const [mainError, setMainError] = useState({});
   const [locationName, setLocationName] = useState("");
+  const { t } = useTranslation();
   const { getCurrentLocation } = useLocation();
   const { latLngToGeoString } = useLocation();
   const [loading, setLoading] = useState();
@@ -165,7 +176,7 @@ function AddressModal({
               color="textSecondary"
               className={clsx(classes.boldText, classes.title)}
             >
-              Is this your exact location?
+              {t("exactLocation")}
             </Typography>
           </Box>
         </DialogTitle>
@@ -184,7 +195,7 @@ function AddressModal({
               <div>
                 <TextField
                   variant="outlined"
-                  label="Enter your area"
+                  label={t("yourArea")}
                   fullWidth
                   {...getInputProps()}
                   InputProps={{
@@ -221,7 +232,9 @@ function AddressModal({
                   {loading ? <div>Loading...</div> : null}
                   {suggestions.map((suggestion) => {
                     const style = {
-                      backgroundColor: suggestion.active ? "#90EA93" : "#fff",
+                      backgroundColor: suggestion.active
+                        ? theme.palette.primary.main
+                        : theme.palette.common.white,
                       color: "black",
                       fontSize: "16px",
                       padding: "10px 16px",
@@ -275,7 +288,7 @@ function AddressModal({
               <CircularProgress color="secondary" />
             ) : (
               <Typography variant="subtitle2" className={classes.boldText}>
-                Submit
+                {t("submit")}
               </Typography>
             )}
           </Button>

@@ -18,7 +18,7 @@ const useStyle = makeStyles((theme) => ({
     paddingTop: 0,
   },
   top: {
-    backgroundColor: "#000",
+    backgroundColor: theme.palette.common.black,
     display: "flex",
     height: "25%",
     justifyContent: "center",

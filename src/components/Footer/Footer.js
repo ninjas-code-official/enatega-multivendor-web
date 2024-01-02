@@ -13,10 +13,12 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useTranslation } from "react-i18next";
 
 import useStyles from "./styles";
 
 function Footer() {
+  const { t } = useTranslation();
   const classes = useStyles();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
@@ -29,7 +31,6 @@ function Footer() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-
 
   return (
     <Grid container alignItems="center">
@@ -45,7 +46,7 @@ function Footer() {
             variant="h4"
             style={{
               fontWeight: 900,
-              color: "#6FCF97",
+              color: theme.palette.success.light,
               marginBottom: 20,
             }}
             align="center"
@@ -54,12 +55,13 @@ function Footer() {
           </Typography>
           <Typography
             variant="body2"
-            style={{ fontWeight: 500, color: "#fff", fontSize: 15 }}
+            style={{
+              fontWeight: 500,
+              color: theme.palette.common.white,
+              fontSize: 15,
+            }}
           >
-            Enatega is an open-source delivery management platform for the
-            future. We prioritize innovation, flexibility, and affordability,
-            and offer a scalable, customizable solution that streamlines your
-            delivery processes.
+            {t("footerText")}
           </Typography>
         </Box>
       </Grid>
@@ -69,7 +71,7 @@ function Footer() {
             variant="body2"
             style={{ fontWeight: 700, fontSize: "1.4rem" }}
           >
-            Links
+            {t("linksTitle")}
           </Typography>
           <RouterLink
             to={"/"}
@@ -81,7 +83,7 @@ function Footer() {
               variant="body2"
               style={{ fontWeight: 700, marginTop: 10, color: "black" }}
             >
-              Home
+              {t("footerLinkHome")}
             </Typography>
           </RouterLink>
           <RouterLink to="/privacy" style={{ textDecoration: "none" }}>
@@ -89,7 +91,7 @@ function Footer() {
               variant="body2"
               style={{ fontWeight: 700, marginTop: 10, color: "black" }}
             >
-              Privacy Policy
+              {t("footerLinkPP")}
             </Typography>
           </RouterLink>
           <RouterLink to="/terms" style={{ textDecoration: "none" }}>
@@ -97,7 +99,7 @@ function Footer() {
               variant="body2"
               style={{ fontWeight: 700, marginTop: 10, color: "black" }}
             >
-              Terms and Conditions
+              {t("footerLinkTC")}
             </Typography>
           </RouterLink>
 
@@ -116,7 +118,7 @@ function Footer() {
               display: small ? "none" : "block",
             }}
           >
-            Enatega – © 2022 All Rights Reserved
+            {t("footerEndText")}
           </Typography>
         </Box>
       </Grid>
@@ -131,7 +133,7 @@ function Footer() {
           variant="body2"
           style={{ fontWeight: 700, fontSize: "1.4rem" }}
         >
-          Follow Us
+          {t("followUs")}
         </Typography>
         <Box
           style={{
@@ -146,14 +148,14 @@ function Footer() {
             className={classes.iconContainer}
             onClick={() => redirectHandler("https://www.facebook.com/enatega/")}
           >
-            <FacebookIcon style={{ color: "#90EA93" }} />
+            <FacebookIcon style={{ color: theme.palette.primary.main }} />
           </Box>
           <Box
             className={classes.iconContainer}
             style={{ marginLeft: 10 }}
             onClick={() => redirectHandler("https://twitter.com/NinjasCode1")}
           >
-            <TwitterIcon style={{ color: "#90EA93" }} />
+            <TwitterIcon style={{ color: theme.palette.primary.main }} />
           </Box>
           <Box
             className={classes.iconContainer}
@@ -162,7 +164,7 @@ function Footer() {
               redirectHandler("https://www.instagram.com/enatega.nb/")
             }
           >
-            <InstagramIcon style={{ color: "#90EA93" }} />
+            <InstagramIcon style={{ color: theme.palette.primary.main }} />
           </Box>
           <Box
             className={classes.iconContainer}
@@ -171,7 +173,7 @@ function Footer() {
               redirectHandler("https://www.linkedin.com/company/14583783")
             }
           >
-            <LinkedInIcon style={{ color: "#90EA93" }} />
+            <LinkedInIcon style={{ color: theme.palette.primary.main }} />
           </Box>
           <Box
             className={classes.iconContainer}
@@ -182,14 +184,14 @@ function Footer() {
               )
             }
           >
-            <GitHubIcon style={{ color: "#90EA93" }} />
+            <GitHubIcon style={{ color: theme.palette.primary.main }} />
           </Box>
         </Box>
         <Typography
           variant="body2"
           style={{ fontWeight: 700, display: "inline" }}
         >
-          Powered By{" "}
+          {t("poweredBy")}{" "}
         </Typography>
         <Box
           onClick={() => redirectHandler("https://ninjascode.com/")}
@@ -202,8 +204,8 @@ function Footer() {
           <Typography
             style={{
               display: "inline",
-              backgroundColor: "#000",
-              color: "#fff",
+              backgroundColor: theme.palette.common.black,
+              color: theme.palette.common.white,
               paddingTop: "5px",
               paddingLeft: "15px",
               paddingRight: "15px",
@@ -233,7 +235,7 @@ function Footer() {
             fontSize: 12,
           }}
         >
-          Enatega – © 2022 All Rights Reserved
+          {t("footerEndText")}
         </Typography>
       </Grid>
     </Grid>

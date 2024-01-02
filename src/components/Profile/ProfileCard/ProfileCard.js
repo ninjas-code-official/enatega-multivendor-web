@@ -21,12 +21,14 @@ import { Link as RouterLink } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
+import { useTranslation } from 'react-i18next';
 
 const UPDATEUSER = gql`
   ${updateUser}
 `;
 
 function ProfileCard() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const formRef = useRef(null);
   const classes = useStyle();
@@ -102,7 +104,7 @@ function ProfileCard() {
       >
         {/* <Divider light orientation="horizontal" className={classes.MH3} /> */}
         <Box className={classes.headerBar}>
-          <Typography className={classes.titleText}>Contact Info</Typography>
+          <Typography className={classes.titleText}>{t('contactInfo')}</Typography>
         </Box>
         <form ref={formRef} className={classes.formMargin}>
           <Box className={classes.fieldWrapper}>
@@ -142,7 +144,7 @@ function ProfileCard() {
                   state={{ prevPhone: profile?.phone }}
                 >
                   <Typography component="h2" color="primary" mr={2}>
-                    Edit
+                    {t('edit')}
                   </Typography>
                 </RouterLink>
 
@@ -194,7 +196,7 @@ function ProfileCard() {
                   style={{ color: theme.palette.common.black }}
                   className={classes.textBold}
                 >
-                  SAVE
+                  {t('saveButton')}
                 </Typography>
               )}
             </Button>

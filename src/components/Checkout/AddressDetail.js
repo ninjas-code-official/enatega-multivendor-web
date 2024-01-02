@@ -8,6 +8,7 @@ import React, { useCallback, useState } from "react";
 import { createAddress, editAddress } from "../../apollo/server";
 import useStyle from "./styles";
 import MarkerImage from "../../assets/images/marker.png";
+import { useTranslation } from 'react-i18next';
 
 const EDIT_ADDRESS = gql`
   ${editAddress}
@@ -21,6 +22,7 @@ function AddressDetail({ addressDetail, locationModal, toggleDetail, notificatio
   const theme = useTheme();
   const classes = useStyle();
   const [addressError, setAddressError] = useState("");
+  const { t } = useTranslation()
   const [details, setDetails] = useState("");
   const [mutate, { loading }] = useMutation(isEdit ? EDIT_ADDRESS : CREATE_ADDRESS, {
     onCompleted,
@@ -130,7 +132,7 @@ function AddressDetail({ addressDetail, locationModal, toggleDetail, notificatio
             }}
           >
             <Typography variant="body1" className={classes.smallText}>
-              Edit
+              {t('edit')}
             </Typography>
           </Button>
         </Box>
@@ -138,9 +140,9 @@ function AddressDetail({ addressDetail, locationModal, toggleDetail, notificatio
           <TextField
             name={"addressDetail"}
             variant="outlined"
-            label="Details e.g floor/ building"
+            label={t('deliveryDetails')}
             error={Boolean(addressError)}
-            helperText={addressError ? "Delivery details is required" : null}
+            helperText={addressError ? t('deliveryDetailError') : null}
             defaultValue={addressDetail?.detail ?? ""}
             fullWidth
             onChange={e=>setDetails(e.currentTarget.value)}
@@ -165,7 +167,7 @@ function AddressDetail({ addressDetail, locationModal, toggleDetail, notificatio
               <CircularProgress size={25} color="primary" />
             ) : (
               <Typography variant="body2" color="secondary" className={classes.boldText}>
-                Submit
+                {t('submit')}
               </Typography>
             )}
           </Button>

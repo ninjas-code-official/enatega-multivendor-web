@@ -10,8 +10,10 @@ import { ReactComponent as Logo } from "../../../assets/images/logo.svg";
 import { useTheme } from "@emotion/react";
 import LocalMallIcon from "@mui/icons-material/LocalMall";
 import PersonIcon from "@mui/icons-material/Person";
+import { useTranslation } from "react-i18next";
 
 function LoginDesktopHeader({ title, showIcon, showCart = false }) {
+  const { t } = useTranslation();
   const classes = useStyle();
   const theme = useTheme();
   const location = useLocation();
@@ -39,13 +41,13 @@ function LoginDesktopHeader({ title, showIcon, showCart = false }) {
               <Divider flexItem orientation="vertical" light />
               <RouterLink to={"/login"} className={classes.linkDecoration}>
                 <Button aria-controls="simple-menu" aria-haspopup="true">
-                  <PersonIcon style={{ color: "#000" }} />
+                  <PersonIcon style={{ color: theme.palette.common.black }} />
                   <Typography
                     variant="button"
                     color="textSecondary"
                     className={`${classes.ml} ${classes.font700}`}
                   >
-                    {"Login"}
+                    {t("loginBtn")}
                   </Typography>
                 </Button>
               </RouterLink>
@@ -56,7 +58,9 @@ function LoginDesktopHeader({ title, showIcon, showCart = false }) {
             <Box style={{ alignSelf: "center" }}>
               <RouterLink to="/" className={classes.linkDecoration}>
                 <Button>
-                  <LocalMallIcon style={{ color: "#000" }} />
+                  <LocalMallIcon
+                    style={{ color: theme.palette.common.black }}
+                  />
                 </Button>
               </RouterLink>
             </Box>

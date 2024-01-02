@@ -15,7 +15,7 @@ const useStyle = makeStyles((theme) => ({
   },
   top: {
     height: "45%",
-    backgroundColor: "#fff",
+    backgroundColor: theme.palette.common.white,
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-end",

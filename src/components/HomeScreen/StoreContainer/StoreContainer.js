@@ -4,8 +4,10 @@ import React from "react";
 import PlayStore from "../../../assets/icons/PlayStore";
 import useStyle from "./styles";
 import { Link as RouterLink } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 function StoreContainer() {
+  const { t } = useTranslation()
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down('md'));
   const extraSmall = useMediaQuery(theme.breakpoints.down('sm'));
@@ -18,7 +20,7 @@ function StoreContainer() {
           <Typography variant="h2" className={classes.boldBackground}>
             App
             <Typography component="p" variant={extraSmall ? "h5" : "h4"} className={classes.bold300}>
-              Put us in your pocket
+              {t('putUsInYourPocket')}
             </Typography>
           </Typography>
         </Grid>
@@ -32,8 +34,7 @@ function StoreContainer() {
                 Download the food you love and more
               </Typography>
               <Typography color="textPrimary" className={classes.storeDescription}>
-                It's all at your fingertips -- the restaurants you love. Find the right food to suit your mood, and make
-                the first bite last. Go ahead, download us.
+                {t('containerText')}
               </Typography>
             </Grid>
             <Grid item>

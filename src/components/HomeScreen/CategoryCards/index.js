@@ -9,6 +9,7 @@ import useStyle from "./styles";
 import AppStore from "../../../assets/images/AppVector.png";
 import Vector from "../../../assets/images/Vector.png";
 import Demo from "../../../assets/images/demo.png";
+import { useTranslation } from "react-i18next";
 
 export default function CategoryCards({
   title,
@@ -20,6 +21,7 @@ export default function CategoryCards({
   android,
   ios,
 }) {
+  const { t } = useTranslation();
   const classes = useStyle();
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down("md"));
@@ -45,7 +47,7 @@ export default function CategoryCards({
             style={{
               fontWeight: 600,
               fontSize: 12,
-              color: "#fff",
+              color: theme.palette.common.white,
             }}
           >
             {description[0]}
@@ -53,7 +55,11 @@ export default function CategoryCards({
           <Typography
             variant="body2"
             align="center"
-            style={{ fontWeight: 600, fontSize: 12, color: "#fff" }}
+            style={{
+              fontWeight: 600,
+              fontSize: 12,
+              color: theme.palette.common.white,
+            }}
           >
             {description[1]}
           </Typography>
@@ -71,7 +77,7 @@ export default function CategoryCards({
                 paddingLeft: "14px",
                 color: "black",
                 fontSize: small ? 9 : 14,
-                backgroundColor: "#FFFFFF",
+                backgroundColor: theme.palette.common.white,
               }}
               startIcon={
                 <img src={Vector} alt="appstore" style={{ color: "black" }} />
@@ -92,7 +98,7 @@ export default function CategoryCards({
                 borderRadius: 10,
                 color: "black",
                 fontSize: small ? 9 : 14,
-                backgroundColor: "#FFFFFF",
+                backgroundColor: theme.palette.common.white,
                 marginLeft: 8,
               }}
               startIcon={<img src={AppStore} alt="appstore" />}
@@ -117,10 +123,10 @@ export default function CategoryCards({
                 p: "7px",
                 borderRadius: 3,
                 color: "black",
-                backgroundColor: "#FFFFFF",
+                backgroundColor: theme.palette.common.white,
               }}
             >
-              Demo
+              {t("demo")}
             </Button>
           </Box>
         )}

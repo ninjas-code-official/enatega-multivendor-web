@@ -34,6 +34,7 @@ import AuthRoute from "./routes/AuthRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import VerifyPhone from "./screens/VerifyPhone/VerifyPhone";
 import UserContext from "./context/User";
+import Settings from "./screens/Settings/Settings";
 
 const GoogleMapsLoader = ({ children, LIBRARIES, GOOGLE_MAPS_KEY }) => {
   const [message, setMessage] = useState(null);
@@ -273,6 +274,7 @@ function App() {
     >
       <CircularProgress color="primary" />
     </Box>
+
   );
 }
 
