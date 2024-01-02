@@ -48,15 +48,17 @@ import { DAYS } from "../../utils/constantValues";
 import { paypalCurrencies, stripeCurrencies } from "../../utils/currencies";
 import { calculateDistance } from "../../utils/customFunction";
 import useStyle from "./styles";
-import { SERVER_URL } from "../../config/constants";
+
 import Analytics from "../../utils/analytics";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { mapStyles } from "../OrderDetail/mapStyles";
 import RestMarker from "../../assets/images/rest-map-2.png";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import clsx from "clsx";
+
 import { useLocation } from "../../hooks";
 import { useTranslation } from "react-i18next";
+
 import moment from "moment";
 
 const PLACEORDER = gql`

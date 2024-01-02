@@ -31,7 +31,6 @@ import { DAYS } from "../../utils/constantValues";
 import { paypalCurrencies, stripeCurrencies } from "../../utils/currencies";
 import { calculateDistance } from "../../utils/customFunction";
 import useStyle from "./styles";
-import { SERVER_URL } from "../../config/constants";
 import Analytics from "../../utils/analytics";
 
 const PLACEORDER = gql`
@@ -196,7 +195,6 @@ function Checkout() {
   }
 
   function update(cache, { data: { placeOrder } }) {
-    
     if (placeOrder && placeOrder.paymentMethod === "COD") {
       const data = cache.readQuery({ query: ORDERS });
       if (data) {
@@ -209,7 +207,6 @@ function Checkout() {
   }
 
   function onError(error) {
-  
     showMessage({
       type: "error",
       message: error.message,

@@ -20,7 +20,7 @@ import FlashMessage from "../../components/FlashMessage";
 import Footer from "../../components/Footer/Footer";
 import { Header } from "../../components/Header";
 import { PaymentOrderCard } from "../../components/Orders";
-import { SERVER_URL, STRIPE_PUBLIC_KEY } from "../../config/constants";
+import ConfigurableValues from "../../config/constants";
 import UserContext from "../../context/User";
 import Analytics from "../../utils/analytics";
 import useStyles from "./styles";
@@ -34,6 +34,7 @@ const ORDERS = gql`
 `;
 
 function Stripe() {
+  const { SERVER_URL, STRIPE_PUBLIC_KEY } = ConfigurableValues();
   const classes = useStyles();
   const theme = useTheme();
   const client = useApolloClient();

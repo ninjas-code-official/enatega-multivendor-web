@@ -23,8 +23,12 @@ import useStyle from "./styles";
 import MarkerImage from "../../../assets/images/marker.png";
 import ClearIcon from "@mui/icons-material/Clear";
 import PlacesAutocomplete from "react-places-autocomplete";
+
+import ConfigurableValues from "../../../config/constants";
+
 import { useTranslation } from "react-i18next";
-import { GOOGLE_MAPS_KEY } from "../../../config/constants";
+
+
 
 function AddressModal({
   toggleModal,
@@ -35,7 +39,12 @@ function AddressModal({
   setShowDetail,
 }) {
   console.log(settingRegionDetail);
+
+
+  const { GOOGLE_MAPS_KEY } = ConfigurableValues();
+
   const theme = useTheme();
+
   const classes = useStyle();
   const [region, setRegion] = useState(null);
   const [mainError, setMainError] = useState({});

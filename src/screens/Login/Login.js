@@ -6,7 +6,7 @@ import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import React, { useCallback, useEffect, useState } from "react";
 import GoogleLogin from "react-google-login";
-import { GOOGLE_CLIENT_ID } from "../../config/constants";
+import ConfigurableValues from "../../config/constants";
 import { Link as RouterLink } from "react-router-dom";
 import { useLocation } from "react-router";
 import GoogleIcon from "../../assets/icons/GoogleIcon";
@@ -17,7 +17,11 @@ import useStyles from "./styles";
 import { useTranslation } from 'react-i18next';
 
 function Login() {
+
+  const { GOOGLE_CLIENT_ID } = ConfigurableValues();
+
   const { t } = useTranslation();
+
   const theme = useTheme();
   const [mainError, setMainError] = useState({});
   const classes = useStyles();
