@@ -18,8 +18,7 @@ import { gql, useMutation } from "@apollo/client";
 import UserContext from "../../context/User";
 import ConfigurationContext from "../../context/Configuration";
 
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from "react-i18next";
 
 const PHONE = gql`
   ${phoneExist}
@@ -30,7 +29,7 @@ const UPDATEUSER = gql`
 `;
 
 function PhoneNumber() {
-  const { t  } = useTranslation();
+  const { t } = useTranslation();
   const theme = useTheme();
   const classes = useStyles();
   const [error, setError] = useState("");
@@ -39,12 +38,11 @@ function PhoneNumber() {
   const { state } = useLocation();
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
-  const [phoneError, setPhoneError] = useState("");
+  const [setPhoneError] = useState("");
 
   const [mutate] = useMutation(UPDATEUSER);
   const { profile } = useContext(UserContext);
   const configuration = useContext(ConfigurationContext);
-
 
   const [PhoneEixst] = useMutation(PHONE, {
     onCompleted,
@@ -128,14 +126,14 @@ function PhoneNumber() {
         </Box>
       </Box>
       <Typography variant="h5" className={classes.font700}>
-        {t('updatePhone')} <br /> {t('number')}
+        {t("updatePhone")} <br /> {t("number")}
       </Typography>
       <Box mt={theme.spacing(1)} />
       <Typography
         variant="caption"
         className={`${classes.caption} ${classes.fontGrey}`}
       >
-        {t('secureAcc')}
+        {t("secureAcc")}
       </Typography>
       <Box mt={theme.spacing(4)} />
       <form ref={formRef}>
@@ -158,7 +156,7 @@ function PhoneNumber() {
           />
         </Box>
         <Typography variant="caption" style={{ color: "red" }}>
-          {t('mobileErr1')}
+          {t("mobileErr1")}
         </Typography>
         <Box mt={theme.spacing(8)} />
         <Button
@@ -180,7 +178,7 @@ function PhoneNumber() {
               variant="caption"
               className={`${classes.caption} ${classes.font700}`}
             >
-              {t('continue')}
+              {t("continue")}
             </Typography>
           )}
         </Button>
