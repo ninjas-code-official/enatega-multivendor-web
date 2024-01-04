@@ -18,6 +18,7 @@ import OrderDetail from "./screens/OrderDetail/OrderDetail";
 import Paypal from "./screens/Paypal/Paypal";
 import Privacy from "./screens/Privacy/Privacy";
 import Profile from "./screens/Profile/Profile";
+import Settings from "./screens/Settings/Settings";
 import Registration from "./screens/Registration/Registration";
 import PhoneNumber from "./screens/PhoneNumber/PhoneNumber";
 import VerifyEmail from "./screens/VerifyEmail/VerifyEmail";
@@ -220,6 +221,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Profile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={"/settings"}
+            element={
+              <PrivateRoute>
+                <Settings />
               </PrivateRoute>
             }
           />

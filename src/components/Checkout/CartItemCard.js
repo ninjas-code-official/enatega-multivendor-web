@@ -25,7 +25,7 @@ import UserContext from "../../context/User";
 import useStyles from "./styles";
 import CartItem from "../RestaurantDetailComponent/RestaurantCart/CartItem";
 import Voucher from "./Voucher";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const TIPPING = gql`
   ${getTipping}
@@ -178,7 +178,9 @@ function CartItemsCard({
               }}
               className={classes.border}
             >
-              <Typography className={classes.subtotalText}>{t('subTotal')}</Typography>
+              <Typography className={classes.subtotalText}>
+                {t("subTotal")}
+              </Typography>
               <Typography className={classes.subtotalText}>
                 {`${configuration.currencySymbol} ${calculatePrice(0)}`}
               </Typography>
@@ -193,7 +195,7 @@ function CartItemsCard({
                 className={classes.border}
               >
                 <Typography className={classes.subtotalText}>
-                 {t('deliveryFee')}
+                  {t("deliveryFee")}
                 </Typography>
                 <Typography className={classes.subtotalText}>
                   {`${configuration.currencySymbol} ${deliveryCharges.toFixed(
@@ -210,7 +212,9 @@ function CartItemsCard({
               }}
               className={classes.border}
             >
-              <Typography className={classes.subtotalText}>{t('taxFee')}</Typography>
+              <Typography className={classes.subtotalText}>
+                {t("taxFee")}
+              </Typography>
               <Typography className={classes.subtotalText}>
                 {`${configuration.currencySymbol} ${taxCalculation()}`}
               </Typography>
@@ -227,7 +231,7 @@ function CartItemsCard({
                 className={classes.darkGreen}
                 style={{ fontSize: "14px", fontWeight: 600 }}
               >
-                {t('haveVoucher')}
+                {t("haveVoucher")}
               </Typography>
             </Box>
             <Divider
@@ -245,7 +249,7 @@ function CartItemsCard({
             >
               <Grid item xs={8}>
                 <Typography className={clsx(classes.disableText)}>
-                  {t('tip')}
+                  {t("tip")}
                 </Typography>
               </Grid>
               {selectedTip && (
@@ -265,7 +269,7 @@ function CartItemsCard({
                         className={classes.darkGreen}
                         style={{ fontSize: "12px", fontWeight: 600 }}
                       >
-                        {t('remove')}
+                        {t("remove")}
                       </Typography>
                     </Button>
                     <Typography
@@ -316,7 +320,7 @@ function CartItemsCard({
               >
                 {isCouponApplied
                   ? `Coupon is applied: ${couponText}`
-                  : t('discount')}
+                  : t("discount")}
               </Typography>
               <Typography
                 variant="caption"
@@ -336,7 +340,7 @@ function CartItemsCard({
                   className={clsx(classes.smallText)}
                   style={{ fontWeight: 800 }}
                 >
-                  {t('total')}
+                  {t("total")}
                 </Typography>
                 <Typography
                   variant="caption"
