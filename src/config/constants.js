@@ -5,8 +5,8 @@ import ConfigurationContext from "../../src/context/Configuration";
 const ConfigurableValues = () => {
   const configuration = useContext(ConfigurationContext);
   console.log("configuration", configuration);
-  const SERVER_URL = "https://enatega-multivendor.up.railway.app/";
-  const WS_SERVER_URL = "wss://enatega-multivendor.up.railway.app/";
+  const SERVER_URL = "http://10.97.35.175:8001/";
+  const WS_SERVER_URL = "ws://10.97.35.175:8001/";
   const GOOGLE_CLIENT_ID = configuration.webClientID;
   const STRIPE_PUBLIC_KEY = configuration.publishableKey;
   const PAYPAL_KEY = configuration.clientId;
@@ -19,6 +19,9 @@ const ConfigurableValues = () => {
     GOOGLE: configuration.googleColor,
   };
   const SENTRY_DSN = configuration.webSentryUrl;
+  const PRIMERY_COLOR = configuration.primaryColor;
+  const SECONDARY_COLOR = configuration.secondaryColor;
+  const TERTIARY_COLOR = configuration.tertiaryColor;
 
   return {
     SERVER_URL,
@@ -31,6 +34,9 @@ const ConfigurableValues = () => {
     AMPLITUDE_API_KEY,
     LIBRARIES,
     SENTRY_DSN,
+    PRIMERY_COLOR,
+    SECONDARY_COLOR,
+    TERTIARY_COLOR,
   };
 };
 
