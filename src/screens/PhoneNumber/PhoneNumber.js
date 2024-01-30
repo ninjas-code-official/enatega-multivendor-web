@@ -38,7 +38,7 @@ function PhoneNumber() {
   const { state } = useLocation();
   const [loading, setLoading] = useState(false);
   const [phone, setPhone] = useState("");
-  const [setPhoneError] = useState("");
+  //const [setPhoneError] = useState("");
 
   const [mutate] = useMutation(UPDATEUSER);
   const { profile } = useContext(UserContext);
@@ -90,7 +90,7 @@ function PhoneNumber() {
     setError("");
     let validate = true;
     if (!phone) {
-      setPhoneError("Phone number required");
+      setError("Phone number required");
       validate = false;
       return;
     }
@@ -98,7 +98,7 @@ function PhoneNumber() {
       if (`+${phone}` !== state?.prevPhone) {
         PhoneEixst({ variables: { phone: `+${phone}` } });
       } else {
-        setPhoneError("New phone number must be different from pervious one");
+        setError("New phone number must be different from pervious one");
       }
     }
   };

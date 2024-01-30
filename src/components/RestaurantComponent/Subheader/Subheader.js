@@ -24,7 +24,7 @@ import { useLocationContext } from "../../../context/Location";
 import { useLocation } from "../../../hooks";
 import FlashMessage from "../../FlashMessage";
 import useStyles from "./styles";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { DeliveryCard } from "../../Checkout";
 
 const autocompleteService = { current: null };
@@ -135,7 +135,11 @@ function Subheader() {
         }}
         className={`${classes.root} ${classes.shadow} ${classes.mainContainer}`}
       >
-        <FlashMessage alertMessage={alertMessage} open={open} setOpen={setOpen} />
+        <FlashMessage
+          alertMessage={alertMessage}
+          open={open}
+          setOpen={setOpen}
+        />
         <Grid container>
           <Grid item xs={12}>
             <Button
@@ -154,7 +158,7 @@ function Subheader() {
                   fontWeight: theme.typography.fontWeightBold,
                 }}
               >
-                {t('deliveringTo')}
+                {t("deliveringTo")}
               </Typography>
               <Box
                 style={{
@@ -234,7 +238,7 @@ function Subheader() {
                       {...params}
                       style={{
                         color: "initial",
-                        backgroundColor: "#F3F4F8",
+                        backgroundColor: theme.palette.rare.light,
                         borderRadius: 20,
                       }}
                       variant="outlined"
@@ -261,7 +265,9 @@ function Subheader() {
                                   margin={1}
                                 />
                               ) : (
-                                <LocationIcon style={{ fill: "#3C8F7C" }} />
+                                <LocationIcon
+                                  style={{ fill: theme.palette.button.main }}
+                                />
                               )}
                             </InputAdornment>
                           </>

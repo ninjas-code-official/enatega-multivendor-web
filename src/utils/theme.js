@@ -235,6 +235,10 @@ const CustomTheme = (
         darkest: "#253B80",
         contrastText: "#179BD7",
       },
+      rare: {
+        main: "#448B7B",
+        light: "#F3F4F8",
+      },
       grey: {
         50: "#fafafa",
         100: "#f5f5f5",

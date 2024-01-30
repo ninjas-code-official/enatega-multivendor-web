@@ -37,17 +37,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export function Status({
-  first,
-  isEta,
-  last,
-  isActive,
-  firstCol = "#90EA93",
-  secondCol = "#C4C4C4",
-}) {
+export function Status({ first, isEta, last, isActive, firstCol, secondCol }) {
   const theme = useTheme();
   const classes = useStyles();
   const small = useMediaQuery(theme.breakpoints.down("sm"));
+
+  if (firstCol === undefined) {
+    firstCol = theme.palette.primary.main;
+  }
+  if (secondCol === undefined) {
+    secondCol = theme.palette.primary.darkest;
+  }
 
   return (
     <Box
