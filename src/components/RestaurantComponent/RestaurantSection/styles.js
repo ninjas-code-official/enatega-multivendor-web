@@ -30,7 +30,7 @@ const useStyle = makeStyles((theme) => ({
   },
   divider: {
     width: "165px",
-    backgroundColor: "#448B7B",
+    backgroundColor: theme.palette.rare.main,
     height: 10,
   },
 }));

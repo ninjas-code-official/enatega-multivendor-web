@@ -5,13 +5,12 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import ConfigurationContext from "../../../context/Configuration";
 import { Status } from "../Status/Status";
 import useStyles from "./styles";
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from "react-i18next";
 
 function ActiveOrderCard(props) {
   const { t } = useTranslation();
@@ -21,12 +20,12 @@ function ActiveOrderCard(props) {
   const configuration = useContext(ConfigurationContext);
 
   const STATUS_ORDER = [
-    t('pending'),
-    t('accepted'),
-    t('assigned'),
-    t('picked'),
-    t('delivered'),
-    t('completed'),
+    t("pending"),
+    t("accepted"),
+    t("assigned"),
+    t("picked"),
+    t("delivered"),
+    t("completed"),
   ];
 
   return (
@@ -50,28 +49,28 @@ function ActiveOrderCard(props) {
               </Typography>
               <Box display="flex">
                 <Status
-                firstCol="#3C8F7C"
+                  firstCol={theme.palette.button.main}
                   isEta={false}
                   first={true}
                   last={false}
                   isActive={true}
                 />
                 <Status
-                firstCol="#3C8F7C"
+                  firstCol={theme.palette.button.main}
                   isEta={STATUS_ORDER.indexOf(props.orderStatus) < 1}
                   first={false}
                   last={false}
                   isActive={true}
                 />
                 <Status
-                firstCol="#3C8F7C"
+                  firstCol={theme.palette.button.main}
                   isEta={STATUS_ORDER.indexOf(props.orderStatus) < 2}
                   first={false}
                   last={false}
                   isActive={true}
                 />
                 <Status
-                firstCol="#3C8F7C"
+                  firstCol={theme.palette.button.main}
                   isEta={STATUS_ORDER.indexOf(props.orderStatus) < 4}
                   first={false}
                   last={true}
@@ -84,13 +83,13 @@ function ActiveOrderCard(props) {
               display="flex"
               justifyContent="space-between"
               pt={theme.spacing(1)}
-              style={{color: "black", fontWeight: 700, fontSize: 17}}
+              style={{ color: "black", fontWeight: 700, fontSize: 17 }}
             >
               <Box display="flex">
-              {props?.items.length} item(s) |{" "}
-            {`${configuration.currencySymbol} ${parseFloat(
-              props.orderAmount
-            ).toFixed(2)}`}
+                {props?.items.length} item(s) |{" "}
+                {`${configuration.currencySymbol} ${parseFloat(
+                  props.orderAmount
+                ).toFixed(2)}`}
               </Box>
             </Box>
             <Typography
@@ -104,12 +103,12 @@ function ActiveOrderCard(props) {
                 props.orderAmount
               ).toFixed(2)}`} */}
               {props.orderStatus === "PENDING"
-                ? t('orderPending')
+                ? t("orderPending")
                 : props.orderStatus === "ASSIGNED" ||
                   props.orderStatus === "ACCEPTED"
-                ? t('restaurantDeliver')
+                ? t("restaurantDeliver")
                 : props.orderStatus === "PICKED"
-                ? t('riderDeliver')
+                ? t("riderDeliver")
                 : null}
             </Typography>
             {/* <Typography

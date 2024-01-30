@@ -19,7 +19,7 @@ import { addFavouriteRestaurant, profile } from "../../../apollo/server";
 import ConfigurationContext from "../../../context/Configuration";
 import UserContext from "../../../context/User";
 import useStyles from "./styles";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const ADD_FAVOURITE = gql`
   ${addFavouriteRestaurant}
@@ -36,7 +36,6 @@ function PricingDelivery({
   isSmall,
   index,
 }) {
-  
   const classes = useStyles();
   const theme = useTheme();
   const containerStyle = !grid
@@ -131,7 +130,7 @@ function Card(props) {
   function onCompleted() {
     props.showMessage({
       type: "success",
-      message: t('favouriteListUpdated'),
+      message: t("favouriteListUpdated"),
     });
   }
 
@@ -256,7 +255,9 @@ function Card(props) {
                 justifyContent: props.isSmall ? "center" : "flex-end",
               }}
             >
-              <StarSharpIcon style={{ fontSize: "16px", color: "#448B7B" }} />
+              <StarSharpIcon
+                style={{ fontSize: "16px", color: theme.palette.rare.main }}
+              />
               <Typography
                 variant="caption"
                 color="textSecondary"
