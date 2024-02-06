@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     borderRadius: 20,
     border: "none",
-    backgroundColor: "#F3F4F8",
+    backgroundColor: theme.palette.rare.light,
   },
 }));
 

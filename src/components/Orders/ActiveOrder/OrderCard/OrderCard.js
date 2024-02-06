@@ -10,36 +10,36 @@ import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import useStyles from "./styles";
 import ProgressBar from "../LinearProgress/ProgressBar";
-import { useTranslation } from 'react-i18next';
-const { t  } = useTranslation();
+import { useTranslation } from "react-i18next";
+const { t } = useTranslation();
 const orderStatuses = [
   {
-    key: t('pending'),
+    key: t("pending"),
     status: 1,
     statusText: "Your order is still pending.",
   },
   {
-    key: t('accepted'),
+    key: t("accepted"),
     status: 2,
     statusText: "Restaurant is preparing Food.",
   },
   {
-    key: t('assigned'),
+    key: t("assigned"),
     status: 3,
     statusText: "Your order is assigned to rider.",
   },
   {
-    key: t('picked'),
+    key: t("picked"),
     status: 4,
     statusText: "Rider is on the way.",
   },
   {
-    key: t('delivered'),
+    key: t("delivered"),
     status: 5,
     statusText: "Order is delivered.",
   },
   {
-    key: t('completed'),
+    key: t("completed"),
     status: 6,
     statusText: "Order is completed.",
   },

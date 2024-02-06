@@ -48,17 +48,14 @@ import { DAYS } from "../../utils/constantValues";
 import { paypalCurrencies, stripeCurrencies } from "../../utils/currencies";
 import { calculateDistance } from "../../utils/customFunction";
 import useStyle from "./styles";
-
 import Analytics from "../../utils/analytics";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { mapStyles } from "../OrderDetail/mapStyles";
 import RestMarker from "../../assets/images/rest-map-2.png";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import clsx from "clsx";
-
 import { useLocation } from "../../hooks";
 import { useTranslation } from "react-i18next";
-
 import moment from "moment";
 
 const PLACEORDER = gql`
@@ -320,7 +317,6 @@ function Checkout() {
       navigate(`/paypal?id=${data.placeOrder._id}`, { replace: true });
     } else if (paymentMethod.payment === "STRIPE") {
       navigate(`/stripe?id=${data.placeOrder._id}`, { replace: true });
-      //window.location = `${SERVER_URL}stripe/create-checkout-session?id=${data.placeOrder.orderId}&platform=web`;
     }
   }
 
@@ -481,7 +477,7 @@ function Checkout() {
       showMessage({
         alive: true,
         type: "Error",
-        message: t('phoneNumMissing'),
+        message: t("phoneNumMissing"),
       });
 
       setTimeout(() => {
@@ -600,7 +596,7 @@ function Checkout() {
                     fontWeight: 600,
                   }}
                 >
-                  {isPickUp ? t('pickUp') : t('delivery')}
+                  {isPickUp ? t("pickUp") : t("delivery")}
                 </Typography>
                 <Button
                   variant="contained"

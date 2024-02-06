@@ -129,7 +129,7 @@ function PaymentCard({
                   justifyContent="space-between"
                   flexGrow={1}
                   style={{
-                    backgroundColor: "#F3F4F8",
+                    backgroundColor: theme.palette.rare.light,
                     borderRadius: 20,
                     padding: "8px",
                   }}

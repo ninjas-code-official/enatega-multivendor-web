@@ -553,6 +553,9 @@ export const getConfiguration = `query Configuration{
     webSentryUrl
     publishableKey
     clientId
+    primaryColor
+    secondaryColor
+    tertiaryColor 
   }
 }`;
 

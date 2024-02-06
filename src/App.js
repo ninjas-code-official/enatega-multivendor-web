@@ -35,10 +35,13 @@ import AuthRoute from "./routes/AuthRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import VerifyPhone from "./screens/VerifyPhone/VerifyPhone";
 import UserContext from "./context/User";
+import { ThemeProvider, StyledEngineProvider } from "@mui/material";
+import CustomTheme from "./utils/theme";
+import { useTranslation } from "react-i18next";
 
 const GoogleMapsLoader = ({ children, LIBRARIES, GOOGLE_MAPS_KEY }) => {
   const [message, setMessage] = useState(null);
-
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     const initializeFirebase = async () => {
       if (await isFirebaseSupported()) {
@@ -61,12 +64,35 @@ const GoogleMapsLoader = ({ children, LIBRARIES, GOOGLE_MAPS_KEY }) => {
         onMessage(messaging, function (payload) {
           // Customize notification here
           const { title, body } = payload.notification;
-          setMessage(`${title} ${body}`);
+          var localizedBody = body;
+          var orderNo = "";
+          var localizedTitle = title;
+          const createMessage = (orderNo, localizedTitle, localizedBody) => {
+            return i18n.language === "ar"
+              ? `${orderNo} ${localizedTitle} ${localizedBody}`
+              : `${localizedTitle} ${localizedBody} ${orderNo}`;
+          };
+          if (title.startsWith("Order status:")) {
+            localizedTitle = t(title);
+            const orderIdIndex = body.indexOf("Order ID");
+            orderNo = body.slice(orderIdIndex + 9).trim();
+            localizedBody = t("Order ID");
+            setMessage(createMessage(orderNo, localizedTitle, localizedBody));
+          } else if (title === "Order placed") {
+            localizedTitle = t("orderPlaced");
+            const orderIdIndex = body.indexOf("Order ID");
+            orderNo = body.slice(orderIdIndex + 9).trim();
+            localizedBody = t("Order ID");
+            setMessage(createMessage(orderNo, localizedTitle, localizedBody));
+          } else {
+            console.log(localizedTitle, localizedBody);
+            setMessage(`${localizedTitle} ${localizedBody}`);
+          }
         });
       }
     };
     initializeFirebase();
-  }, []);
+  }, [t, i18n]);
 
   const handleClose = () => {
     setMessage(null);
@@ -107,170 +133,186 @@ const GoogleMapsLoader = ({ children, LIBRARIES, GOOGLE_MAPS_KEY }) => {
 };
 
 function App() {
-  const { GOOGLE_MAPS_KEY, LIBRARIES } = ConfigurableValues();
+  const {
+    GOOGLE_MAPS_KEY,
+    LIBRARIES,
+    PRIMERY_COLOR,
+    SECONDARY_COLOR,
+    TERTIARY_COLOR,
+  } = ConfigurableValues();
   const { isLoggedIn } = useContext(UserContext);
 
+  console.log("PRIMERY_COLOR in APP", PRIMERY_COLOR);
   return GOOGLE_MAPS_KEY ? (
-    <HashRouter>
-      <GoogleMapsLoader GOOGLE_MAPS_KEY={GOOGLE_MAPS_KEY} LIBRARIES={LIBRARIES}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/restaurant-list" element={<Restaurants />} />
-          <Route path="/restaurant/:slug" element={<RestaurantDetail />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/pickup" element={<Pickup />} />
-          <Route
-            path={"/login"}
-            element={
-              <AuthRoute>
-                <Login />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/registration"}
-            element={
-              <AuthRoute>
-                <Registration />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/new-login"}
-            element={
-              <AuthRoute>
-                <NewLogin />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/login-email"}
-            element={
-              <AuthRoute>
-                <LoginEmail />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/verify-email"}
-            element={
-              <AuthRoute>
-                <VerifyEmail />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/new-password"}
-            element={
-              <AuthRoute>
-                <ResetPassword />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/phone-number"}
-            element={
-              <PrivateRoute>
-                <PhoneNumber />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/verify-phone"}
-            element={
-              <PrivateRoute>
-                <VerifyPhone />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/forgot-password"}
-            element={
-              <AuthRoute>
-                <ForgotPassword />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/verify-forgot-otp"}
-            element={
-              <AuthRoute>
-                <VerifyForgotOtp />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/email-sent"}
-            element={
-              <AuthRoute>
-                <EmailSent />
-              </AuthRoute>
-            }
-          />
-          <Route
-            path={"/orders"}
-            element={
-              <PrivateRoute>
-                <MyOrders />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/profile"}
-            element={
-              <PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/settings"}
-            element={
-              <PrivateRoute>
-                <Settings />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/checkout"}
-            element={isLoggedIn ? <Checkout /> : <Login />}
-          />
-          <Route
-            path={"/order-detail/:id"}
-            element={
-              <PrivateRoute>
-                <OrderDetail />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/paypal"}
-            element={
-              <PrivateRoute>
-                <Paypal />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/stripe"}
-            element={
-              <PrivateRoute>
-                <Stripe />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path={"/favourite"}
-            element={
-              <PrivateRoute>
-                <Favourites />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      </GoogleMapsLoader>
-    </HashRouter>
+    <StyledEngineProvider injectFirst>
+      <ThemeProvider
+        theme={CustomTheme(PRIMERY_COLOR, SECONDARY_COLOR, TERTIARY_COLOR)}
+      >
+        <HashRouter>
+          <GoogleMapsLoader
+            GOOGLE_MAPS_KEY={GOOGLE_MAPS_KEY}
+            LIBRARIES={LIBRARIES}
+          >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/restaurant-list" element={<Restaurants />} />
+              <Route path="/restaurant/:slug" element={<RestaurantDetail />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/pickup" element={<Pickup />} />
+              <Route
+                path={"/login"}
+                element={
+                  <AuthRoute>
+                    <Login />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/registration"}
+                element={
+                  <AuthRoute>
+                    <Registration />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/new-login"}
+                element={
+                  <AuthRoute>
+                    <NewLogin />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/login-email"}
+                element={
+                  <AuthRoute>
+                    <LoginEmail />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/verify-email"}
+                element={
+                  <AuthRoute>
+                    <VerifyEmail />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/new-password"}
+                element={
+                  <AuthRoute>
+                    <ResetPassword />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/phone-number"}
+                element={
+                  <PrivateRoute>
+                    <PhoneNumber />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/verify-phone"}
+                element={
+                  <PrivateRoute>
+                    <VerifyPhone />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/forgot-password"}
+                element={
+                  <AuthRoute>
+                    <ForgotPassword />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/verify-forgot-otp"}
+                element={
+                  <AuthRoute>
+                    <VerifyForgotOtp />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/email-sent"}
+                element={
+                  <AuthRoute>
+                    <EmailSent />
+                  </AuthRoute>
+                }
+              />
+              <Route
+                path={"/orders"}
+                element={
+                  <PrivateRoute>
+                    <MyOrders />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/profile"}
+                element={
+                  <PrivateRoute>
+                    <Profile />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/settings"}
+                element={
+                  <PrivateRoute>
+                    <Settings />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/checkout"}
+                element={isLoggedIn ? <Checkout /> : <Login />}
+              />
+              <Route
+                path={"/order-detail/:id"}
+                element={
+                  <PrivateRoute>
+                    <OrderDetail />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/paypal"}
+                element={
+                  <PrivateRoute>
+                    <Paypal />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/stripe"}
+                element={
+                  <PrivateRoute>
+                    <Stripe />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path={"/favourite"}
+                element={
+                  <PrivateRoute>
+                    <Favourites />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
+          </GoogleMapsLoader>
+        </HashRouter>
+      </ThemeProvider>
+    </StyledEngineProvider>
   ) : (
     <Box
       component="div"

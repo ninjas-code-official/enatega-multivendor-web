@@ -1,5 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
-import { ThemeProvider, StyledEngineProvider } from "@mui/material";
+
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import setupAplloClient from "./apollo/index";
@@ -9,7 +9,7 @@ import { LocationProvider } from "./context/Location";
 import { UserProvider } from "./context/User";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import theme from "./utils/theme";
+
 import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import ConfigurableValues from "./config/constants";
@@ -32,15 +32,11 @@ function Main() {
   return (
     <ApolloProvider client={client}>
       <ConfigurationProvider>
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            <UserProvider>
-              <LocationProvider>
-                <App />
-              </LocationProvider>
-            </UserProvider>
-          </ThemeProvider>
-        </StyledEngineProvider>
+        <UserProvider>
+          <LocationProvider>
+            <App />
+          </LocationProvider>
+        </UserProvider>
       </ConfigurationProvider>
     </ApolloProvider>
   );
