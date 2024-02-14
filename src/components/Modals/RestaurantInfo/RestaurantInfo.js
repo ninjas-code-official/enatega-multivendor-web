@@ -14,7 +14,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import StarSharpIcon from "@mui/icons-material/StarSharp";
 import React, { useCallback, useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import useStyles from "./styles";
 import TabContainer from "./TabContainer";
 
@@ -30,7 +30,7 @@ function RestaurantInfo({ isVisible, toggleModal, restaurantInfo }) {
   const classes = useStyles();
   const extraSmall = useMediaQuery(theme.breakpoints.down("md"));
   const [tabValue, setTabValue] = useState(0);
-  const { t  } = useTranslation();
+  const { t } = useTranslation();
 
   const handleChange = useCallback((event, newValue) => {
     setTabValue(newValue);
@@ -117,7 +117,7 @@ function RestaurantInfo({ isVisible, toggleModal, restaurantInfo }) {
             pb={theme.spacing(2)}
           >
             <Typography className={classes.smallText}>
-              {`${t('delivery')} ${restaurantInfo.deliveryTime} ${t('Minute')}`}{" "}
+              {`${t("delivery")} ${restaurantInfo.deliveryTime} ${t("minute")}`}{" "}
             </Typography>
           </Box>
           <Divider light orientation="horizontal" />
@@ -125,12 +125,12 @@ function RestaurantInfo({ isVisible, toggleModal, restaurantInfo }) {
             <Tabs value={tabValue} onChange={handleChange}>
               <Tab
                 color={theme.palette.common.black}
-                label={t('about')}
+                label={t("about")}
                 {...a11yProps(0)}
               />
               <Tab
                 color={theme.palette.common.black}
-                label={t('reviews')}
+                label={t("reviews")}
                 {...a11yProps(1)}
               />
             </Tabs>
@@ -143,7 +143,7 @@ function RestaurantInfo({ isVisible, toggleModal, restaurantInfo }) {
             className={classes.titleText}
             color={theme.palette.text.secondary}
           >
-            {t('deliveryHours')}
+            {t("deliveryHours")}
           </Typography>
           <Box pt={theme.spacing(2)} />
           {restaurantInfo.openingTimes.map((dayOb, index) => (
@@ -171,7 +171,7 @@ function RestaurantInfo({ isVisible, toggleModal, restaurantInfo }) {
                 {dayOb.times.length < 1 ? (
                   <Typography key={"closed"} className={classes.smallText}>
                     {" "}
-                    {t('closedAllDay')}
+                    {t("closedAllDay")}
                   </Typography>
                 ) : (
                   dayOb.times.map((timeObj, index) => (
@@ -195,7 +195,7 @@ function RestaurantInfo({ isVisible, toggleModal, restaurantInfo }) {
             className={classes.titleText}
             color={theme.palette.text.secondary}
           >
-            {t('address')}
+            {t("address")}
           </Typography>
           <Box pt={theme.spacing(2)} />
           <Box
@@ -225,7 +225,7 @@ function RestaurantInfo({ isVisible, toggleModal, restaurantInfo }) {
             className={classes.titleText}
             color={theme.palette.common.white}
           >
-            {`${restaurantInfo.reviewData.total} ${t('reviews')}`}
+            {`${restaurantInfo.reviewData.total} ${t("reviews")}`}
           </Typography>
           <Box className={classes.line}>
             <Divider />

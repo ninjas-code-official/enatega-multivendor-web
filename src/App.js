@@ -35,9 +35,11 @@ import AuthRoute from "./routes/AuthRoute";
 import PrivateRoute from "./routes/PrivateRoute";
 import VerifyPhone from "./screens/VerifyPhone/VerifyPhone";
 import UserContext from "./context/User";
+import { useTranslation } from "react-i18next";
 
 const GoogleMapsLoader = ({ children, LIBRARIES, GOOGLE_MAPS_KEY }) => {
   const [message, setMessage] = useState(null);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const initializeFirebase = async () => {
@@ -61,12 +63,35 @@ const GoogleMapsLoader = ({ children, LIBRARIES, GOOGLE_MAPS_KEY }) => {
         onMessage(messaging, function (payload) {
           // Customize notification here
           const { title, body } = payload.notification;
-          setMessage(`${title} ${body}`);
+          var localizedBody = body;
+          var orderNo = "";
+          var localizedTitle = title;
+          const createMessage = (orderNo, localizedTitle, localizedBody) => {
+            return i18n.language === "ar"
+              ? `${orderNo} ${localizedTitle} ${localizedBody}`
+              : `${localizedTitle} ${localizedBody} ${orderNo}`;
+          };
+          if (title.startsWith("Order status:")) {
+            localizedTitle = t(title);
+            const orderIdIndex = body.indexOf("Order ID");
+            orderNo = body.slice(orderIdIndex + 9).trim();
+            localizedBody = t("Order ID");
+            setMessage(createMessage(orderNo, localizedTitle, localizedBody));
+          } else if (title === "Order placed") {
+            localizedTitle = t("orderPlaced");
+            const orderIdIndex = body.indexOf("Order ID");
+            orderNo = body.slice(orderIdIndex + 9).trim();
+            localizedBody = t("Order ID");
+            setMessage(createMessage(orderNo, localizedTitle, localizedBody));
+          } else {
+            console.log(localizedTitle, localizedBody);
+            setMessage(`${localizedTitle} ${localizedBody}`);
+          }
         });
       }
     };
     initializeFirebase();
-  }, []);
+  }, [t, i18n]);
 
   const handleClose = () => {
     setMessage(null);
