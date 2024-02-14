@@ -320,7 +320,6 @@ function Checkout() {
       navigate(`/paypal?id=${data.placeOrder._id}`, { replace: true });
     } else if (paymentMethod.payment === "STRIPE") {
       navigate(`/stripe?id=${data.placeOrder._id}`, { replace: true });
-      //window.location = `${SERVER_URL}stripe/create-checkout-session?id=${data.placeOrder.orderId}&platform=web`;
     }
   }
 
@@ -481,7 +480,7 @@ function Checkout() {
       showMessage({
         alive: true,
         type: "Error",
-        message: t('phoneNumMissing'),
+        message: t("phoneNumMissing"),
       });
 
       setTimeout(() => {
@@ -600,7 +599,7 @@ function Checkout() {
                     fontWeight: 600,
                   }}
                 >
-                  {isPickUp ? t('pickUp') : t('delivery')}
+                  {isPickUp ? t("pickUp") : t("delivery")}
                 </Typography>
                 <Button
                   variant="contained"
